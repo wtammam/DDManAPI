@@ -11,7 +11,7 @@ node(){
 
 
         stage('Build') {
-
+            GetData('hallo bin ich')
                 sh 'echo $DB_ENGINE'
 
         }
