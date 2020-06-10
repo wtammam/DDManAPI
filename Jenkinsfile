@@ -1,5 +1,6 @@
 @Library('DDManAPI') _
 node(){
+    def test=new DDManAPI()
  //   agent {
 //        label "abdul-executor"
  //   }
@@ -11,8 +12,8 @@ node(){
 
 
         stage('Build') {
-            GetData('hallo bin ich')
-                sh 'echo $DB_ENGINE'
+            test.GetData('hallo bin ich')
+                //sh 'echo $DB_ENGINE'
 
         }
 

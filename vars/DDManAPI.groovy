@@ -13,7 +13,7 @@ def GetData(String DDManPrjVzPk = 'Hallo ich bin') {
     Prj = DDManPrjVzPk.split(' ')[0]
     VZ = DDManPrjVzPk.split(' ')[1]
     PK = DDManPrjVzPk.split(' ')[2]
-    echo "${Prj}, ${VZ}, ${PK}"
+    println ("${Prj}, ${VZ}, ${PK}")
 }
 
 
