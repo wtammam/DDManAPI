@@ -6,7 +6,7 @@
 //}
 //PrjData PrjConfig = new PrjData()
 
-def GetData(String DDManPrjVzPk = 'Hallo ich bin') {
+def GetData(String DDManPrjVzPk = PARAPRJ_PARAVC_PARAPK) {
     String Prj
     String VZ
     String PK
