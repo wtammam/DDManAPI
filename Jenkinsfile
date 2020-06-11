@@ -12,7 +12,7 @@ node(){
 
 
         stage('Build') {
-            DDManAPI.GetData(PARAPRJ_PARAVC_PARAPK)
+            DDManAPI_Function.GetData(PARAPRJ_PARAVC_PARAPK)
                 //sh 'echo $DB_ENGINE'
 
         }
