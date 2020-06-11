@@ -12,7 +12,7 @@ node(){
 
 
         stage('Build') {
-            test.GetData 'PARAPRJ_PARAVC_PARAPK'
+            test.GetData PARAPRJ_PARAVC_PARAPK
                 //sh 'echo $DB_ENGINE'
 
         }
