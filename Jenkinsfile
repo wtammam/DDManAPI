@@ -12,7 +12,7 @@ node(){
 
 
         stage('Build') {
-            GetData (PARAPRJ_PARAVC_PARAPK)
+            GetData "PARAPRJ_PARAVC_PARAPK"
                 //sh 'echo $DB_ENGINE'
 
         }
