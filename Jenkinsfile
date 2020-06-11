@@ -1,6 +1,6 @@
 @Library('DDManAPI') _
 node(){
-    def test=new DDManAPI()
+   // def test=new DDManAPI()
  //   agent {
 //        label "abdul-executor"
  //   }
