@@ -1,4 +1,4 @@
-@Library('utils') _
+@Library('DDManAPI') _
 node(){
    // def test=new DDManAPI()
  //   agent {
@@ -12,7 +12,7 @@ node(){
 
 
         stage('Build') {
-            test.GetData(PARAPRJ_PARAVC_PARAPK)
+            test.GetData 'PARAPRJ_PARAVC_PARAPK'
                 //sh 'echo $DB_ENGINE'
 
         }
