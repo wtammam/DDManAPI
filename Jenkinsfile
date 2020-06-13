@@ -1,4 +1,4 @@
-@Library(value="DDManAPI@master") _
+@Library(value="DDMan@master") _
 node(){
    // def test=new DDManAPI()
  //   agent {
