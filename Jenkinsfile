@@ -13,7 +13,7 @@ node(){
 
         stage('Build') {
             log.info('process is started')
-            log.error('we have a problem but can solve it.')
+            log.warning('we have a problem but can solve it.')
             //DDManAPI_Function.GetData(PARAPRJ_PARAVC_PARAPK)
                 //sh 'echo $DB_ENGINE'
 
