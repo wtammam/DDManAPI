@@ -1,7 +1,7 @@
 @Library(value="DDMan@master") _
 node(){
  def test=new DDManAPI_Function()
-    def test1=new DDManAPI()
+    def test1=new DDManAPI_Class()
  //   agent {
 //        label "abdul-executor"
  //   }
