@@ -27,7 +27,7 @@ def GetData(String DDManPrjVzPk, String DDManjob, String Mod) {
     PK = DDManPrjVzPk.split(' ')[2]
     println ("${Prj}, ${VZ}, ${PK}")
     if (Prj!=''&& VZ!=''&& PK!=''&& DDManjob!=''){
-    x= bat javapath javapar1 Javapar2 ddmanpath ddmanpar DDManjob -PRJ Prj -SGP VZ -PRG PK -DB ddpar
+   // x= bat javapath javapar1 Javapar2 ddmanpath ddmanpar DDManjob -PRJ Prj -SGP VZ -PRG PK -DB ddpar
     }
 }
 }
