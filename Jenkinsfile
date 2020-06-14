@@ -16,7 +16,9 @@ node(){
             log.info('process is started now ')
             log.warning('we have a problem but can solve it.')
             //DDManAPI_Function.GetData('ssccsc dddd ffff')
-            //test.GetData(PARAPRJ_PARAVC_PARAPK)
+            println ("DDManAPI_Function")
+            test.GetData(PARAPRJ_PARAVC_PARAPK)
+            println ("DDManAPI")
             test1.GetData(PARAPRJ_PARAVC_PARAPK,Aktion, 'aaa')
                 //sh 'echo $DB_ENGINE'
 
