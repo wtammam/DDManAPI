@@ -12,7 +12,7 @@ node(){
 
 
         stage('Build') {
-            log.info('process is started')
+            log.info('process is started now ')
             log.warning('we have a problem but can solve it.')
             DDManAPI_Function.GetData('gggg 444 ttttt')
                 //sh 'echo $DB_ENGINE'
