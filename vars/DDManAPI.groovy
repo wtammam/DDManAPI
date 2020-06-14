@@ -15,7 +15,15 @@ class DDManAPI {
         println ("Test")
     }
 
-
+def DDManAPI(String JavaPath, String DDManPath, String JavaPar1, String JavaPar2, String DDManpar, String DDpar) {
+        this.javapath = JavaPath
+        this.ddmanpath = DDManPath
+        this.javapar1 = JavaPar1
+        this.javapar2 = JavaPar2
+        this.ddmanpar = DDManpar
+        this.ddpar = DDpar
+    println ("Test")
+    }
 def GetData(String DDManPrjVzPk, String DDManjob, String Mod) {
     String Prj
     String VZ
@@ -30,7 +38,7 @@ def GetData(String DDManPrjVzPk, String DDManjob, String Mod) {
    // }
 }
 }
-
+return new DDManAPI() ;
 
 
 
