@@ -24,7 +24,7 @@ def DDManAPI(String JavaPath, String DDManPath, String JavaPar1, String JavaPar2
         this.ddpar = DDpar
     println ("Test")
     }
-def GetData(String DDManPrjVzPk, String DDManjob, String Mod) {
+def GetData(String DDManPrjVzPk, String DDManjob){//, String Mod) {
     String Prj
     String VZ
     String PK
