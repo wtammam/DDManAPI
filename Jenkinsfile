@@ -17,7 +17,7 @@ node(){
             log.warning('we have a problem but can solve it.')
             //DDManAPI_Function.GetData('ssccsc dddd ffff')
             //test.GetData(PARAPRJ_PARAVC_PARAPK)
-            test1.GetData(PARAPRJ_PARAVC_PARAPK, "Job","Mod")
+            test1.GetData(PARAPRJ_PARAVC_PARAPK, Job,Mod)
                 //sh 'echo $DB_ENGINE'
 
         }
