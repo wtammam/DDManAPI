@@ -1,5 +1,5 @@
-//@Library(value="DDMan@master") _
-@Library(value="DDMan@master") import DDManAPIClass
+@Library(value="DDMan@master") _
+import DDManAPI.DDManAPIClass
 node(){
  def test=new DDManAPI_Function()
     def test1=new DDManAPIClass()
