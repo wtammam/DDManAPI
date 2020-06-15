@@ -1,5 +1,5 @@
 @Library(value="DDMan@master") _
-import DDManAPI.DDManAPIClass
+import DDManAPIClass
 node(){
  def test=new DDManAPI_Function()
     def test1=new DDManAPIClass()
@@ -21,7 +21,7 @@ node(){
             println ("DDManAPI_Function")
             test.GetData(PARAPRJ_PARAVC_PARAPK)
             println ("DDManAPI")
-            test1.GetData(PARAPRJ_PARAVC_PARAPK,Aktion, 'aaa')
+            test1.GetData(PARAPRJ_PARAVC_PARAPK,Aktion,'aaa')
                 //sh 'echo $DB_ENGINE'
 
         }
