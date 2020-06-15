@@ -1,7 +1,8 @@
 @Library(value="DDMan@master") _
 node(){
  def test=new DDManAPI_Function()
-    def test1=new DDManAPI()
+    //def test1=new DDManAPI()
+    def test1 = load 'DDManAPI.groovy'
  //   agent {
 //        label "abdul-executor"
  //   }
