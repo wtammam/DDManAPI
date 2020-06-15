@@ -1,7 +1,7 @@
 //vars/DDManAPI.groovy
 //#!/usr/bin/env groovy
 
-class DDManAPI {
+class DDManAPIClass {
 
     String javapath='C:\\Program Files (x86)\\Java\\jre1.8.0_251\\bin\\java.exe'
     String ddmanpath='C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar'
@@ -10,12 +10,12 @@ class DDManAPI {
     String ddmanpar='-EXEC'
     String ddpar='DDMAN6'
     String DDManPrjVzPk
-    def DDManAPI() {
+    def DDManAPIClass() {
 
         println ("Test")
     }
 
-def DDManAPI_(String JavaPath, String DDManPath, String JavaPar1, String JavaPar2, String DDManpar, String DDpar) {
+def DDManAPIClass(String JavaPath, String DDManPath, String JavaPar1, String JavaPar2, String DDManpar, String DDpar) {
         this.javapath = JavaPath
         this.ddmanpath = DDManPath
         this.javapar1 = JavaPar1
@@ -38,7 +38,7 @@ def GetData(String DDManPrjVzPk, String DDManjob, String Mod) {
    // }
 }
 }
-return new DDManAPI() ;
+return new DDManAPIClass() ;
 
 
 
