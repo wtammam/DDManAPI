@@ -1,4 +1,4 @@
-@Library(value="DDMan@master") _
+//@Library(value="DDMan@master") _
 @Library(value="DDMan@master") import DDManAPIClass
 node(){
  def test=new DDManAPI_Function()
