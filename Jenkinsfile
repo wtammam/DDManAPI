@@ -2,7 +2,7 @@
 //import DDManAPIClass
 node(){
  def test=new DDManAPI_Function()
-    def test1=new DDManAPIClass()
+    //def test1=new DDManAPIClass()
     def test1 = load 'DDManAPI.groovy'
  //   agent {
 //        label "abdul-executor"
