@@ -1,6 +1,6 @@
 @Library(value="DDMan@master") _
 
-import DDManAPI
+import DDManAPI.*
 
 node(){
     script {
