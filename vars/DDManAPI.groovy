@@ -10,7 +10,7 @@ class DDManAPI {
     //String ddmanpar='-EXEC'
     //String ddpar='DDMAN6'
     //String DDManPrjVzPk
-    def DDManAPI() {
+    def DDManAPI1() {
         println ("Test 1")
     }
 
