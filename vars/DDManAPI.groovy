@@ -1,6 +1,6 @@
 //vars/DDManAPI.groovy
 //#!/usr/bin/env groovy
-//package DDManAPI
+//package vars
 class DDManAPIClass {
 
     String javapath='C:\\Program Files (x86)\\Java\\jre1.8.0_251\\bin\\java.exe'

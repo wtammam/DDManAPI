@@ -1,8 +1,10 @@
 @Library(value="DDMan@master")
-import DDManAPIClass
+//import vars.*
 node(){
- def test=new DDManAPI_Function()
-    def test1=new DDManAPIClass()
+    script {
+        def test = new DDManAPI_Function()
+        def test1 = new DDManAPIClass()
+    }
     //def test1 = load 'DDManAPI\\vars\\DDManAPI.groovy'
  //   agent {
 //        label "abdul-executor"
