@@ -3,13 +3,13 @@
 //package vars
 class DDManAPI {
 
-    String javapath='C:\\Program Files (x86)\\Java\\jre1.8.0_251\\bin\\java.exe'
-    String ddmanpath='C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar'
-    String javapar1='-jar'
-    String Javapar2='-Xmx2G'
-    String ddmanpar='-EXEC'
-    String ddpar='DDMAN6'
-    String DDManPrjVzPk
+    //String javapath='C:\\Program Files (x86)\\Java\\jre1.8.0_251\\bin\\java.exe'
+    //String ddmanpath='C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar'
+    //String javapar1='-jar'
+    //String Javapar2='-Xmx2G'
+    //String ddmanpar='-EXEC'
+    //String ddpar='DDMAN6'
+    //String DDManPrjVzPk
     def DDManAPI() {
         println ("Test 1")
     }
