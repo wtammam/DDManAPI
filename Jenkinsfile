@@ -1,5 +1,6 @@
-@Library(value="DDMan@master")
+@Library(value="DDMan@master") _
 //import DDManAPI
+
 node(){
     script {
         def test = new DDManAPI_Function()
