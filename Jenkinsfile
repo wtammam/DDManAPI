@@ -27,7 +27,7 @@ node(){
             println ("DDManAPI")
             println "${test1.DDManAPI1()}"
 
-            //test1.GetData("ttt bbb fff","Aktion",'aaa')
+            println "${test1.GetData("ttt bbb fff","Aktion",'aaa')}"
                 //sh 'echo $DB_ENGINE'
 
         }

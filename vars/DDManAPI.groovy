@@ -31,7 +31,7 @@ def GetData(String DDManPrjVzPk, String DDManjob, String Mod) {
     Prj = DDManPrjVzPk.split(' ')[0]
     VZ = DDManPrjVzPk.split(' ')[1]
     PK = DDManPrjVzPk.split(' ')[2]
-    println ("${Prj}, ${VZ}, ${PK}")
+    return ("${Prj}, ${VZ}, ${PK}")
     //println ("${DDManjob}, ${Mod}")
     //if (${Prj}!=''&& ${VZ}!=''&& ${PK}!=''&& DDManjob!=''){
    // x= bat javapath javapar1 Javapar2 ddmanpath ddmanpar DDManjob -PRJ Prj -SGP VZ -PRG PK -DB ddpar
