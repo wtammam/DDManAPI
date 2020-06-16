@@ -25,7 +25,7 @@ node(){
             println ("DDManAPI_Function")
             test.GetData(PARAPRJ_PARAVC_PARAPK)
             println ("DDManAPI")
-            //test1.GetData("ttt bbb fff","Aktion",'aaa')
+            test1.GetData("ttt bbb fff","Aktion",'aaa')
                 //sh 'echo $DB_ENGINE'
 
         }
