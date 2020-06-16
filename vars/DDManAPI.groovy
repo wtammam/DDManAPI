@@ -10,12 +10,12 @@ class DDManAPI {
     String ddmanpar='-EXEC'
     String ddpar='DDMAN6'
     String DDManPrjVzPk
-    def DDManAPI() {
+    DDManAPI() {
 
         println ("Test 1")
     }
 
-def DDManAPI(String JavaPath, String DDManPath, String JavaPar1, String JavaPar2, String DDManpar, String DDpar) {
+    DDManAPI(String JavaPath, String DDManPath, String JavaPar1, String JavaPar2, String DDManpar, String DDpar) {
         this.javapath = JavaPath
         this.ddmanpath = DDManPath
         this.javapar1 = JavaPar1
