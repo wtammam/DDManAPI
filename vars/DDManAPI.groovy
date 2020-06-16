@@ -12,7 +12,6 @@ class DDManAPI {
     //String DDManPrjVzPk
     def DDManAPI1() {
         echo "Test 1"
-        return 2
     }
 
     //def DDManAPI(String JavaPath, String DDManPath, String JavaPar1, String JavaPar2, String DDManpar, String DDpar) {
