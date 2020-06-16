@@ -11,10 +11,12 @@ class DDManAPI {
     //String ddpar='DDMAN6'
     //String DDManPrjVzPk
     def DDManAPI1() {
-        echo "Test 1"
+        //echo "Test 1"
+        return 2
     }
 
-    //def DDManAPI(String JavaPath, String DDManPath, String JavaPar1, String JavaPar2, String DDManpar, String DDpar) {
+    //def DDManAPI(String JavaPath, String DDManPa
+    //Possible solutions: each(groovy.lang.Closure), gth, String JavaPar1, String JavaPar2, String DDManpar, String DDpar) {
      //   this.javapath = JavaPath
      //   this.ddmanpath = DDManPath
       //  this.javapar1 = JavaPar1
