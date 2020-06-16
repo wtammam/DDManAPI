@@ -38,7 +38,7 @@ def GetData(String DDManPrjVzPk, String DDManjob, String Mod) {
    // }
 }
 }
-return new DDManAPIClass();
+
 
 
 
