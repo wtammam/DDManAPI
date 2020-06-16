@@ -12,7 +12,7 @@ class DDManAPI {
     String DDManPrjVzPk
     def DDManAPI() {
 
-        println ("Test")
+        println ("Test 1")
     }
 
 def DDManAPI(String JavaPath, String DDManPath, String JavaPar1, String JavaPar2, String DDManpar, String DDpar) {
@@ -22,7 +22,7 @@ def DDManAPI(String JavaPath, String DDManPath, String JavaPar1, String JavaPar2
         this.javapar2 = JavaPar2
         this.ddmanpar = DDManpar
         this.ddpar = DDpar
-    println ("Test")
+    println ("Test 2")
     }
 def GetData(String DDManPrjVzPk, String DDManjob, String Mod) {
     String Prj
