@@ -44,7 +44,7 @@ def GetData() {
     //return ("${Prj}, ${VZ}, ${PK}")
     //return DDManPrjVzPk
     if (Prj!=''&& VZ!=''&& PK!=''&& DDManJob!=''){
-        sh JavaPath JavaArchive JavaMemory DDManPath DDManModus[1] DDManjob -PRJ Prj -SGP VZ -PRG PK -DB ddpar
+        execute( 'sh', "$(JavaPath) \$(JavaArchive $(JavaMemory) $(DDManPath) $(DDManModus[1]) $(DDManJob) -PRJ $(Prj) -SGP $(VZ) -PRG $(PK) -DB $(ddpar)")
         //return ("${Prj}, ${VZ}, ${PK}")
 
     }
