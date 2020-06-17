@@ -28,8 +28,8 @@ node(){
             //println "${test1.DDManAPI1(PARAPRJ_PARAVC_PARAPK, "Aktion", 'aaa')}"
             // PARAPRJ_PARAVC_PARAPK,"Aktion",'aaa'
             println "${test1.GetData()}"
-            //test1.SetDDManConfig("aa","bb","cc","dd","ee","ff")
-            println "${test1.GetDDManCnnfig()}"
+            test1.SetDDManConfig("aa","bb","cc","dd","ee","ff")
+            println "${test1.GetDDManConfig()}"
                 //sh 'echo $DB_ENGINE'
 
         }
