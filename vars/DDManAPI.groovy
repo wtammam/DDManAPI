@@ -12,7 +12,7 @@ class DDManAPI {
     String DDManPrjVzPk
     String DDManjob
     String Modus
-    DDManAPI1(String PrjVzPk, String Job, String Mod) {
+    DDManAPI(String PrjVzPk, String Job, String Mod) {
         this.DDManPrjVzPk=PrjVzPk
         this.DDManjob=Job
         this.Modus=Mod
