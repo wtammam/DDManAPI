@@ -21,8 +21,8 @@ class DDManAPI {
         //return "Hallo"
     }
     def SetDDManCnnfig(String Java_Path, String DDMan_Path, String Java_Archive, String Java_Memory,String DDMan_Modus,String DD_Par) {
-        this.JavaPath = Java_path
-        this.DDManPath = DDMan_path
+        this.JavaPath = Java_Path
+        this.DDManPath = DDMan_Path
         this.JavaArchive = Java_Archive
         this.JavaMemory = Java_Memory
         this.DDManModus = DDMan_Modus
