@@ -13,9 +13,9 @@ class DDManAPI {
     String DDManjob="test"
     String Modus="dddd"
     DDManAPI1(String PrjVzPk, String Job, String Mod) {
-        String DDManPrjVzPk=PrjVzPk
-        String DDManjob=Job
-        String Modus=Mod
+        this.DDManPrjVzPk=PrjVzPk
+        this.DDManjob=Job
+        this.Modus=Mod
         return "${DDManPrjVzPk}"
         //return "Hallo"
     }
