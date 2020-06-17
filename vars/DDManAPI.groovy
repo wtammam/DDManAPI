@@ -45,7 +45,7 @@ def GetData() {
     //return DDManPrjVzPk
     if (Prj!=''&& VZ!=''&& PK!=''&& DDManJob!=''){
         execute( 'bat', 'echo ok')
-        "cmd /c ${JavaPath} ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[1]} ${DDManJob} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DB ${ddpar}".execute()
+        "cmd /c ${JavaPath} ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[1]} ${DDManJob} ${Prj} ${VZ} ${PK} ${ddpar}".execute()
         //return ("${Prj}, ${VZ}, ${PK}")
 
     }
