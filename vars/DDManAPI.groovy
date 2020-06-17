@@ -3,22 +3,36 @@
 //package vars
 class DDManAPI {
 
-    private String javapath='C:\\Program Files (x86)\\Java\\jre1.8.0_251\\bin\\java.exe'
-    private String ddmanpath='C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar'
-    private String javapar1='-jar'
-    private String Javapar2='-Xmx2G'
-    private String ddmanpar='-EXEC'
-    private String ddpar='DDMAN6'
+    private String Javapath = "C:\\Program Files (x86)\\Java\\jre1.8.0_251\\bin\\java.exe"
+    private String DDManpath= ":\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar"
+    private String JavaArchive = "-jar"
+    private String JavaMemory = "-Xmx2G"
+    private String [] DDManModus = ["-EXEC", "-MOD"]
+    private String DDpar = "DDMAN6"
     private String DDManPrjVzPk
     private String DDManjob
     private String Modus
+
     DDManAPI(String PrjVzPk, String Job, String Mod) {
-        this.DDManPrjVzPk=PrjVzPk
-        this.DDManjob=Job
-        this.Modus=Mod
+        this.DDManPrjVzPk = PrjVzPk
+        this.DDManjob = Job
+        this.Modus = Mod
         //return "${DDManPrjVzPk}"
         //return "Hallo"
     }
+    def SetDDManCnnfig(String Java_path, String DDMan_path, String Java_Archive, String Java_Memory,String DDMan_Modus,String DD_par) {
+        this.Javapath = Java_path
+        this.DDManpath = DDMan_path
+        this.JavaArchive = Java_Archive
+        this.JavaMemory = Java_Memory
+        this.DDManModus = DDMan_Modus
+        this.DDpar = DD_par
+    }
+    def GetDDManCnnfig() {
+        def liste= [this.Javapath, this.DDManpath, this.JavaArchive, this.JavaMemory, this.DDManModus , this.DDpar]
+        return liste
+    }
+
 
     //def DDManAPI(String JavaPath, String DDManPa
     //Possible solutions: each(groovy.lang.Closure), gth, String JavaPar1, String JavaPar2, String DDManpar, String DDpar) {
