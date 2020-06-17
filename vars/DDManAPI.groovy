@@ -11,9 +11,13 @@ class DDManAPI {
     //String ddpar='DDMAN6'
     String DDManPrjVzPk="vfvfvfvf fdfdfd fsfsf"
     String DDManjob="test"
-    String Mod="dddd"
-    def DDManAPI1() {
-        return "Hallo"
+    String Modus="dddd"
+    DDManAPI1(String PrjVzPk, String Job, String Mod) {
+        String DDManPrjVzPk=PrjVzPk
+        String DDManjob=Job
+        String Modus=Mod
+        return $(DDManPrjVzPk)
+        //return "Hallo"
     }
 
     //def DDManAPI(String JavaPath, String DDManPa
@@ -26,7 +30,7 @@ class DDManAPI {
        // this.ddpar = DDpar
     //println ("Test 2")
    // }
-def GetData(String DDManPrjVzPk, String DDManjob, String Mod) {
+def GetData(String DDManPrjVzPk, String DDManjob, String Modus) {
     String Prj
     String VZ
     String PK
