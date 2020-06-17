@@ -41,8 +41,9 @@ def GetData() {
     VZ = DDManPrjVzPk.split(' ')[1]
     PK = DDManPrjVzPk.split(' ')[2]
     //return ("${Prj}, ${VZ}, ${PK}")
-    return Prj
-    //if (${Prj}!=''&& ${VZ}!=''&& ${PK}!=''&& DDManJob!=''){
+    if (${Prj}!=''&& ${VZ}!=''&& ${PK}!=''&& DDManJob!=''){
+        return ("${Prj}, ${VZ}, ${PK}")
+    }
    // bat JavaPath JavaArchive JavaMemory DDManPath DDManModus[1] DDManjob -PRJ Prj -SGP VZ -PRG PK -DB ddpar
     //// }
 }
