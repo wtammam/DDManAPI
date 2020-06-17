@@ -20,7 +20,7 @@ class DDManAPI {
         //return "${DDManPrjVzPk}"
         //return "Hallo"
     }
-    def SetDDManCnnfig(String Java_Path, String DDMan_Path, String Java_Archive, String Java_Memory,String DDMan_Modus,String DD_Par) {
+    def SetDDManConfig(String Java_Path, String DDMan_Path, String Java_Archive, String Java_Memory,String DDMan_Modus,String DD_Par) {
         this.JavaPath = Java_Path
         this.DDManPath = DDMan_Path
         this.JavaArchive = Java_Archive
@@ -29,7 +29,7 @@ class DDManAPI {
         this.DDPar = DD_Par
     }
     def GetDDManConfig() {
-        def lisle= [JavaPath, DDManPath, JavaArchive, JavaMemory, DDManModus , DDPar]
+        def lisle= [this.JavaPath, this.DDManPath, this.JavaArchive, this.JavaMemory, this.DDManModus , this.DDPar]
         return lisle
     }
 
