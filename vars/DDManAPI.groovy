@@ -29,7 +29,7 @@ class DDManAPI {
         this.DDPar = DD_Par
     }
     def GetDDManConfig() {
-        def lisle= [this.JavaPath, this.DDManPath, this.JavaArchive, this.JavaMemory, this.DDManModus , this.DDPar]
+        def lisle= [JavaPath, DDManPath, JavaArchive, JavaMemory, DDManModus , DDPar]
         return lisle
     }
 
