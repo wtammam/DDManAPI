@@ -9,7 +9,9 @@ class DDManAPI {
     //String Javapar2='-Xmx2G'
     //String ddmanpar='-EXEC'
     //String ddpar='DDMAN6'
-    //String DDManPrjVzPk
+    String DDManPrjVzPk="vfvfvfvf fdfdfd fsfsf"
+    String DDManjob="test"
+    String Mod="dddd"
     def DDManAPI1() {
         return "Hallo"
     }
