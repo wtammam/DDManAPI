@@ -4,7 +4,7 @@ import DDManAPI
 node(){
     //script {
         def test = new DDManAPI_Function()
-       // def test1 = new DDManAPI()
+        def test1 = new DDManAPI()
    // }
     //def test1 = load 'DDManAPI\\vars\\DDManAPI.groovy'
  //   agent {
@@ -18,7 +18,7 @@ node(){
 
 
         stage('Build') {
-            def test1 = new DDManAPI()
+            //def test1 = new DDManAPI()
             log.info('process is started now ')
             log.warning('we have a problem but can solve it.')
             //DDManAPI_Function.GetData('ssccsc dddd ffff')
