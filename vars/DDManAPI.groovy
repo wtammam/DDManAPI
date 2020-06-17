@@ -16,7 +16,7 @@ class DDManAPI {
         String DDManPrjVzPk=PrjVzPk
         String DDManjob=Job
         String Modus=Mod
-        return $(DDManPrjVzPk)
+        return "${DDManPrjVzPk}"
         //return "Hallo"
     }
 
