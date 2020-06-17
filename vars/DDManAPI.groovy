@@ -16,7 +16,7 @@ class DDManAPI {
         this.DDManPrjVzPk=PrjVzPk
         this.DDManjob=Job
         this.Modus=Mod
-        return "${DDManPrjVzPk}"
+        //return "${DDManPrjVzPk}"
         //return "Hallo"
     }
 
