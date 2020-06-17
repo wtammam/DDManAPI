@@ -3,15 +3,15 @@
 //package vars
 class DDManAPI {
 
-    //String javapath='C:\\Program Files (x86)\\Java\\jre1.8.0_251\\bin\\java.exe'
-    //String ddmanpath='C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar'
-    //String javapar1='-jar'
-    //String Javapar2='-Xmx2G'
-    //String ddmanpar='-EXEC'
-    //String ddpar='DDMAN6'
-    String DDManPrjVzPk
-    String DDManjob
-    String Modus
+    private String javapath='C:\\Program Files (x86)\\Java\\jre1.8.0_251\\bin\\java.exe'
+    private String ddmanpath='C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar'
+    private String javapar1='-jar'
+    private String Javapar2='-Xmx2G'
+    private String ddmanpar='-EXEC'
+    private String ddpar='DDMAN6'
+    private String DDManPrjVzPk
+    private String DDManjob
+    private String Modus
     DDManAPI(String PrjVzPk, String Job, String Mod) {
         this.DDManPrjVzPk=PrjVzPk
         this.DDManjob=Job
