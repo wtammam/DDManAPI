@@ -9,9 +9,9 @@ class DDManAPI {
     //String Javapar2='-Xmx2G'
     //String ddmanpar='-EXEC'
     //String ddpar='DDMAN6'
-    String DDManPrjVzPk="vfvfvfvf fdfdfd fsfsf"
-    String DDManjob="test"
-    String Modus="dddd"
+    String DDManPrjVzPk
+    String DDManjob
+    String Modus
     DDManAPI1(String PrjVzPk, String Job, String Mod) {
         this.DDManPrjVzPk=PrjVzPk
         this.DDManjob=Job
