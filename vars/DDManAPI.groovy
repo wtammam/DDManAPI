@@ -12,7 +12,7 @@ class DDManAPI {
     String DDManPrjVzPk="vfvfvfvf fdfdfd fsfsf"
     String DDManjob="test"
     String Modus="dddd"
-    def DDManAPI1(String PrjVzPk, String Job, String Mod) {
+    DDManAPI1(String PrjVzPk, String Job, String Mod) {
         String DDManPrjVzPk=PrjVzPk
         String DDManjob=Job
         String Modus=Mod
