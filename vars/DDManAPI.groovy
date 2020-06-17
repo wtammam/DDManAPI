@@ -28,9 +28,9 @@ class DDManAPI {
         this.DDManModus = DDMan_Modus
         this.DDPar = DD_Par
     }
-    def GetDDManCnnfig() {
-        def liste= [this.JavaPath, this.DDManPath, this.JavaArchive, this.JavaMemory, this.DDManModus , this.DDPar]
-        return liste
+    def GetDDManConfig() {
+        def lisle= [this.JavaPath, this.DDManPath, this.JavaArchive, this.JavaMemory, this.DDManModus , this.DDPar]
+        return lisle
     }
 
 def GetData() {
@@ -40,7 +40,8 @@ def GetData() {
     Prj = DDManPrjVzPk.split(' ')[0]
     VZ = DDManPrjVzPk.split(' ')[1]
     PK = DDManPrjVzPk.split(' ')[2]
-    return ("${Prj}, ${VZ}, ${PK}")
+    //return ("${Prj}, ${VZ}, ${PK}")
+    return Prj
     //if (${Prj}!=''&& ${VZ}!=''&& ${PK}!=''&& DDManJob!=''){
    // bat JavaPath JavaArchive JavaMemory DDManPath DDManModus[1] DDManjob -PRJ Prj -SGP VZ -PRG PK -DB ddpar
     //// }
