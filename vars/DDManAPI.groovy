@@ -30,7 +30,8 @@ class DDManAPI {
        // this.ddpar = DDpar
     //println ("Test 2")
    // }
-def GetData(String DDManPrjVzPk, String DDManjob, String Modus) {
+    // String DDManPrjVzPk, String DDManjob, String Modus
+def GetData() {
     String Prj
     String VZ
     String PK

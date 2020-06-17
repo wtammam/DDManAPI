@@ -26,8 +26,8 @@ node(){
             test.GetData(PARAPRJ_PARAVC_PARAPK)
             println ("DDManAPI")
             println "${test1.DDManAPI1(PARAPRJ_PARAVC_PARAPK, "Aktion", 'aaa')}"
-
-            println "${test1.GetData(PARAPRJ_PARAVC_PARAPK,"Aktion",'aaa')}"
+            // PARAPRJ_PARAVC_PARAPK,"Aktion",'aaa'
+            println "${test1.GetData()}"
                 //sh 'echo $DB_ENGINE'
 
         }
