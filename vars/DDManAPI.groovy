@@ -6,7 +6,7 @@ class DDManAPI {
     private String JavaPath = "C:\\Program Files (x86)\\Java\\jre1.8.0_251\\bin\\java.exe"
     private String DDManPath= "C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar"
     private String JavaArchive = "-jar"
-    private String JavaMemory = "-Xmx2G"
+    private String JavaMemory = "-Xmx1G"
     private String [] DDManModus = ["-EXEC", "-MOD"]
     private String DDPar = "DDMAN6"
     private String DDManPrjVzPk
