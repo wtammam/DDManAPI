@@ -48,7 +48,7 @@ def GetData() {
         //def x= "cmd /c ${JavaPath} ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[1]} ${DDManJob} ${Prj} ${VZ} ${PK} ${DDPar}".execute().text
         def x= "cmd /c  ${JavaPath} ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[1]} ${DDManJob} ${Prj} ${VZ} ${PK} ${DDPar}"
         def y= x.execute().text
-        return ("${x}")
+        return ("${y}")
         //return ("${Prj}, ${VZ}, ${PK}")
 
     }
