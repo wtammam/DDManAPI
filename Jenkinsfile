@@ -30,7 +30,7 @@ node(){
             //println "${test1.GetDDManConfig()}"
             //println "${test1.GetData()}"
             //test1.SetDDManConfig("aa","bb","cc","dd","ee","ff")
-            println "${test1.GetDDManConfig()}"
+            //println "${test1.GetDDManConfig()}"
                 //sh 'echo $DB_ENGINE'
 
         }
