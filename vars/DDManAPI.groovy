@@ -48,10 +48,10 @@ def GetData() {
         //def x= "cmd /c ${JavaPath} ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[1]} ${DDManJob} ${Prj} ${VZ} ${PK} ${DDPar}".execute().text
         def Command= "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
         //println(Command)
-        def Commandstring= Command.execute()//.text
-        Commandstring.waitFor();
+        //def Commandstring= Command.execute()//.text
+        //Commandstring.waitFor();
         //return ("${Commandstring}")
-        //return ("${Command}")
+        return ("${Command}")
         //return ("${Prj}, ${VZ}, ${PK}")
 
     }
