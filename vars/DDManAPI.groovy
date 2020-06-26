@@ -54,7 +54,7 @@ def GetData() {
         DDManexecute.consumeProcessOutput(sout, serr)
         //DDManexecute.waitFor()
         //Commandexecute.waitFor()
-        return ("${serr}")
+        return ("${sout}")
         //return ("${Command}")
         //return ("${Prj}, ${VZ}, ${PK}")
 
