@@ -4,7 +4,7 @@ import DDManAPI
 node(){
     //script {
         def test = new DDManAPI_Function()
-        //def test1 = new DDManAPI(PARAPRJ_PARAVC_PARAPK, "INTEGRATION-TEST-B", 'aaa')
+        def test1 = new DDManAPI(PARAPRJ_PARAVC_PARAPK, "INTEGRATION-TEST-B", 'aaa')
    // }
     //def test1 = load 'DDManAPI\\vars\\DDManAPI.groovy'
  //   agent {
@@ -27,7 +27,7 @@ node(){
             println ("DDManAPI")
             //println "${test1.DDManAPI1(PARAPRJ_PARAVC_PARAPK, "INTEGRATION-TEST-B", 'aaa')}"
             // PARAPRJ_PARAVC_PARAPK,"Aktion",'aaa'
-           // println "${test1.GetDDManConfig()}"
+            println "${test1.GetDDManConfig()}"
             //println "${test1.GetData()}"
            // test1.SetDDManConfig("aa","bb","cc","dd","ee","ff")
             //println "${test1.GetDDManConfig()}"
