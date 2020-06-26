@@ -52,7 +52,7 @@ def GetData() {
         def serr = new StringBuilder()
         def Commandexecute= Command.execute()//.text
         Commandexecute.consumeProcessOutput(sout, serr)
-        proc.waitFor()
+        Commandexecute.waitFor()
         //Commandexecute.waitFor()
         return ("${serr}")
         //return ("${Command}")
