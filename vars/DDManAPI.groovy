@@ -46,9 +46,10 @@ def GetData() {
     if (Prj!=''&& VZ!=''&& PK!=''&& DDManJob!=''){
         //execute( 'bat', 'echo ok')
         //def x= "cmd /c ${JavaPath} ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[1]} ${DDManJob} ${Prj} ${VZ} ${PK} ${DDPar}".execute().text
-        def Command= "java ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
+        def Command= "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
         //println(Command)
         def Commandstring= Command.execute()//.text
+        Commandstring.waitFor();
         return ("${Commandstring}")
         //return ("${Command}")
         //return ("${Prj}, ${VZ}, ${PK}")
