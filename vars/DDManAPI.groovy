@@ -51,9 +51,9 @@ def GetData() {
         def sout = new StringBuilder()
         def serr = new StringBuilder()
         def Commandexecute= Command.execute()//.text
-        Commandexecute.consumeProcessOutput(sout, serr)
+        def test=Commandexecute.consumeProcessOutput(sout, serr)
         //Commandexecute.waitFor()
-        return ("${Commandexecute}")
+        return ("${test}")
         //return ("${Command}")
         //return ("${Prj}, ${VZ}, ${PK}")
 
