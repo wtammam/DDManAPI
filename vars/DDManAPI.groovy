@@ -50,7 +50,7 @@ def GetData() {
         //println(Command)
         def Commandstring= Command.execute()//.text
         Commandstring.waitFor();
-        return ("${Commandstring}")
+        //return ("${Commandstring}")
         //return ("${Command}")
         //return ("${Prj}, ${VZ}, ${PK}")
 
