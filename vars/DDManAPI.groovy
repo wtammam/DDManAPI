@@ -48,7 +48,7 @@ def GetData() {
         //def x= "cmd /c ${JavaPath} ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[1]} ${DDManJob} ${Prj} ${VZ} ${PK} ${DDPar}".execute().text
         def Command= "${JavaPath} ${JavaArchive} ${DDManPath} ${DDManModus[1]} ${DDManJob} 'PRJ='+${Prj} 'PS='+${VZ} 'PK='+${PK} 'DB='+${DDPar}"
         //def Commandstring= Command.execute().text
-        return ("${Commandstring}")
+        //return ("${Commandstring}")
         return ("${Command}")
         //return ("${Prj}, ${VZ}, ${PK}")
 
