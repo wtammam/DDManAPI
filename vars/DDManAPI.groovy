@@ -46,15 +46,15 @@ def GetData() {
     if (Prj!=''&& VZ!=''&& PK!=''&& DDManJob!=''){
         //execute( 'bat', 'echo ok')
         //def x= "cmd /c ${JavaPath} ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[1]} ${DDManJob} ${Prj} ${VZ} ${PK} ${DDPar}".execute().text
-        def DDManCommand= "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
+        def DDManCommand= "cmd \\c \"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
         //println(Command)
         def sout = new StringBuilder()
         def serr = new StringBuilder()
         def DDManexecute= DDManCommand.execute()//.text
-        //DDManexecute.consumeProcessOutput(sout, serr)
+        DDManexecute.consumeProcessOutput(sout, serr)
         DDManexecute.waitFor()
         //Commandexecute.waitFor()
-        return ("${DDManexecute}")
+        return ("${sout}")
         //return ("${Command}")
         //return ("${Prj}, ${VZ}, ${PK}")
 
