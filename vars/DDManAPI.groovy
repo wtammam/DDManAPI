@@ -55,7 +55,7 @@ def GetData() {
         //def test3=DDManexecute.text
         //test3.waitFor()
         //DDManexecute.consumeProcessOutput(sout, serr)
-        def args = ["${JavaPath}", ${JavaArchive}, ${JavaMemory}, ${DDManPath}, ${DDManModus[0]}, ${DDManJob}, "PRJ=${Prj}", "PS=${VZ}", "PK=${PK}", "DB=${DDPar}"]
+        def args = [JavaPath, JavaArchive, JavaMemory, DDManPath, DDManModus[0], DDManJob, "PRJ=${Prj}", "PS=${VZ}", "PK=${PK}", "DB=${DDPar}"]
         //ProcessBuilder  proc = new ProcessBuilder(args)
         //Process process = proc.start()
        //return ("${args}")
