@@ -47,7 +47,7 @@ def GetData() {
         //execute( 'bat', 'echo ok')
         //def x= "cmd /c ${JavaPath} ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[1]} ${DDManJob} ${Prj} ${VZ} ${PK} ${DDPar}".execute().text
         //def DDManCommand= "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
-        def DDManCommand= "echo hallo welt"
+        def DDManCommand= "cmd /c echo hallo welt"
         //println(Command)
        // def sout = new StringBuilder()
         //def serr = new StringBuilder()
