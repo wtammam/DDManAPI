@@ -57,7 +57,7 @@ def GetData() {
         //def args = ['cmd', '/c', 'C:\\Users\\AAithal\\Desktop\\MIR3\\bin\\inConsole', '-H', 'company.mir3.com', '-u', 'user', '-p', 'password', '-I', '-i', 'Server']
         //def proc = new ProcessBuilder( args )
         //Process process = proc.start()
-        return ("${System.out}")
+        return ("${DDManexecute}")
         //return ("${Command}")
         //return ("${Prj}, ${VZ}, ${PK}")
 
