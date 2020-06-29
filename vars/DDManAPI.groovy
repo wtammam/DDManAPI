@@ -46,25 +46,21 @@ def GetData() {
     if (Prj!=''&& VZ!=''&& PK!=''&& DDManJob!=''){
         //execute( 'bat', 'echo ok')
         //def x= "cmd /c ${JavaPath} ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[1]} ${DDManJob} ${Prj} ${VZ} ${PK} ${DDPar}".execute().text
-       // def DDManCommand= "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
+       def DDManCommand= "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
         //println(Command)
        // def sout = new StringBuilder()
         //def serr = new StringBuilder()
-        //def DDManexecute= DDManCommand.execute()
-        //DDManexecute.waitFor()
-        //def test3=DDManexecute.text
+        def DDManexecute= DDManCommand.execute()
+
+        DDManexecute.waitFor()
+        def test3=DDManexecute.text
         //test3.waitFor()
         //DDManexecute.consumeProcessOutput(sout, serr)
         //def args = ["cmd.exe", "/c",JavaPath, JavaArchive, JavaMemory, DDManPath, DDManModus[0], DDManJob, "PRJ=${Prj}", "PS=${VZ}", "PK=${PK}", "DB=${DDPar}"]
         //String[] commandArray = args.toArray(new String[args.size()]);
         //ProcessBuilder  proc = new ProcessBuilder(args)
         //Process process = proc.start()
-        def processBuilder = new ProcessBuilder();
-
-        processBuilder.command("cmd.exe", "/c",JavaPath, JavaArchive, JavaMemory, DDManPath, DDManModus[0], DDManJob, "PRJ=${Prj}", "PS=${VZ}", "PK=${PK}", "DB=${DDPar}");
-        def process = processBuilder.start();
-        def ret = process.waitFor();
-        return ("${ret}")
+        return ("${test3}")
         //return ("${commandArray}")
         //return (process)
         //return ("${Prj}, ${VZ}, ${PK}")
@@ -79,5 +75,10 @@ def GetData() {
 // x= bat javapath javapar1 Javapar2 ddmanpath ddmanpar DDManjob -PRJ Prj -SGP VZ -PRG PK -DB ddpar
 // }
 
+//def processBuilder = new ProcessBuilder();
 
+//processBuilder.command("cmd.exe", "/c",JavaPath, JavaArchive, JavaMemory, DDManPath, DDManModus[0], DDManJob, "PRJ=${Prj}", "PS=${VZ}", "PK=${PK}", "DB=${DDPar}");
+//def process = processBuilder.start();
+//def ret = process.waitFor();
+//return ("${ret}")
 
