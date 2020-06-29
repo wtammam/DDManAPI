@@ -53,7 +53,7 @@ def GetData() {
         def DDManexecute= DDManCommand.execute()
         String test=DDManexecute.text
         //DDManexecute.consumeProcessOutput(System.out, System.err)
-        DDManexecute.waitFor()
+        //DDManexecute.waitFor()
         //Commandexecute.waitFor()
         //def args = ['cmd', '/c', 'C:\\Users\\AAithal\\Desktop\\MIR3\\bin\\inConsole', '-H', 'company.mir3.com', '-u', 'user', '-p', 'password', '-I', '-i', 'Server']
         //def proc = new ProcessBuilder( args )
