@@ -50,7 +50,7 @@ def GetData() {
         //println(Command)
         def sout = new StringBuilder()
         def serr = new StringBuilder()
-        def DDManexecute= DDManCommand.execute()
+        def DDManexecute= DDManCommand.execute().text
         //def test3=DDManexecute.text
         //test3.waitFor()
         //DDManexecute.consumeProcessOutput(sout, serr)
