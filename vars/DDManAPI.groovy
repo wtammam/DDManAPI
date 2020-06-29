@@ -56,7 +56,7 @@ def GetData() {
         //test3.waitFor()
         //DDManexecute.consumeProcessOutput(sout, serr)
         //def args = ['cmd', '/c', 'C:\\Users\\AAithal\\Desktop\\MIR3\\bin\\inConsole', '-H', 'company.mir3.com', '-u', 'user', '-p', 'password', '-I', '-i', 'Server']
-        def proc = new ProcessBuilder(DDManCommand)
+        ProcessBuilder  proc = new ProcessBuilder(DDManCommand)
         Process process = proc.start()
         return ("${process}")
         //return ("${Command}")
