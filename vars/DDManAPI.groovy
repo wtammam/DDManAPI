@@ -52,17 +52,17 @@ def GetData() {
         //println(Command)
        // def sout = new StringBuilder()
         //def serr = new StringBuilder()
-        //def DDManexecute= DDManCommand.execute()
+        def DDManexecute= DDManCommand.execute()
+        DDManexecute.waitFor()
         //DDManexecute.waitFor()
-        //DDManexecute.waitFor()
-        //def test3=DDManexecute.text
+        def test3=DDManexecute.text
         //test3.waitFor()
         //DDManexecute.consumeProcessOutput(sout, serr)
         //def args = ["cmd.exe", "/c",JavaPath, JavaArchive, JavaMemory, DDManPath, DDManModus[0], DDManJob, "PRJ=${Prj}", "PS=${VZ}", "PK=${PK}", "DB=${DDPar}"]
         //String[] commandArray = args.toArray(new String[args.size()]);
         //ProcessBuilder  proc = new ProcessBuilder(args)
         //Process process = proc.start()
-        return ("${DDManCommand}")
+        return ("${test3}")
         //return ("${commandArray}")
         //return (process)
         //return ("${Prj}, ${VZ}, ${PK}")
