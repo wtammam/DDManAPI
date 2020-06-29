@@ -48,17 +48,17 @@ def GetData() {
         //def x= "cmd /c ${JavaPath} ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[1]} ${DDManJob} ${Prj} ${VZ} ${PK} ${DDPar}".execute().text
         def DDManCommand= "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
         //println(Command)
-        def sout = new StringBuilder()
-        def serr = new StringBuilder()
+       // def sout = new StringBuilder()
+        //def serr = new StringBuilder()
         //def DDManexecute= DDManCommand.execute()
         //DDManexecute.waitFor()
         //def test3=DDManexecute.text
         //test3.waitFor()
         //DDManexecute.consumeProcessOutput(sout, serr)
         //def args = ['cmd', '/c', 'C:\\Users\\AAithal\\Desktop\\MIR3\\bin\\inConsole', '-H', 'company.mir3.com', '-u', 'user', '-p', 'password', '-I', '-i', 'Server']
-        //def proc = new ProcessBuilder( args )
-        //Process process = proc.start()
-        return ("${DDManCommand}")
+        def proc = new ProcessBuilder(DDManCommand)
+        Process process = proc.start()
+        return ("${process}")
         //return ("${Command}")
         //return ("${Prj}, ${VZ}, ${PK}")
 
