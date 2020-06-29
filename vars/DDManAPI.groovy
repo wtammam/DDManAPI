@@ -46,19 +46,19 @@ def GetData() {
     if (Prj!=''&& VZ!=''&& PK!=''&& DDManJob!=''){
         //execute( 'bat', 'echo ok')
         //def x= "cmd /c ${JavaPath} ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[1]} ${DDManJob} ${Prj} ${VZ} ${PK} ${DDPar}".execute().text
-        //def DDManCommand= "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
+        def DDManCommand= "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
         //println(Command)
-        //def sout = new StringBuilder()
-        //def serr = new StringBuilder()
-        def DDManexecute= "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}".execute()
-        def test3=DDManexecute.text
-        //DDManexecute.consumeProcessOutput(System.out, System.err)
+        def sout = new StringBuilder()
+        def serr = new StringBuilder()
+        def DDManexecute= DDManCommand.execute()
+        //def test3=DDManexecute.text
+        //DDManexecute.consumeProcessOutput(sout, serr)
         //DDManexecute.waitFor()
         //Commandexecute.waitFor()
         //def args = ['cmd', '/c', 'C:\\Users\\AAithal\\Desktop\\MIR3\\bin\\inConsole', '-H', 'company.mir3.com', '-u', 'user', '-p', 'password', '-I', '-i', 'Server']
         //def proc = new ProcessBuilder( args )
         //Process process = proc.start()
-        return ("${test3}")
+        return ("${DDManexecute}")
         //return ("${Command}")
         //return ("${Prj}, ${VZ}, ${PK}")
 
