@@ -52,8 +52,8 @@ def GetData() {
         //println(Command)
        // def sout = new StringBuilder()
         //def serr = new StringBuilder()
-        def DDManexecute= DDManCommand.execute()
-        DDManexecute.waitFor()
+        //def DDManexecute= DDManCommand.execute()
+        //DDManexecute.waitFor()
         //DDManexecute.waitFor()
         //def test3=DDManexecute.text
         //test3.waitFor()
@@ -62,7 +62,7 @@ def GetData() {
         //String[] commandArray = args.toArray(new String[args.size()]);
         //ProcessBuilder  proc = new ProcessBuilder(args)
         //Process process = proc.start()
-        return ("${DDManexecute}")
+        return ("${DDManCommand}")
         //return ("${commandArray}")
         //return (process)
         //return ("${Prj}, ${VZ}, ${PK}")
