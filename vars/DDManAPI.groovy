@@ -51,7 +51,7 @@ def GetData() {
         def sout = new StringBuilder()
         def serr = new StringBuilder()
         def DDManexecute= DDManCommand.execute()
-        def test3=DDManexecute.text
+        //def test3=DDManexecute.text
         //test3.waitFor()
         //DDManexecute.consumeProcessOutput(sout, serr)
 
@@ -59,7 +59,7 @@ def GetData() {
         //def args = ['cmd', '/c', 'C:\\Users\\AAithal\\Desktop\\MIR3\\bin\\inConsole', '-H', 'company.mir3.com', '-u', 'user', '-p', 'password', '-I', '-i', 'Server']
         //def proc = new ProcessBuilder( args )
         //Process process = proc.start()
-        return ("${test3}")
+        return ("${DDManexecute}")
         //return ("${Command}")
         //return ("${Prj}, ${VZ}, ${PK}")
 
