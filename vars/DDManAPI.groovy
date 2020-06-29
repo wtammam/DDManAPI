@@ -58,8 +58,8 @@ def GetData() {
         def args = ["${JavaPath}", ${JavaArchive}, ${JavaMemory}, ${DDManPath}, ${DDManModus[0]}, ${DDManJob}, "PRJ=${Prj}", "PS=${VZ}", "PK=${PK}", "DB=${DDPar}"]
         ProcessBuilder  proc = new ProcessBuilder(args)
         Process process = proc.start()
-        return ("${proc}")
-        //return ("${Command}")
+        //return ("${proc}")
+        return (process)
         //return ("${Prj}, ${VZ}, ${PK}")
 
     }
