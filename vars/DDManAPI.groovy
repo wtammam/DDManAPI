@@ -55,7 +55,8 @@ def GetData() {
         //def test3=DDManexecute.text
         //test3.waitFor()
         //DDManexecute.consumeProcessOutput(sout, serr)
-        def args = [JavaPath, JavaArchive, JavaMemory, DDManPath, DDManModus[0], DDManJob, "PRJ=${Prj}", "PS=${VZ}", "PK=${PK}", "DB=${DDPar}"]
+        List<String> args = new ArrayList<String>();
+        args = [JavaPath, JavaArchive, JavaMemory, DDManPath, DDManModus[0], DDManJob, "PRJ=${Prj}", "PS=${VZ}", "PK=${PK}", "DB=${DDPar}"]
         String[] commandArray = args.toArray(new String[args.size()]);
         //ProcessBuilder  proc = new ProcessBuilder(commandArray)
         //Process process = proc.start()
