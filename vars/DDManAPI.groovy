@@ -52,7 +52,7 @@ def GetData() {
         def serr = new StringBuilder()
         def DDManexecute= DDManCommand.execute()
         def test3=DDManexecute.text
-        test3.waitFor()
+        //test3.waitFor()
         //DDManexecute.consumeProcessOutput(sout, serr)
 
         //Commandexecute.waitFor()
