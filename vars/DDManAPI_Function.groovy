@@ -26,7 +26,7 @@ def GetData(String DDManPrjVzPk = 'Hallo ich bin') {
 
     def sout = new StringBuilder(), serr = new StringBuilder()
     //def proc = 'java -X >c:\\temp\\a.txt 2>&1'.execute()
-    def proc = 'cmd /c java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20'.execute()
+    def proc = 'runas /wtammam:itk "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20"'.execute()
     proc.consumeProcessOutput(sout, serr)
     proc.waitForOrKill(1000)
     println "out> $sout err> $serr"
