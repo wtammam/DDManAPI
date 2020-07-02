@@ -51,8 +51,8 @@ def GetData() {
         def sout = new StringBuilder(), serr = new StringBuilder()
         def proc = DDManCommand.execute()
         proc.consumeProcessOutput(sout, serr)
-        proc.waitForOrKill(10000)
-        //proc.waitFor()
+        //proc.waitForOrKill(10000)
+        proc.waitFor()
         //println "out> $sout err> $serr"
         //def DDManCommand= "java -X"
         //def DDManCommand= "cmd /c echo hallo welt"
