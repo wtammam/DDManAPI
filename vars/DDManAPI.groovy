@@ -55,7 +55,7 @@ def GetData() {
         //def serr = new StringBuilder()
         def DDManexecute= DDManCommand.execute()
         def outputStream = new StringBuffer();
-        DDManexecute.waitForProcessOutput(outputStream, System.err)
+        DDManexecute.waitForProcessOutput(outputStream, System.out)
 
         //DDManexecute.waitFor()
         //DDManexecute.waitFor()
