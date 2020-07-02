@@ -47,22 +47,22 @@ def GetData() {
         //execute( 'bat', 'echo ok')
         //def x= "cmd /c ${JavaPath} ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[1]} ${DDManJob} ${Prj} ${VZ} ${PK} ${DDPar}".execute().text
         //def DDManCommand= "cmd /c \"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
-        def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20>c:\\temp.txt"
+        def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20"
         //def DDManCommand= "cmd /c echo hallo welt"
         //println(Command)
        // def sout = new StringBuilder()
         //def serr = new StringBuilder()
-        def DDManexecute= DDManCommand.execute()
+        //def DDManexecute= DDManCommand.execute()
         //DDManexecute.waitFor()
         //DDManexecute.waitFor()
-        def test3=DDManexecute.text
+        //def test3=DDManexecute.text
         //test3.waitFor()
         //DDManexecute.consumeProcessOutput(sout, serr)
         //def args = ["cmd.exe", "/c",JavaPath, JavaArchive, JavaMemory, DDManPath, DDManModus[0], DDManJob, "PRJ=${Prj}", "PS=${VZ}", "PK=${PK}", "DB=${DDPar}"]
         //String[] commandArray = args.toArray(new String[args.size()]);
         //ProcessBuilder  proc = new ProcessBuilder(args)
         //Process process = proc.start()
-        return ("${test3}")
+        return ("${DDManCommand}")
         //return ("${commandArray}")
         //return (process)
         //return ("${Prj}, ${VZ}, ${PK}")
