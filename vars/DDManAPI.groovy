@@ -3,7 +3,8 @@
 //package vars
 class DDManAPI {
 
-    private String JavaPath = "C:\\Program Files (x86)\\Java\\jre1.8.0_251\\bin\\java.exe"
+    //private String JavaPath = "C:\\Program Files (x86)\\Java\\jre1.8.0_251\\bin\\java.exe"
+    private String JavaPath = "C:\\Program Files\\Java\\jre1.8.0_251\\bin\\java.exe"
     private String DDManPath= "C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar"
     private String JavaArchive = "-jar"
     private String JavaMemory = "-Xmx1G"
