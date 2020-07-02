@@ -55,7 +55,7 @@ def GetData() {
         def DDManexecute= DDManCommand.execute()
         //DDManexecute.waitFor()
         //DDManexecute.waitFor()
-        DDManexecute.wait(30000)
+        wait(3000)
         def test3=DDManexecute.text
         //test3.waitFor()
         //DDManexecute.consumeProcessOutput(sout, serr)
