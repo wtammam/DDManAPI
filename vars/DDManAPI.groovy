@@ -60,7 +60,7 @@ def GetData() {
         //DDManexecute.waitFor()
         //DDManexecute.waitFor()
 
-        def test3=DDManexecute.text
+        //def test3=DDManexecute.text
         //test3.waitFor()
         //DDManexecute.consumeProcessOutput(sout, serr)
         //def args = ["cmd.exe", "/c",JavaPath, JavaArchive, JavaMemory, DDManPath, DDManModus[0], DDManJob, "PRJ=${Prj}", "PS=${VZ}", "PK=${PK}", "DB=${DDPar}"]
