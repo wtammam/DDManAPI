@@ -47,15 +47,20 @@ def GetData() {
         //execute( 'bat', 'echo ok')
         //def x= "cmd /c ${JavaPath} ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[1]} ${DDManJob} ${Prj} ${VZ} ${PK} ${DDPar}".execute().text
         //def DDManCommand= "cmd /c \"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
-        //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20"
-        def DDManCommand= "java -X"
+        def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20"
+        def sout = new StringBuilder(), serr = new StringBuilder()
+        def proc = DDManCommand.execute()
+        proc.consumeProcessOutput(sout, serr)
+        proc.waitForOrKill(1000)
+        //println "out> $sout err> $serr"
+        //def DDManCommand= "java -X"
         //def DDManCommand= "cmd /c echo hallo welt"
         //println(Command)
        // def sout = new StringBuilder()
         //def serr = new StringBuilder()
-        def DDManexecute= DDManCommand.execute()
-        def outputStream = new StringBuffer();
-        DDManexecute.waitForProcessOutput(outputStream, System.out)
+        //def DDManexecute= DDManCommand.execute()
+        //def outputStream = new StringBuffer();
+        //DDManexecute.waitForProcessOutput(outputStream, System.out)
 
         //DDManexecute.waitFor()
         //DDManexecute.waitFor()
@@ -67,8 +72,8 @@ def GetData() {
         //String[] commandArray = args.toArray(new String[args.size()]);
         //ProcessBuilder  proc = new ProcessBuilder(args)
         //Process process = proc.start()
-        return ("${outputStream.toString()}")
-        //return ("${commandArray}")
+        //return ("${outputStream.toString()}")
+        return ($sout)
         //return (process)
         //return ("${Prj}, ${VZ}, ${PK}")
 
