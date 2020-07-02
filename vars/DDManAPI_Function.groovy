@@ -18,7 +18,8 @@ def GetData(String DDManPrjVzPk = 'Hallo ich bin') {
     def DDManCommand= "java -X"
     def DDManexecute= DDManCommand.execute()
     def outputStream = new StringBuffer();
-    DDManexecute.waitForProcessOutput(outputStream, System.out)
+    DDManexecute.waitForProcessOutput(outputStream, System.err)
+    def x=outputStream.toString()
     //String Prj
     //String VZ
     //String PK
@@ -26,6 +27,6 @@ def GetData(String DDManPrjVzPk = 'Hallo ich bin') {
     //VZ = DDManPrjVzPk.split(' ')[1]
     //PK = DDManPrjVzPk.split(' ')[2]
     //println ("${Prj}, ${VZ}, ${PK}")
-    println ("${outputStream.toString()}")
+    println ("${x}")
 }
 
