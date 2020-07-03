@@ -47,13 +47,13 @@ def GetData() {
     if (Prj!=''&& VZ!=''&& PK!=''&& DDManJob!=''){
         //execute( 'bat', 'echo ok')
         //def x= "cmd /c ${JavaPath} ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[1]} ${DDManJob} ${Prj} ${VZ} ${PK} ${DDPar}".execute().text
-        def DDManCommand= "\"$JavaPath\" $JavaArchive $JavaMemory $DDManPath $DDManModus[0] $DDManJob PRJ=$Prj PS=$VZ PK=$PK DB=$DDPar"
+        def DDManCommand= "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
         //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
         def sout = new StringBuilder(), serr = new StringBuilder()
-        //def proc = DDManCommand.execute()
-        //proc.consumeProcessOutput(sout, serr)
+        def proc = DDManCommand.execute()
+        proc.consumeProcessOutput(sout, serr)
         //proc.waitForOrKill(10000)
-        //proc.waitFor()
+        proc.waitFor()
         //println "out> $sout err> $serr"
         //def DDManCommand= "java -X"
         //def DDManCommand= "cmd /c echo hallo welt"
@@ -75,7 +75,7 @@ def GetData() {
         //ProcessBuilder  proc = new ProcessBuilder(args)
         //Process process = proc.start()
         //return ("${outputStream.toString()}")
-        return ("$DDManCommand")
+        return ("$sout")
         //return (process)
         //return ("${Prj}, ${VZ}, ${PK}")
 
