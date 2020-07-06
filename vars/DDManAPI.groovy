@@ -50,7 +50,7 @@ def GetData() {
     def proc
     String DDManOldAPI=DDManPath+"\\ddman6.jar"
     String DDManNewAPI=DDManPath+"\\ddmanExportClient\\ddmanExportClient.jar"
-    String WORKINGPLACE="C:\\meinedaten\\sgprojekte\\"+Prj+VZ+PK
+    String WORKINGPLACE="C:\\meinedaten\\sgprojekte\\"+"${Prj}\\${VZ}\\${PK}"
     switch(DDManJob) {
         case "Integration":
             DDManJobOld = "INTEGRATION-TEST-A";
