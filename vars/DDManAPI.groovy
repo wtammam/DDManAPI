@@ -5,7 +5,7 @@ class DDManAPI {
 
     private String JavaPath = "C:\\Program Files (x86)\\Java\\jre1.8.0_251\\bin\\java.exe"
     //private String JavaPath = "C:\\Program Files\\Java\\jre1.8.0_251\\bin\\java.exe"
-    private String DDManPath= "C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar"
+    private String DDManPath= "C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release"
     private String JavaArchive = "-jar"
     private String JavaMemory = "-Xmx1G"
     private String [] DDManModus = ["-EXEC", "-MOD"]
@@ -48,10 +48,13 @@ def GetData() {
     def serr = new StringBuilder()
     def DDManCommand
     def proc
+    String DDManOldAPI=DDManPath+"\\ddman6.jar"
+    String DDManNewAPI=DDManPath+"\\ddmanExportClient\\ddmanExportClient.jar"
+    String WORKINGPLACE="C:\\meinedaten\\sgprojekte\\"+Prj+VZ+PK
     switch(DDManJob) {
         case "Integration":
             DDManJobOld = "INTEGRATION-TEST-A";
-            DDManJobNew =["GET_CODE"]
+            DDManJobNew =["GET_CODE TARGET=${WORKINGPLACE}"]
             break;
         case "DOKU/DCM/DAISTRUCT/A2L/KGS":
             DDManJobOld = "INTEGRATION-TEST-B";
@@ -77,13 +80,13 @@ def GetData() {
         //try {
             switch(OldNewAPI){
                 case "OLD":
-                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJobOld} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
+                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[0]} ${DDManJobOld} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
                     //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
                     proc = DDManCommand.execute()
                     proc.waitForProcessOutput(sout, serr)
                     break;
                 case "NEW":
-                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
+                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManJobNew} ${DDManModus[0]} ${DDManJobNew} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
                     //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
                     proc = DDManCommand.execute()
                     proc.waitForProcessOutput(sout, serr)
