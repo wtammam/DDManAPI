@@ -61,7 +61,7 @@ def GetData() {
         //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
         def sout = new StringBuilder(), serr = new StringBuilder()
         def proc = DDManCommand.execute()
-        proc.consumeProcessOutput(sout, serr)
+        proc.waitForProcessOutput(sout, serr)
         Process.waitFor()
         //proc.waitForOrKill(10000000)
         //proc.wait
