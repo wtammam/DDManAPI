@@ -85,7 +85,7 @@ def GetData() {
         //ProcessBuilder  proc = new ProcessBuilder(args)
         //Process process = proc.start()
         //return ("${outputStream.toString()}")
-        return ("$sout, $serr")
+        return ("$DDManCommand,$sout, $serr")
         //return (process)
         //return ("${Prj}, ${VZ}, ${PK}")
 
