@@ -16,8 +16,18 @@ class DDManAPI {
 
     DDManAPI(String DDMan_PrjVzPk, String DDMan_Job, String OldNew_API) {
         this.DDManPrjVzPk = DDMan_PrjVzPk
-        this.DDManJob = DDMan_Job
         this.OldNewAPI = OldNew_API
+        switch(DDMan_Job) {
+            case "Integration":
+                this.DDManJob = "INTEGRATION-TEST-A";
+                break;
+            case "FDEF":
+                this.DDManJob = "FDEF";
+                break;
+            default:
+                break;
+        }
+
         //return "${DDManPrjVzPk}"
         //return "Hallo"
     }
@@ -75,7 +85,7 @@ def GetData() {
         //ProcessBuilder  proc = new ProcessBuilder(args)
         //Process process = proc.start()
         //return ("${outputStream.toString()}")
-        return ("$serr")
+        return ("$sout, $serr")
         //return (process)
         //return ("${Prj}, ${VZ}, ${PK}")
 
