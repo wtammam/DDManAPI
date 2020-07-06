@@ -62,7 +62,7 @@ def GetData() {
         def sout = new StringBuilder(), serr = new StringBuilder()
         def proc = DDManCommand.execute()
         proc.waitForProcessOutput(sout, serr)
-        Process.waitFor()
+        //Process.waitFor()
         //proc.waitForOrKill(10000000)
         //proc.wait
         //println "out> $sout err> $serr"
