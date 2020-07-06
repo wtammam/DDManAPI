@@ -12,33 +12,12 @@ class DDManAPI {
     private String DDPar = "DDMAN6"
     private String DDManPrjVzPk
     private String DDManJob
-    private String DDManJobOld
-    private String [] DDManJobNew
     private String OldNewAPI
 
     DDManAPI(String DDMan_PrjVzPk, String DDMan_Job, String OldNew_API) {
         this.DDManPrjVzPk = DDMan_PrjVzPk
+        this.DDManJob = DDMan_Job
         this.OldNewAPI = OldNew_API
-        switch(DDMan_Job) {
-            case "Integration":
-                this.DDManJobOld = "INTEGRATION-TEST-A";
-                this.DDManJobNew =["GET_CODE"]
-                break;
-            case "DOKU/DCM/DAISTRUCT/A2L/KGS":
-                this.DDManJobOld = "INTEGRATION-TEST-B";
-                this.DDManJobNew =["DOKU","DCM","DAI_STRUCT","ASAP","KGSXML","DOKUXML","KGS"]
-                break;
-            case "A2L/DOKUu/KGS/DCM/DAISTRUCT":
-                this.DDManJobOld = "INTEGRATION-TEST-C";
-                this.DDManJobNew =[]
-                break;
-            case "FDEF":
-                this.DDManJobOld = "FDEF";
-                this.DDManJobNew =["GET_FDEF"]
-                break;
-            default:
-                break;
-        }
 
         //return "${DDManPrjVzPk}"
         //return "Hallo"
@@ -60,10 +39,31 @@ def GetData() {
     String Prj
     String VZ
     String PK
+    String DDManJobOld
+    String [] DDManJobNew
     Prj = DDManPrjVzPk.split(' ')[0]
     VZ = DDManPrjVzPk.split(' ')[1]
     PK = DDManPrjVzPk.split(' ')[2]
-
+    switch(DDManJob) {
+        case "Integration":
+            DDManJobOld = "INTEGRATION-TEST-A";
+            DDManJobNew =["GET_CODE"]
+            break;
+        case "DOKU/DCM/DAISTRUCT/A2L/KGS":
+            DDManJobOld = "INTEGRATION-TEST-B";
+            DDManJobNew =["DOKU","DCM","DAI_STRUCT","ASAP","KGSXML","DOKUXML","KGS"]
+            break;
+        case "A2L/DOKUu/KGS/DCM/DAISTRUCT":
+            DDManJobOld = "INTEGRATION-TEST-C";
+            DDManJobNew =[]
+            break;
+        case "FDEF":
+            DDManJobOld = "FDEF";
+            DDManJobNew =["GET_FDEF"]
+            break;
+        default:
+            break;
+    }
     //return ("${Prj}, ${VZ}, ${PK}")
     //return DDManPrjVzPk
     if (Prj!=''&& VZ!=''&& PK!=''&& DDManJob!=''){
@@ -73,7 +73,7 @@ def GetData() {
         try {
             switch(OldNewAPI){
                 case "OLD":
-                    def DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
+                    def DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJobOld} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
                     //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
                     def proc = DDManCommand.execute()
                     proc.waitForProcessOutput(sout, serr)
