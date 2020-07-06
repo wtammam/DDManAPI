@@ -4,7 +4,7 @@ import DDManAPI
 node(){
     //script {
         def test = new DDManAPI_Function()
-        def test1 = new DDManAPI(PARAPRJ_PARAVC_PARAPK, Aktion, 'aaa')
+        def test1 = new DDManAPI(PARAPRJ_PARAVC_PARAPK, Aktion, 'DDManAPI')
    // }
     //def test1 = load 'DDManAPI\\vars\\DDManAPI.groovy'
  //   agent {
