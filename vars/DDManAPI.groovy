@@ -46,6 +46,7 @@ def GetData() {
     PK = DDManPrjVzPk.split(' ')[2]
     def sout = new StringBuilder()
     def serr = new StringBuilder()
+    def DDManCommand
     switch(DDManJob) {
         case "Integration":
             DDManJobOld = "INTEGRATION-TEST-A";
