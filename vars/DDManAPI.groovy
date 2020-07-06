@@ -47,6 +47,7 @@ def GetData() {
     def sout = new StringBuilder()
     def serr = new StringBuilder()
     def DDManCommand
+    def proc
     switch(DDManJob) {
         case "Integration":
             DDManJobOld = "INTEGRATION-TEST-A";
@@ -76,15 +77,15 @@ def GetData() {
         //try {
             switch(OldNewAPI){
                 case "OLD":
-                    def DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJobOld} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
+                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJobOld} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
                     //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
-                    def proc = DDManCommand.execute()
+                    proc = DDManCommand.execute()
                     proc.waitForProcessOutput(sout, serr)
                     break;
                 case "NEW":
-                    def DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
+                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
                     //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
-                    def proc = DDManCommand.execute()
+                    proc = DDManCommand.execute()
                     proc.waitForProcessOutput(sout, serr)
                     break;
                 default:
