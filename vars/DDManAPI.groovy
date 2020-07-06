@@ -54,7 +54,7 @@ def GetData() {
     switch(DDManJob) {
         case "Integration":
             DDManJobOld = "INTEGRATION-TEST-A";
-            DDManJobNew =["GET_CODE TARGET=${WORKINGPLACE}"]
+            DDManJobNew =["KOMMANDO=\"GET_CODE TARGET=${WORKINGPLACE}\""]
             break;
         case "DOKU/DCM/DAISTRUCT/A2L/KGS":
             DDManJobOld = "INTEGRATION-TEST-B";
