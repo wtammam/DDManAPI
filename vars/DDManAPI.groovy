@@ -11,6 +11,7 @@ class DDManAPI {
     private String [] DDManModus = ["-EXEC", "-MOD"]
     private String DDPar = "DDMAN6"
     private String DDManPrjVzPk
+    private String DDManJob
     private String DDManJobOld
     private String [] DDManJobNew
     private String OldNewAPI
