@@ -66,7 +66,7 @@ def GetData() {
             break;
         case "FDEF":
             DDManJobOld = "FDEF";
-            DDManJobNew =["GET_FDEF"]
+            DDManJobNew =["KOMMANDO=\"GET_FDEF TARGET=${WORKINGPLACE}\\description\""]
             break;
         default:
             break;
