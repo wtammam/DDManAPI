@@ -44,6 +44,8 @@ def GetData() {
     Prj = DDManPrjVzPk.split(' ')[0]
     VZ = DDManPrjVzPk.split(' ')[1]
     PK = DDManPrjVzPk.split(' ')[2]
+    def sout = new StringBuilder()
+    def serr = new StringBuilder()
     switch(DDManJob) {
         case "Integration":
             DDManJobOld = "INTEGRATION-TEST-A";
@@ -55,7 +57,7 @@ def GetData() {
             break;
         case "A2L/DOKUu/KGS/DCM/DAISTRUCT":
             DDManJobOld = "INTEGRATION-TEST-C";
-            DDManJobNew =[]
+            DDManJobNew =[""]
             break;
         case "FDEF":
             DDManJobOld = "FDEF";
@@ -69,8 +71,8 @@ def GetData() {
     if (Prj!=''&& VZ!=''&& PK!=''&& DDManJob!=''){
         //execute( 'bat', 'echo ok')
         //def x= "cmd /c ${JavaPath} ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[1]} ${DDManJob} ${Prj} ${VZ} ${PK} ${DDPar}".execute().text
-        def sout = new StringBuilder(), serr = new StringBuilder()
-        try {
+
+        //try {
             switch(OldNewAPI){
                 case "OLD":
                     def DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJobOld} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
@@ -113,9 +115,9 @@ def GetData() {
             //Process process = proc.start()
             //return ("${outputStream.toString()}")
             return ("$DDManCommand, $sout, $serr")
-        } catch(Exception e) {
-        return("Exception: ${e}")
-    }
+       // } catch(Exception e) {
+        //return("Exception: ${e}")
+   // }
         //return (process)
         //return ("${Prj}, ${VZ}, ${PK}")
 
