@@ -11,7 +11,8 @@ class DDManAPI {
     private String [] DDManModus = ["-EXEC", "-MOD"]
     private String DDPar = "DDMAN6"
     private String DDManPrjVzPk
-    private String DDManJob
+    private String DDManJobOld
+    private String [] DDManJobNew
     private String OldNewAPI
 
     DDManAPI(String DDMan_PrjVzPk, String DDMan_Job, String OldNew_API) {
@@ -19,10 +20,20 @@ class DDManAPI {
         this.OldNewAPI = OldNew_API
         switch(DDMan_Job) {
             case "Integration":
-                this.DDManJob = "INTEGRATION-TEST-A";
+                this.DDManJobOld = "INTEGRATION-TEST-A";
+                this.DDManJobNew =["GET_CODE"]
+                break;
+            case "DOKU/DCM/DAISTRUCT/A2L/KGS":
+                this.DDManJobOld = "INTEGRATION-TEST-B";
+                this.DDManJobNew =["DOKU","DCM","DAI_STRUCT","ASAP","KGSXML","DOKUXML","KGS"]
+                break;
+            case "A2L/DOKUu/KGS/DCM/DAISTRUCT":
+                this.DDManJobOld = "INTEGRATION-TEST-C";
+                this.DDManJobNew =[]
                 break;
             case "FDEF":
-                this.DDManJob = "FDEF";
+                this.DDManJobOld = "FDEF";
+                this.DDManJobNew =["GET_FDEF"]
                 break;
             default:
                 break;
@@ -40,7 +51,7 @@ class DDManAPI {
         this.DDPar = DD_Par
     }
     def GetDDManConfig() {
-        def lisle= [this.JavaPath, this.DDManPath, this.JavaArchive, this.JavaMemory, this.DDManModus , this.DDPar]
+        def lisle= [this.JavaPath, this.JavaArchive, this.JavaMemory, this.DDManPath, this.DDManModus , this.DDPar]
         return lisle
     }
 
@@ -57,36 +68,53 @@ def GetData() {
     if (Prj!=''&& VZ!=''&& PK!=''&& DDManJob!=''){
         //execute( 'bat', 'echo ok')
         //def x= "cmd /c ${JavaPath} ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[1]} ${DDManJob} ${Prj} ${VZ} ${PK} ${DDPar}".execute().text
-        def DDManCommand= "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
-        //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
         def sout = new StringBuilder(), serr = new StringBuilder()
-        def proc = DDManCommand.execute()
-        proc.waitForProcessOutput(sout, serr)
-        //Process.waitFor()
-        //proc.waitForOrKill(10000000)
-        //proc.wait
-        //println "out> $sout err> $serr"
-        //def DDManCommand= "java -X"
-        //def DDManCommand= "cmd /c echo hallo welt"
-        //println(Command)
-       // def sout = new StringBuilder()
-        //def serr = new StringBuilder()
-        //def DDManexecute= DDManCommand.execute()
-        //def outputStream = new StringBuffer();
-        //DDManexecute.waitForProcessOutput(outputStream, System.out)
+        try {
+            switch(OldNewAPI){
+                case "OLD":
+                    def DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
+                    //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
+                    def proc = DDManCommand.execute()
+                    proc.waitForProcessOutput(sout, serr)
+                    break;
+                case "NEW":
+                    def DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[0]} ${DDManJob} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
+                    //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
+                    def proc = DDManCommand.execute()
+                    proc.waitForProcessOutput(sout, serr)
+                    break;
+                default:
+                    break;
+            }
 
-        //DDManexecute.waitFor()
-        //DDManexecute.waitFor()
+            //proc.waitFor(1200, TimeUnit.SECONDS)
+            //proc.waitForOrKill(1800*1000)
+            //proc.wait
+            //println "out> $sout err> $serr"
+            //def DDManCommand= "java -X"
+            //def DDManCommand= "cmd /c echo hallo welt"
+            //println(Command)
+            // def sout = new StringBuilder()
+            //def serr = new StringBuilder()
+            //def DDManexecute= DDManCommand.execute()
+            //def outputStream = new StringBuffer();
+            //DDManexecute.waitForProcessOutput(outputStream, System.out)
 
-        //def test3=DDManexecute.text
-        //test3.waitFor()
-        //DDManexecute.consumeProcessOutput(sout, serr)
-        //def args = ["cmd.exe", "/c",JavaPath, JavaArchive, JavaMemory, DDManPath, DDManModus[0], DDManJob, "PRJ=${Prj}", "PS=${VZ}", "PK=${PK}", "DB=${DDPar}"]
-        //String[] commandArray = args.toArray(new String[args.size()]);
-        //ProcessBuilder  proc = new ProcessBuilder(args)
-        //Process process = proc.start()
-        //return ("${outputStream.toString()}")
-        return ("$DDManCommand, $sout, $serr")
+            //DDManexecute.waitFor()
+            //DDManexecute.waitFor()
+
+            //def test3=DDManexecute.text
+            //test3.waitFor()
+            //DDManexecute.consumeProcessOutput(sout, serr)
+            //def args = ["cmd.exe", "/c",JavaPath, JavaArchive, JavaMemory, DDManPath, DDManModus[0], DDManJob, "PRJ=${Prj}", "PS=${VZ}", "PK=${PK}", "DB=${DDPar}"]
+            //String[] commandArray = args.toArray(new String[args.size()]);
+            //ProcessBuilder  proc = new ProcessBuilder(args)
+            //Process process = proc.start()
+            //return ("${outputStream.toString()}")
+            return ("$DDManCommand, $sout, $serr")
+        } catch(Exception e) {
+        return("Exception: ${e}")
+    }
         //return (process)
         //return ("${Prj}, ${VZ}, ${PK}")
 
