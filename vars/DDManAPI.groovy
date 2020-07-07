@@ -100,9 +100,9 @@ def GetData() {
                         if (Prj != "PT3_Otto") {
                             for (int i = 0; i < DDManJobNew.length - 2; i++) {
                                 if (i != 2 || i != 3) {
-                                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[0]} PRJ=${Prj} PS=${VZ} PK=${PK} -DIR ${WORKINGPLACE}\\description"
+                                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[0]} -PRJ ${Prj} -PS ${VZ} -PK ${PK} -DIR ${WORKINGPLACE}\\description"
                                 } else {
-                                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[0]} PRJ=${Prj} PS=${VZ} PK=${PK} -DIR ${WORKINGPLACE}"
+                                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[0]} -PRJ ${Prj} -PS ${VZ} -PK ${PK} -DIR ${WORKINGPLACE}"
                                 }
                                 proc = DDManCommand.execute()
                                 proc.waitForProcessOutput(sout, serr)
@@ -110,7 +110,7 @@ def GetData() {
                         } else {
                             for (int i = 0; i < DDManJobNew.length; i++) {
                                 if (i != 3 || i != 4) {
-                                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[0]} PRJ=${Prj} PS=${VZ} PK=${PK}-DIR ${WORKINGPLACE}\\description"
+                                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[0]} -PRJ ${Prj} -PS ${VZ} -PK ${PK} -DIR ${WORKINGPLACE}\\description"
                                     proc = DDManCommand.execute()
                                     proc.waitForProcessOutput(sout, serr)
                                 }
