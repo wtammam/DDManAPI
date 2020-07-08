@@ -106,8 +106,9 @@ def GetData() {
                                 }
                                 proc = DDManCommand.execute()
                                 proc.waitForProcessOutput(sout, serr)
-                                serr=+serr
-                                sout=+sout
+                                serr.append(serr)
+                                sout.append(sout)
+                                //sout+=sout
                             }
                         } else {
                             for (int i = 0; i < DDManJobNew.length; i++) {
