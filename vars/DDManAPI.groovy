@@ -51,7 +51,7 @@ def GetData() {
     def proc
     String DDManOldAPI=DDManPath+"\\ddman6.jar"
     String DDManNewAPI=DDManPath+"\\ddmanExportClient\\ddmanExportClient.jar"
-    String WORKINGPLACE="C:\\meinedaten\\sgprojekte\\"+"${Prj}\\${VZ}\\${PK}"
+    String WORKINGPLACE="C:\\meinedaten\\sgprojekte\\"+"${Prj}\\${VZ}\\${PK}\\"
     switch(DDManJob) {
         case "Integration":
             DDManJobOld = "INTEGRATION-TEST-A";
@@ -67,11 +67,11 @@ def GetData() {
             break;
         case "FDEF":
             DDManJobOld = "FDEF";
-            DDManJobNew =["KOMMANDO=\"GET_FDEF TARGET=${WORKINGPLACE}\\description\""]
+            DDManJobNew =["KOMMANDO=\"GET_FDEF TARGET=${WORKINGPLACE}description\""]
             break;
         case "FDEFMDX":
             DDManJobOld = "FDEFMDX";
-            DDManJobNew =["KOMMANDO=\"GET_FDEF TARGET=${WORKINGPLACE}\\description\""]
+            DDManJobNew =["KOMMANDO=\"GET_FDEF TARGET=${WORKINGPLACE}description\""]
             break;
         default:
             break;
@@ -103,7 +103,7 @@ def GetData() {
                         if (Prj != "PT3_Otto_M274") {
                             for (int i = 0; i < DDManJobNew.length - 2; i++) {
                                 if (i != 2 || i != 3) {
-                                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[i]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DIR ${WORKINGPLACE}\\description"
+                                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[i]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DIR ${WORKINGPLACE}description"
                                 } else {
                                     DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[i]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DIR ${WORKINGPLACE}"
                                 }
@@ -114,7 +114,7 @@ def GetData() {
                         } else {
                             for (int i = 0; i< DDManJobNew.length; i++) {
                                 if (i != 2 || i != 3 ||i != 4) {
-                                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[i]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DIR ${WORKINGPLACE}\\description"
+                                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[i]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DIR ${WORKINGPLACE}description"
                                 } else {
                                     DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[i]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DIR ${WORKINGPLACE}"
                                 }
