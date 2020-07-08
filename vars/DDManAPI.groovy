@@ -102,7 +102,7 @@ def GetData() {
                     else if(DDManJob=="DOKU/DCM/DAISTRUCT/A2L/KGS") {
                         if (Prj != "PT3_Otto_M274") {
                             for (int i = 0; i < DDManJobNew.length - 2; i++) {
-                                if (i != 2 || i != 3) {
+                                if (i != '2' || i != '3') {
                                     DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[i]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DIR ${WORKINGPLACE}description"
                                 } else {
                                     DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[i]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DIR ${WORKINGPLACE}"
