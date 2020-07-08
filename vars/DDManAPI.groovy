@@ -112,11 +112,12 @@ def GetData() {
                                     DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[i]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DIR ${WORKINGPLACE}"
                                 }
                                 proc = DDManCommand.execute()
+                                sout.append(DDManCommand)
                                 proc.waitForProcessOutput(sout, serr)
+                                //sum.append(DDManCommand)
+                                //sum.append(sout)
+                                //sum.append(serr)
                             }
-                            sum.append(DDManCommand)
-                            sum.append(sout)
-                            sum.append(serr)
                         } else {
                             for (int i = 0; i < DDManJobNew.length; i++) {
                                 if (i != 3 || i != 4) {
