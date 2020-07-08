@@ -46,6 +46,7 @@ def GetData() {
     PK = DDManPrjVzPk.split(' ')[2]
     def sout = new StringBuilder()
     def serr = new StringBuilder()
+    def sum = new StringBuilder("")
     def DDManCommand
     def proc
     String DDManOldAPI=DDManPath+"\\ddman6.jar"
@@ -88,6 +89,8 @@ def GetData() {
                     //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
                     proc = DDManCommand.execute()
                     proc.waitForProcessOutput(sout, serr)
+                    sum.append(sout)
+                    sum.append(serr)
                     break;
                 case "NEW":
                     if(DDManJob=="Integration" ||DDManJob=="FDEF") {
@@ -95,6 +98,8 @@ def GetData() {
                         //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
                         proc = DDManCommand.execute()
                         proc.waitForProcessOutput(sout, serr)
+                        sum.append(sout)
+                        sum.append(serr)
                     }
                     else if(DDManJob=="DOKU/DCM/DAISTRUCT/A2L/KGS") {
                         if (Prj != "PT3_Otto") {
@@ -106,9 +111,8 @@ def GetData() {
                                 }
                                 proc = DDManCommand.execute()
                                 proc.waitForProcessOutput(sout, serr)
-                                serr.append(serr)
-                                sout.append(sout)
-                                //sout+=sout
+                                sum.append(sout)
+                                sum.append(serr)
                             }
                         } else {
                             for (int i = 0; i < DDManJobNew.length; i++) {
@@ -149,7 +153,8 @@ def GetData() {
             //ProcessBuilder  proc = new ProcessBuilder(args)
             //Process process = proc.start()
             //return ("${outputStream.toString()}")
-            return ("$DDManCommand, $sout, $serr")
+            //return ("$DDManCommand, $sout, $serr")
+            return ("$sum")
        // } catch(Exception e) {
         //return("Exception: ${e}")
    // }
