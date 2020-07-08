@@ -112,7 +112,7 @@ def GetData() {
                                 proc.waitForProcessOutput(sout, serr)
                             }
                         } else {
-                            for (int i = 0; (i <3 || 4<i< DDManJobNew.length); i++) {
+                            for (int i = 0; i <3 || 4<i< DDManJobNew.length; i++) {
                                 if (i != 2 || i != 3 ||i != 4) {
                                     DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[i]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DIR ${WORKINGPLACE}\\description"
                                 } else {
