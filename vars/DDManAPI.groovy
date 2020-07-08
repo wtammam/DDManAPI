@@ -115,7 +115,7 @@ def GetData() {
                                 proc.waitForProcessOutput(sout, serr)
                                 sum.append('DDManCommand')
                                 sum.append(sout)
-                                sum.append(serr)
+                                //sum.append(serr)
                             }
                         } else {
                             for (int i = 0; i < DDManJobNew.length; i++) {
