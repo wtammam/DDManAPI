@@ -113,7 +113,7 @@ def GetData() {
                                 }
                                 proc = DDManCommand.execute()
                                 proc.waitForProcessOutput(sout, serr)
-                                sum.append('DDManCommand')
+                                sum.append(DDManCommand)
                                 sum.append(sout)
                                 //sum.append(serr)
                             }
