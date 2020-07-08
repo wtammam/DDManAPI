@@ -89,6 +89,7 @@ def GetData() {
                     //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
                     proc = DDManCommand.execute()
                     proc.waitForProcessOutput(sout, serr)
+                    sum.append('DDManCommand')
                     sum.append(sout)
                     sum.append(serr)
                     break;
@@ -98,6 +99,7 @@ def GetData() {
                         //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
                         proc = DDManCommand.execute()
                         proc.waitForProcessOutput(sout, serr)
+                        sum.append('DDManCommand')
                         sum.append(sout)
                         sum.append(serr)
                     }
@@ -111,6 +113,7 @@ def GetData() {
                                 }
                                 proc = DDManCommand.execute()
                                 proc.waitForProcessOutput(sout, serr)
+                                sum.append('DDManCommand')
                                 sum.append(sout)
                                 sum.append(serr)
                             }
