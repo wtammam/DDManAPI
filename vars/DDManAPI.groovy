@@ -158,7 +158,7 @@ def GetData() {
             //Process process = proc.start()
             //return ("${outputStream.toString()}")
             //return ("$DDManCommand, $sout, $serr")
-            return ("$sum")
+            return ("$sout, $serr")
        // } catch(Exception e) {
         //return("Exception: ${e}")
    // }
