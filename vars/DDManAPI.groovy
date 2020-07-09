@@ -176,7 +176,7 @@ def GetData() {
                         }
                     }
                     else if(DDManJob=="Schnittstellenanalyse") {
-                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[0]} -DAT C:\\meinedaten\\Schnittstellenanalyse.txt -DB ${DDPar}"
+                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[0]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DAT C:\\meinedaten\\Schnittstellenanalyse.txt -DB ${DDPar}"
                         proc = DDManCommand.execute()
                         sout.append("\n************************** Export ${DDManJobNew[0]} ${Prj} ${VZ} ${PK} **************************\n")
                         sout.append(DDManCommand)
@@ -184,7 +184,7 @@ def GetData() {
                         proc.waitForProcessOutput(sout, serr)
                         }
                     else if(DDManJob=="KGSXML") {
-                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[0]} -DAT ${WORKINGPLACE}description\\agk.xml -DB ${DDPar}"
+                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[0]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DAT ${WORKINGPLACE}description\\agk.xml -DB ${DDPar}"
                         proc = DDManCommand.execute()
                         sout.append("\n************************** Export ${DDManJobNew[0]} ${Prj} ${VZ} ${PK} **************************\n")
                         sout.append(DDManCommand)
