@@ -88,7 +88,7 @@ def GetData() {
                     DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[0]} ${DDManJobOld} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
                     //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
                     proc = DDManCommand.execute()
-                    sout.append("\n************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
+                    sout.append("\n************************** Export ${DDManJobOld} ${Prj} ${VZ} ${PK} **************************\n")
                     sout.append(DDManCommand)
                     sout.append("\n")
                     proc.waitForProcessOutput(sout, serr)
@@ -98,7 +98,7 @@ def GetData() {
                         DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[0]} ${DDManJobNew[0]} PRJ=${Prj} PS=${VZ} PK=${PK}"
                         //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
                         proc = DDManCommand.execute()
-                        sout.append("\n************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
+                        sout.append("\n************************** Export ${DDManJobNew[0]} ${Prj} ${VZ} ${PK} **************************\n")
                         sout.append(DDManCommand)
                         sout.append("\n")
                         proc.waitForProcessOutput(sout, serr)
