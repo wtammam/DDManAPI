@@ -175,7 +175,7 @@ def GetData() {
 
                         }
                     }
-                    else if(DDManJob=="Schnittstellenanalyse"") {
+                    else if(DDManJob=="Schnittstellenanalyse") {
                         DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[0]} -DAT C:\\meinedaten\\Schnittstellenanalyse.txt -DB ${DDPar}"
                         proc = DDManCommand.execute()
                         sout.append("\n************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
