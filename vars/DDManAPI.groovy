@@ -71,10 +71,6 @@ def GetData() {
             DDManJobOld = "FDEF";
             DDManJobNew =["KOMMANDO=\"GET_FDEF TARGET=${WORKINGPLACE}description\"","KOMMANDO=\"GENERATE MDX TARGET=${WORKINGPLACE}description\""]
             break;
-        case "FDEFMDX":
-            DDManJobOld = "MDX";
-            DDManJobNew =["KOMMANDO=\"GENERATE MDX TARGET=${WORKINGPLACE}description\""]
-            break;
         case "KGSXML":
             DDManJobOld = "KGSXML";
             DDManJobNew =["KGSXML"]
@@ -112,13 +108,15 @@ def GetData() {
                     break;
                 case "NEW":
                     if(DDManJob=="Integration" || DDManJob=="FDEF" || DDManJob=="FDEFMDX") {
-                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[0]} ${DDManJobNew[0]} PRJ=${Prj} PS=${VZ} PK=${PK}"
-                        //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
-                        proc = DDManCommand.execute()
-                        sout.append("\n************************** Export ${DDManJobNew[0]} ${Prj} ${VZ} ${PK} **************************\n")
-                        sout.append(DDManCommand)
-                        sout.append("\n")
-                        proc.waitForProcessOutput(sout, serr)
+                        for (int i = 0; i < DDManJobNew.length ; i++) {
+                            DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[0]} ${DDManJobNew[0]} PRJ=${Prj} PS=${VZ} PK=${PK}"
+                            //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
+                            proc = DDManCommand.execute()
+                            sout.append("\n************************** Export ${DDManJobNew[0]} ${Prj} ${VZ} ${PK} **************************\n")
+                            sout.append(DDManCommand)
+                            sout.append("\n")
+                            proc.waitForProcessOutput(sout, serr)
+                        }
                     }
                     else if(DDManJob=="DOKU/DCM/DAISTRUCT/A2L/KGS") {
 
