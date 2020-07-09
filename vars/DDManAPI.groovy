@@ -61,6 +61,10 @@ def GetData() {
             DDManJobOld = "INTEGRATION-TEST-B";
             DDManJobNew =["DOKU","DCM","DAI_STRUCT","ASAP","KGSXML","DOKUXML","KGS"]
             break;
+        case "UWK":
+            DDManJobOld = "INTEGRATION-TEST-C";
+            DDManJobNew =["KOMMANDO=\"GET_ALL SUB_DIR=matlab/tlcode;SUFFIX={.a2l};TARGET=${WORKINGPLACE}description/avl_a2l\"","KOMMANDO=\"GET_ALL SUB_DIR=matlab/tlcode;SUFFIX={.xlsx};TARGET=${WORKINGPLACE}temp_SiL/UWK_xlsx\"","NORM"]
+            break;
         case "A2L/DOKUu/KGS/DCM/DAISTRUCT":
             DDManJobOld = "INTEGRATION-TEST-C";
             DDManJobNew =[""]
@@ -111,11 +115,11 @@ def GetData() {
                                 } else {
                                     DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[i]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DIR ${WORKINGPLACE}description"
                                 }
-                                proc = DDManCommand.execute()
-                                sout.append("\n************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
-                                sout.append(DDManCommand)
-                                sout.append("\n")
-                                proc.waitForProcessOutput(sout, serr)
+                            proc = DDManCommand.execute()
+                            sout.append("\n************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
+                            sout.append(DDManCommand)
+                            sout.append("\n")
+                            proc.waitForProcessOutput(sout, serr)
                             }
                         } else {
                             for (int i = 0; i< DDManJobNew.length; i++) {
@@ -134,6 +138,26 @@ def GetData() {
                             }
                         }
                     }
+                    else if(DDManJob=="UWK") {
+                        if (Prj != "PT3_Otto_M274") {
+                            for (int i = 0; i < DDManJobNew.length-1; i++) {
+                                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[0]} ${DDManJobNew[i]} PRJ=${Prj} PS=${VZ} PK=${PK}"
+                                }
+                            proc = DDManCommand.execute()
+                            sout.append("\n************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
+                            sout.append(DDManCommand)
+                            sout.append("\n")
+                            proc.waitForProcessOutput(sout, serr)
+                            }
+                        else {
+                            DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[i]} -DIR ${WORKINGPLACE}description"
+                            proc = DDManCommand.execute()
+                            sout.append("\n************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
+                            sout.append(DDManCommand)
+                            sout.append("\n")
+                            proc.waitForProcessOutput(sout, serr)
+                        }
+                        }
                     break;
                 default:
                     break;
