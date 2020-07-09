@@ -142,17 +142,26 @@ def GetData() {
                     }
                     else if(DDManJob=="UWK") {
                         for (int i = 0; i < DDManJobNew.length; i++) {
-                            if (Prj != "PT3_Otto_M274" && i < 2) {
+                            if (Prj != "PT3_Otto_M274") {
                                 DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[0]} ${DDManJobNew[i]} PRJ=${Prj} PS=${VZ} PK=${PK}"
+                                if(i != 2){
+                                    proc = DDManCommand.execute()
+                                    sout.append("\n************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
+                                    sout.append(DDManCommand)
+                                    sout.append("\n")
+                                    proc.waitForProcessOutput(sout, serr)
+                                }
                             } else {
                                 DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[i]} -DIR ${WORKINGPLACE}description"
+                                if(i == 2) {
+                                    proc = DDManCommand.execute()
+                                    sout.append("\n************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
+                                    sout.append(DDManCommand)
+                                    sout.append("\n")
+                                    proc.waitForProcessOutput(sout, serr)
+                                }
                             }
 
-                            proc = DDManCommand.execute()
-                            sout.append("\n************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
-                            sout.append(DDManCommand)
-                            sout.append("\n")
-                            proc.waitForProcessOutput(sout, serr)
                         }
                     }
                     break;
