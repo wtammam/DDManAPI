@@ -94,10 +94,10 @@ def GetData() {
             switch(OldNewAPI){
                 case "OLD":
                     if(DDManJob=="Schnittstellenanalyse"){
-                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJobOld} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DAT ${WORKINGPLACE}Schnittstellenanalyse.txt DB=${DDPar}"
+                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJobOld} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DAT ${WORKINGPLACE}Schnittstellenanalyse.txt -DB ${DDPar}"
                     }
                     else if(DDManJob=="KGSXML"){
-                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJobOld} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DAT ${WORKINGPLACE}description\\agk.xml DB=${DDPar}"
+                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJobOld} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DAT ${WORKINGPLACE}description\\agk.xml -DB ${DDPar}"
                     } else {
                     DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[0]} ${DDManJobOld} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
                     //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
