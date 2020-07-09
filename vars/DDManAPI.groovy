@@ -38,15 +38,17 @@ class DDManAPI {
 def GetData() {
     String Prj
     String VZ
+    String PK_Pre
     String PK
     String DDManJobOld
     String [] DDManJobNew
     Prj = DDManPrjVzPk.split(' ')[0]
     VZ = DDManPrjVzPk.split(' ')[1]
-    PK = DDManPrjVzPk.split(' ')[2]
+    PK_Pre = DDManPrjVzPk.split(' ')[2]
+    PK = PK_Pre.replaceAll("_EngBuild", "")
     def sout = new StringBuilder()
     def serr = new StringBuilder()
-    def sum = new StringBuilder("")
+    //def sum = new StringBuilder("")
     def DDManCommand
     def proc
     String DDManOldAPI=DDManPath+"\\ddman6.jar"
@@ -94,7 +96,7 @@ def GetData() {
             switch(OldNewAPI){
                 case "OLD":
                     if(DDManJob=="Schnittstellenanalyse"){
-                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJobOld} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DAT ${WORKINGPLACE}Schnittstellenanalyse.txt -DB ${DDPar}"
+                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJobOld} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DAT Schnittstellenanalyse.txt -DB ${DDPar}"
                     }
                     else if(DDManJob=="KGSXML"){
                         DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJobOld} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DAT ${WORKINGPLACE}description\\agk.xml -DB ${DDPar}"
