@@ -96,7 +96,7 @@ def GetData() {
             switch(OldNewAPI){
                 case "OLD":
                     if(DDManJob=="Schnittstellenanalyse"){
-                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJobOld} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DAT Schnittstellenanalyse.txt -DB ${DDPar}"
+                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJobOld} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DB ${DDPar}"
                     }
                     else if(DDManJob=="KGSXML"){
                         DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJobOld} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DAT ${WORKINGPLACE}description\\agk.xml -DB ${DDPar}"
