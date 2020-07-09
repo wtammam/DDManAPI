@@ -144,7 +144,7 @@ def GetData() {
                                     DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[0]} ${DDManJobNew[i]} PRJ=${Prj} PS=${VZ} PK=${PK}"
                                 }
                             proc = DDManCommand.execute()
-                            sout.append("\n************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
+                            sout.append("\n*************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
                             sout.append(DDManCommand)
                             sout.append("\n")
                             proc.waitForProcessOutput(sout, serr)
