@@ -65,17 +65,21 @@ def GetData() {
             DDManJobOld = "INTEGRATION-TEST-C";
             DDManJobNew =["KOMMANDO=\"GET_ALL SUB_DIR=matlab/tlcode;SUFFIX={.a2l};TARGET=${WORKINGPLACE}description/avl_a2l\"","KOMMANDO=\"GET_ALL SUB_DIR=matlab/tlcode;SUFFIX={.xlsx};TARGET=${WORKINGPLACE}temp_SiL/UWK_xlsx\"","NORM"]
             break;
-        case "A2L/DOKUu/KGS/DCM/DAISTRUCT":
-            DDManJobOld = "INTEGRATION-TEST-C";
-            DDManJobNew =[""]
-            break;
         case "FDEF":
             DDManJobOld = "FDEF";
-            DDManJobNew =["KOMMANDO=\"GET_FDEF TARGET=${WORKINGPLACE}description\""]
+            DDManJobNew =["KOMMANDO=\"GET_FDEF TARGET=${WORKINGPLACE}description\"","KOMMANDO=\"GENERATE MDX TARGET=${WORKINGPLACE}description\""]
             break;
         case "FDEFMDX":
-            DDManJobOld = "FDEFMDX";
-            DDManJobNew =["KOMMANDO=\"GET_FDEF TARGET=${WORKINGPLACE}description\""]
+            DDManJobOld = "MDX";
+            DDManJobNew =["KOMMANDO=\"GENERATE MDX TARGET=${WORKINGPLACE}description\""]
+            break;
+        case "KGSXML":
+            DDManJobOld = "KGSXML";
+            DDManJobNew =["KGSXML"]
+            break;
+        case "Schnittstellenanalyse":
+            DDManJobOld = "SSA";
+            DDManJobNew =["SSA"]
             break;
         default:
             break;
@@ -89,8 +93,15 @@ def GetData() {
         //try {
             switch(OldNewAPI){
                 case "OLD":
+                    if(DDManJob=="Schnittstellenanalyse"){
+                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJobOld} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DAT ${WORKINGPLACE}Schnittstellenanalyse.txt DB=${DDPar}"
+                    }
+                    else if(DDManJob=="KGSXML"){
+                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJobOld} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DAT ${WORKINGPLACE}description\\agk.xml DB=${DDPar}"
+                    } else {
                     DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[0]} ${DDManJobOld} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
                     //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
+                    }
                     proc = DDManCommand.execute()
                     sout.append("\n************************** Export ${DDManJobOld} ${Prj} ${VZ} ${PK} **************************\n")
                     sout.append(DDManCommand)
@@ -98,7 +109,7 @@ def GetData() {
                     proc.waitForProcessOutput(sout, serr)
                     break;
                 case "NEW":
-                    if(DDManJob=="Integration" ||DDManJob=="FDEF") {
+                    if(DDManJob=="Integration" || DDManJob=="FDEF" || DDManJob=="FDEFMDX") {
                         DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[0]} ${DDManJobNew[0]} PRJ=${Prj} PS=${VZ} PK=${PK}"
                         //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
                         proc = DDManCommand.execute()
