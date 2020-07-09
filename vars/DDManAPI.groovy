@@ -110,18 +110,20 @@ def GetData() {
                     else if(DDManJob=="DOKU/DCM/DAISTRUCT/A2L/KGS") {
 
                         for (int i = 0; i < DDManJobNew.length ; i++) {
-                            if (Prj != "PT3_Otto_M274" && i< DDManJobNew.length - 2) {
+                            if (Prj != "PT3_Otto_M274") {
                                 if (i ==2 || i == 3) {
                                     DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[i]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DIR ${WORKINGPLACE}"
                                 } else {
                                     DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[i]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DIR ${WORKINGPLACE}description"
                                 }
-                                proc = DDManCommand.execute()
-                                sout.append("\n************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
-                                sout.append(DDManCommand)
-                                sout.append("\n")
-                                proc.waitForProcessOutput(sout, serr)
-                            } else if (Prj == "PT3_Otto_M274" && i< DDManJobNew.length){
+                                if(i != 5 && i != 6) {
+                                    proc = DDManCommand.execute()
+                                    sout.append("\n************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
+                                    sout.append(DDManCommand)
+                                    sout.append("\n")
+                                    proc.waitForProcessOutput(sout, serr)
+                                }
+                            } else {
                                 if (i == 2) {
                                     DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[i]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DIR ${WORKINGPLACE}"
                                 } else {
