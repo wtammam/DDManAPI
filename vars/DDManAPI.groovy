@@ -213,7 +213,8 @@ def GetData() {
                     break;
                 case "AUTO":
                     SetDDManAPI("NEW")
-                    GetData() 
+                    //GetData()
+                    sout.append("\n************************** Export ${DDManJobNew[0]} ${Prj} ${VZ} ${PK} **************************\n")
                     break
                 default:
                     break;
