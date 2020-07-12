@@ -42,9 +42,9 @@ class DDManAPI {
             this.DDPar = DD_Par
         }
     }
-    def SetDDManAPI(OLDNEW_API) {
-        if(OLDNEW_API!='') {
-            this.OldNewAPI = OLDNEW_API
+    def SetDDManAPI(SET_API) {
+        if(SET_API!='') {
+            this.OldNewAPI = SET_API
         }
 
     }
@@ -213,7 +213,7 @@ def GetData() {
                     break;
                 case "AUTO":
                     SetDDManAPI("NEW")
-                    def temp = new DDManAPI(DDManPrjVzPk,DDManJob,OldNewAPI)
+                    def temp = new DDManAPI(DDManPrjVzPk,DDManJob,"NEW")
                     temp.GetData()
                     sout.append("\n************************** Export ${OldNewAPI} ${Prj} ${VZ} ${PK} **************************\n")
                     break
