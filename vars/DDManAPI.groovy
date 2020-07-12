@@ -23,17 +23,36 @@ class DDManAPI {
         //return "Hallo"
     }
     def SetDDManConfig(String Java_Path, String DDMan_Path, String Java_Archive, String Java_Memory,String DDMan_Modus,String DD_Par) {
-        this.JavaPath = Java_Path
-        this.DDManPath = DDMan_Path
-        this.JavaArchive = Java_Archive
-        this.JavaMemory = Java_Memory
-        this.DDManModus = DDMan_Modus
-        this.DDPar = DD_Par
+        if(Java_Path!='') {
+            this.JavaPath = Java_Path
+        }
+        if(DDMan_Path!='') {
+            this.DDManPath = DDMan_Path
+        }
+        if(Java_Archive!='') {
+            this.JavaArchive = Java_Archive
+        }
+        if(Java_Memory!='') {
+            this.JavaMemory = Java_Memory
+        }
+        if(DDMan_Modus!='') {
+            this.DDManModus = DDMan_Modus
+        }
+        if(DD_Par!='') {
+            this.DDPar = DD_Par
+        }
+    }
+    def SetDDManAPI(OLDNEW_API) {
+        if(OLDNEW_API!='') {
+            this.OldNewAPI = OLDNEW_API
+        }
+
     }
     def GetDDManConfig() {
         def lisle= [this.JavaPath, this.JavaArchive, this.JavaMemory, this.DDManPath, this.DDManModus , this.DDPar]
         return lisle
     }
+
 
 def GetData() {
     String Prj
@@ -192,6 +211,10 @@ def GetData() {
                         proc.waitForProcessOutput(sout, serr)
                     }
                     break;
+                case "AUTO":
+                    SetDDManAPI("NEW")
+                    GetData() 
+                    break
                 default:
                     break;
             }
