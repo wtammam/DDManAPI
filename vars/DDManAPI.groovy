@@ -101,7 +101,7 @@ def GetData() {
     }
     //return ("${Prj}, ${VZ}, ${PK}")
     //return DDManPrjVzPk
-    if (Prj!=''&& VZ!=''&& PK!=''&& DDManJob!='' && OldNewAPI!=""){
+    if (Prj!=''&& VZ!=''&& PK!=''&& DDManJob!='' && DDManAPI!=""){
         //execute( 'bat', 'echo ok')
         //def x= "cmd /c ${JavaPath} ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[1]} ${DDManJob} ${Prj} ${VZ} ${PK} ${DDPar}".execute().text
 
