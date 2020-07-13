@@ -222,12 +222,12 @@ def GetData() {
                         proc.waitForProcessOutput(sout, serr)
                     }
                     break;
-                case "AUTO":
+               /* case "AUTO":
                     SetDDManAPI("NEW")
                     def temp = new DDManAPI("${Prj} ${VZ} ${PK}","Schnittstellenanalyse","NEW")
                     temp.GetData()
                     sout.append("\n************************** Export ${OldNewAPI} ${Prj} ${VZ} ${PK} **************************\n")
-                    break
+                    break*/
                 default:
                     break;
             }
