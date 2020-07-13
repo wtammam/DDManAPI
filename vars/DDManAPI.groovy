@@ -68,11 +68,8 @@ def GetData() {
     def sout = new StringBuilder()
     def serr = new StringBuilder()
     //def sum = new StringBuilder("")
-    def DDManCommand
-    def proc
-    String OldNewAPI
-    String DDManOldAPI=DDManPath+"\\ddman6.jar"
-    String DDManNewAPI=DDManPath+"\\ddmanExportClient\\ddmanExportClient.jar"
+    //def DDManCommand
+    //def proc
     String WORKINGPLACE="C:\\meinedaten\\sgprojekte\\"+"${Prj}\\${VZ}\\${PK}"
     switch(DDManJob) {
         case "Integration":
@@ -109,128 +106,22 @@ def GetData() {
         //def x= "cmd /c ${JavaPath} ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[1]} ${DDManJob} ${Prj} ${VZ} ${PK} ${DDPar}".execute().text
 
         //try {
-
-        if(DDManAPI=="NEW") {
-            OldNewAPI="NEW"
+        switch(DDManAPI){
+            case "OLD":
+                OldDDManAPI(Prj, VZ, PK,DDManJob)
+                break;
+            case "NEW":
+                OldDDManAPI(Prj, VZ, PK,DDManJob)
+                break;
+           /* case "AUTO":
+                SetDDManAPI("NEW")
+                def temp = new DDManAPI("${Prj} ${VZ} ${PK}","Schnittstellenanalyse","NEW")
+                temp.GetData()
+                sout.append("\n************************** Export ${OldNewAPI} ${Prj} ${VZ} ${PK} **************************\n")
+                break*/
+            default:
+                break;
         }
-        else if(DDManAPI=="OLD"){
-            OldNewAPI="NEW"
-        }
-        else{
-            OldNewAPI="NEW"
-        }
-            switch(OldNewAPI){
-                case "OLD":
-                    if(DDManJob=="Schnittstellenanalyse"){
-                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJobOld} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DAT C:\\meinedaten\\Schnittstellenanalyse.txt -DB ${DDPar}"
-                    }
-                    else if(DDManJob=="KGSXML"){
-                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJobOld} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DAT ${WORKINGPLACE}\\description\\agk.xml -DB ${DDPar}"
-                    } else {
-                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[0]} ${DDManJobOld} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
-                    //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
-                    }
-                    proc = DDManCommand.execute()
-                    sout.append("\n************************** Export ${DDManJobOld} ${Prj} ${VZ} ${PK} **************************\n")
-                    sout.append(DDManCommand)
-                    sout.append("\n")
-                    proc.waitForProcessOutput(sout, serr)
-                    break;
-                case "NEW":
-                    if(DDManJob=="Integration" || DDManJob=="FDEF") {
-                        for (int i = 0; i < DDManJobNew.length ; i++) {
-                            DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[0]} ${DDManJobNew[i]} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
-                            //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
-                            proc = DDManCommand.execute()
-                            sout.append("\n************************** Export ${DDManJobNew[0]} ${Prj} ${VZ} ${PK} **************************\n")
-                            sout.append(DDManCommand)
-                            sout.append("\n")
-                            proc.waitForProcessOutput(sout, serr)
-                        }
-                    }
-                    else if(DDManJob=="DOKU/DCM/DAISTRUCT/A2L/KGS") {
-
-                        for (int i = 0; i < DDManJobNew.length ; i++) {
-                            if (Prj != "PT3_Otto_M274") {
-                                if (i ==2 || i == 3) {
-                                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[i]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DIR ${WORKINGPLACE} -DB ${DDPar}"
-                                } else {
-                                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[i]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DIR ${WORKINGPLACE}\\description -DB ${DDPar}"
-                                }
-                                if(i != 5 && i != 6) {
-                                    proc = DDManCommand.execute()
-                                    sout.append("\n************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
-                                    sout.append(DDManCommand)
-                                    sout.append("\n")
-                                    proc.waitForProcessOutput(sout, serr)
-                                }
-                            } else {
-                                if (i == 2) {
-                                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[i]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DIR ${WORKINGPLACE} -DB ${DDPar}"
-                                } else {
-                                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[i]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DIR ${WORKINGPLACE}\\description -DB ${DDPar}"
-                                }
-                                if(i != 3 && i != 4) {
-                                    proc = DDManCommand.execute()
-                                    sout.append("\n************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
-                                    sout.append(DDManCommand)
-                                    sout.append("\n")
-                                    proc.waitForProcessOutput(sout, serr)
-
-                                }
-                            }
-                        }
-                    }
-                    else if(DDManJob=="UWK") {
-                        for (int i = 0; i < DDManJobNew.length; i++) {
-                            if (Prj != "PT3_Otto_M274") {
-                                DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[0]} ${DDManJobNew[i]} PRJ=${Prj} PS=${VZ} PK=${PK} DB=${DDPar}"
-                                if(i != 2){
-                                    proc = DDManCommand.execute()
-                                    sout.append("\n************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
-                                    sout.append(DDManCommand)
-                                    sout.append("\n")
-                                    proc.waitForProcessOutput(sout, serr)
-                                }
-                            } else {
-                                DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[i]} -DIR ${WORKINGPLACE}\\description -DB ${DDPar}"
-                                if(i == 2) {
-                                    proc = DDManCommand.execute()
-                                    sout.append("\n************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
-                                    sout.append(DDManCommand)
-                                    sout.append("\n")
-                                    proc.waitForProcessOutput(sout, serr)
-                                }
-                            }
-
-                        }
-                    }
-                    else if(DDManJob=="Schnittstellenanalyse") {
-                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[0]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DAT ${WORKINGPLACE}\\Schnittstellenanalyse.txt -DB ${DDPar}"
-                        proc = DDManCommand.execute()
-                        sout.append("\n************************** Export ${DDManJobNew[0]} ${Prj} ${VZ} ${PK} **************************\n")
-                        sout.append(DDManCommand)
-                        sout.append("\n")
-                        proc.waitForProcessOutput(sout, serr)
-                        }
-                    else if(DDManJob=="KGSXML") {
-                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJobNew[0]} -PRJ ${Prj} -SGP ${VZ} -PRG ${PK} -DAT ${WORKINGPLACE}\\description\\agk.xml -DB ${DDPar}"
-                        proc = DDManCommand.execute()
-                        sout.append("\n************************** Export ${DDManJobNew[0]} ${Prj} ${VZ} ${PK} **************************\n")
-                        sout.append(DDManCommand)
-                        sout.append("\n")
-                        proc.waitForProcessOutput(sout, serr)
-                    }
-                    break;
-               /* case "AUTO":
-                    SetDDManAPI("NEW")
-                    def temp = new DDManAPI("${Prj} ${VZ} ${PK}","Schnittstellenanalyse","NEW")
-                    temp.GetData()
-                    sout.append("\n************************** Export ${OldNewAPI} ${Prj} ${VZ} ${PK} **************************\n")
-                    break*/
-                default:
-                    break;
-            }
 
             //proc.waitFor(1200, TimeUnit.SECONDS)
             //proc.waitForOrKill(1800*1000)
@@ -271,6 +162,123 @@ def GetData() {
 
 
 }
+
+    private def OldDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String DDManJob_Old){
+        String DDManOldAPI=DDManPath+"\\ddman6.jar"
+        def sout = new StringBuilder()
+        def serr = new StringBuilder()
+        def DDManCommand
+        def proc
+        if(DDManJob=="Schnittstellenanalyse"){
+            DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJob_Old} -PRJ ${Projekt} -SGP ${VZyklus} -PRG ${PKonfiguration} -DAT C:\\meinedaten\\Schnittstellenanalyse.txt -DB ${DDPar}"
+        }
+        else if(DDManJob=="KGSXML"){
+            DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJob_Old} -PRJ ${Projekt} -SGP ${VZyklus} -PRG ${PKonfiguration} -DAT ${WORKINGPLACE}\\description\\agk.xml -DB ${DDPar}"
+        } else {
+            DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[0]} ${DDManJob_Old} PRJ=${Projekt} PS=${VZyklus} PK=${PKonfiguration} DB=${DDPar}"
+            //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
+        }
+        proc = DDManCommand.execute()
+        sout.append("\n************************** Export ${DDManJobOld} ${Prj} ${VZ} ${PK} **************************\n")
+        sout.append(DDManCommand)
+        sout.append("\n")
+        proc.waitForProcessOutput(sout, serr)
+        return ("$sout, $serr")
+    }
+
+    private def NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String DDManJob_New){
+        String DDManNewAPI=DDManPath+"\\ddmanExportClient\\ddmanExportClient.jar"
+        def sout = new StringBuilder()
+        def serr = new StringBuilder()
+        def DDManCommand
+        def proc
+        if(DDManJob=="Integration" || DDManJob=="FDEF") {
+            for (int i = 0; i < DDManJobNew.length ; i++) {
+                DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[0]} ${DDManJob_New[i]} PRJ=${Projekt} PS=${VZyklus} PK=${PKonfiguration} DB=${DDPar}"
+                //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
+                proc = DDManCommand.execute()
+                sout.append("\n************************** Export ${DDManJobNew[0]} ${Prj} ${VZ} ${PK} **************************\n")
+                sout.append(DDManCommand)
+                sout.append("\n")
+                proc.waitForProcessOutput(sout, serr)
+            }
+        }
+        else if(DDManJob=="DOKU/DCM/DAISTRUCT/A2L/KGS") {
+
+            for (int i = 0; i < DDManJobNew.length ; i++) {
+                if (Prj != "PT3_Otto_M274") {
+                    if (i ==2 || i == 3) {
+                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJob_New[i]} -PRJ ${Projekt} -SGP ${VZyklus} -PRG ${PKonfiguration} -DIR ${WORKINGPLACE} -DB ${DDPar}"
+                    } else {
+                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJob_New[i]} -PRJ ${Projekt} -SGP ${VZyklus} -PRG ${PKonfiguration} -DIR ${WORKINGPLACE}\\description -DB ${DDPar}"
+                    }
+                    if(i != 5 && i != 6) {
+                        proc = DDManCommand.execute()
+                        sout.append("\n************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
+                        sout.append(DDManCommand)
+                        sout.append("\n")
+                        proc.waitForProcessOutput(sout, serr)
+                    }
+                } else {
+                    if (i == 2) {
+                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJob_New[i]} -PRJ ${Projekt} -SGP ${VZyklus} -PRG ${PKonfiguration} -DIR ${WORKINGPLACE} -DB ${DDPar}"
+                    } else {
+                        DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJob_New[i]} -PRJ ${Projekt} -SGP ${VZyklus} -PRG ${PKonfiguration} -DIR ${WORKINGPLACE}\\description -DB ${DDPar}"
+                    }
+                    if(i != 3 && i != 4) {
+                        proc = DDManCommand.execute()
+                        sout.append("\n************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
+                        sout.append(DDManCommand)
+                        sout.append("\n")
+                        proc.waitForProcessOutput(sout, serr)
+
+                    }
+                }
+            }
+        }
+        else if(DDManJob=="UWK") {
+            for (int i = 0; i < DDManJobNew.length; i++) {
+                if (Prj != "PT3_Otto_M274") {
+                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[0]} ${DDManJob_New[i]} PRJ=${Projekt} PS=${VZyklus} PK=${PKonfiguration} DB=${DDPar}"
+                    if(i != 2){
+                        proc = DDManCommand.execute()
+                        sout.append("\n************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
+                        sout.append(DDManCommand)
+                        sout.append("\n")
+                        proc.waitForProcessOutput(sout, serr)
+                    }
+                } else {
+                    DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJob_New[i]} -DIR ${WORKINGPLACE}\\description -DB ${DDPar}"
+                    if(i == 2) {
+                        proc = DDManCommand.execute()
+                        sout.append("\n************************** Export ${DDManJobNew[i]} ${Prj} ${VZ} ${PK} **************************\n")
+                        sout.append(DDManCommand)
+                        sout.append("\n")
+                        proc.waitForProcessOutput(sout, serr)
+                    }
+                }
+
+            }
+        }
+        else if(DDManJob=="Schnittstellenanalyse") {
+            DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJob_New[0]} -PRJ ${Projekt} -SGP ${VZyklus} -PRG ${PKonfiguration} -DAT ${WORKINGPLACE}\\Schnittstellenanalyse.txt -DB ${DDPar}"
+            proc = DDManCommand.execute()
+            sout.append("\n************************** Export ${DDManJobNew[0]} ${Prj} ${VZ} ${PK} **************************\n")
+            sout.append(DDManCommand)
+            sout.append("\n")
+            proc.waitForProcessOutput(sout, serr)
+        }
+        else if(DDManJob=="KGSXML") {
+            DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJob_New[0]} -PRJ ${Projekt} -SGP ${VZyklus} -PRG ${PKonfiguration} -DAT ${WORKINGPLACE}\\description\\agk.xml -DB ${DDPar}"
+            proc = DDManCommand.execute()
+            sout.append("\n************************** Export ${DDManJobNew[0]} ${Prj} ${VZ} ${PK} **************************\n")
+            sout.append(DDManCommand)
+            sout.append("\n")
+            proc.waitForProcessOutput(sout, serr)
+        }
+        return ("$sout, $serr")
+    }
+
 }
 //println ("${DDManjob}, ${Mod}")
 //if (${Prj}!=''&& ${VZ}!=''&& ${PK}!=''&& DDManjob!=''){
