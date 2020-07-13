@@ -108,7 +108,7 @@ def GetData() {
         //try {
         switch(DDManAPI){
             case "OLD":
-                [sout,serr] = OldDDManAPI(Prj, VZ, PK,DDManJobOld)
+                sout = OldDDManAPI(Prj, VZ, PK,DDManJobOld)
                 break;
             case "NEW":
                 sout = OldDDManAPI(Prj, VZ, PK,DDManJobNew)
