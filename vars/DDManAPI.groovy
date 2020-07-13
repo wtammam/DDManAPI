@@ -111,7 +111,7 @@ def GetData() {
                 OldDDManAPI(Prj, VZ, PK,DDManJobOld)
                 break;
             case "NEW":
-                OldDDManAPI(Prj, VZ, PK,DDManJobNew)
+                NewDDManAPI(Prj, VZ, PK,DDManJobNew)
                 break;
            /* case "AUTO":
                 SetDDManAPI("NEW")
