@@ -214,7 +214,7 @@ def GetData() {
                 case "AUTO":
                     SetDDManAPI("NEW")
                     def temp = new DDManAPI("${Prj} ${VZ} ${PK}","Schnittstellenanalyse","NEW")
-                    GetData()
+                    temp.GetData()
                     sout.append("\n************************** Export ${OldNewAPI} ${Prj} ${VZ} ${PK} **************************\n")
                     break
                 default:
