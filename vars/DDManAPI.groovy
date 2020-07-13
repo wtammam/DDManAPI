@@ -108,12 +108,10 @@ def GetData() {
         //try {
         switch(DDManAPI){
             case "OLD":
-                sout = OldDDManAPI(Prj, VZ, PK,DDManJobOld)
-                serr = OldDDManAPI(Prj, VZ, PK,DDManJobOld)
+                [sout,serr] = OldDDManAPI(Prj, VZ, PK,DDManJobOld)
                 break;
             case "NEW":
                 sout = OldDDManAPI(Prj, VZ, PK,DDManJobNew)
-                serr = OldDDManAPI(Prj, VZ, PK,DDManJobNew)
                 break;
            /* case "AUTO":
                 SetDDManAPI("NEW")
