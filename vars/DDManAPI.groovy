@@ -165,7 +165,7 @@ def GetData() {
 
 }
 
-    private String [] OldDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String DDManJob_Old){
+    private StringBuilder [] OldDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String DDManJob_Old){
         String DDManOldAPI=DDManPath+"\\ddman6.jar"
         String WORKINGPLACE="C:\\meinedaten\\sgprojekte\\"+"${Projekt}\\${VZyklus}\\${PKonfiguration}"
         def sout = new StringBuilder()
@@ -189,7 +189,7 @@ def GetData() {
         return {"$sout"; "$serr"}
     }
 
-    private String [] NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
+    private StringBuilder [] NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
         String DDManNewAPI=DDManPath+"\\ddmanExportClient\\ddmanExportClient.jar"
         String WORKINGPLACE="C:\\meinedaten\\sgprojekte\\"+"${Projekt}\\${VZyklus}\\${PKonfiguration}"
         def sout = new StringBuilder()
