@@ -112,8 +112,8 @@ def GetData() {
                 serr = OldDDManAPI(Prj, VZ, PK,DDManJobOld)
                 break;
             case "NEW":
-                sout = OldDDManAPI(Prj, VZ, PK,DDManJobOld)
-                serr = OldDDManAPI(Prj, VZ, PK,DDManJobOld)
+                sout = OldDDManAPI(Prj, VZ, PK,DDManJobNew)
+                serr = OldDDManAPI(Prj, VZ, PK,DDManJobNew)
                 break;
            /* case "AUTO":
                 SetDDManAPI("NEW")
@@ -186,7 +186,7 @@ def GetData() {
         sout.append(DDManCommand)
         sout.append("\n")
         proc.waitForProcessOutput(sout, serr)
-        return {sout; serr}
+        return [sout, serr]
     }
 
     private StringBuilder [] NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
@@ -280,7 +280,7 @@ def GetData() {
             sout.append("\n")
             proc.waitForProcessOutput(sout, serr)
         }
-        return {sout; serr}
+        return [sout, serr]
     }
 
 }
