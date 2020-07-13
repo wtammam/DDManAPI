@@ -213,9 +213,7 @@ def GetData() {
                     break;
                 case "AUTO":
                     SetDDManAPI("NEW")
-                    def temp = new DDManAPI(DDManPrjVzPk,DDManJob,"NEW")
-                    temp.GetData()
-                    sout.append("\n************************** Export ${OldNewAPI} ${Prj} ${VZ} ${PK} **************************\n")
+                    goto case "NEW";
                     break
                 default:
                     break;
