@@ -187,7 +187,7 @@ def GetData() {
         return ("$sout, $serr")
     }
 
-    private def NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String DDManJob_New){
+    private def NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
         String DDManNewAPI=DDManPath+"\\ddmanExportClient\\ddmanExportClient.jar"
         String WORKINGPLACE="C:\\meinedaten\\sgprojekte\\"+"${Prj}\\${VZ}\\${PK}"
         def sout = new StringBuilder()
@@ -195,7 +195,7 @@ def GetData() {
         def DDManCommand
         def proc
         if(DDManJob=="Integration" || DDManJob=="FDEF") {
-            for (int i = 0; i < DDManJobNew.length ; i++) {
+            for (int i = 0; i < DDManJob_New.length ; i++) {
                 DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[0]} ${DDManJob_New[i]} PRJ=${Projekt} PS=${VZyklus} PK=${PKonfiguration} DB=${DDPar}"
                 //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
                 proc = DDManCommand.execute()
@@ -207,8 +207,8 @@ def GetData() {
         }
         else if(DDManJob=="DOKU/DCM/DAISTRUCT/A2L/KGS") {
 
-            for (int i = 0; i < DDManJobNew.length ; i++) {
-                if (Prj != "PT3_Otto_M274") {
+            for (int i = 0; i < DDManJob_New.length ; i++) {
+                if (Projekt != "PT3_Otto_M274") {
                     if (i ==2 || i == 3) {
                         DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJob_New[i]} -PRJ ${Projekt} -SGP ${VZyklus} -PRG ${PKonfiguration} -DIR ${WORKINGPLACE} -DB ${DDPar}"
                     } else {
@@ -239,8 +239,8 @@ def GetData() {
             }
         }
         else if(DDManJob=="UWK") {
-            for (int i = 0; i < DDManJobNew.length; i++) {
-                if (Prj != "PT3_Otto_M274") {
+            for (int i = 0; i < DDManJob_New.length; i++) {
+                if (Projekt != "PT3_Otto_M274") {
                     DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[0]} ${DDManJob_New[i]} PRJ=${Projekt} PS=${VZyklus} PK=${PKonfiguration} DB=${DDPar}"
                     if(i != 2){
                         proc = DDManCommand.execute()
