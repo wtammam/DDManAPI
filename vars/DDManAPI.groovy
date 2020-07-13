@@ -108,10 +108,10 @@ def GetData() {
         //try {
         switch(DDManAPI){
             case "OLD":
-                OldDDManAPI(Prj, VZ, PK,DDManJobOld)
+                [sout, serr] = OldDDManAPI(Prj, VZ, PK,DDManJobOld)
                 break;
             case "NEW":
-                NewDDManAPI(Prj, VZ, PK,DDManJobNew)
+                [sout, serr] = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
                 break;
            /* case "AUTO":
                 SetDDManAPI("NEW")
@@ -163,7 +163,7 @@ def GetData() {
 
 }
 
-    private def OldDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String DDManJob_Old){
+    private def [] OldDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String DDManJob_Old){
         String DDManOldAPI=DDManPath+"\\ddman6.jar"
         String WORKINGPLACE="C:\\meinedaten\\sgprojekte\\"+"${Projekt}\\${VZyklus}\\${PKonfiguration}"
         def sout = new StringBuilder()
@@ -187,7 +187,7 @@ def GetData() {
         return ("$sout, $serr")
     }
 
-    private def NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
+    private def [] NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
         String DDManNewAPI=DDManPath+"\\ddmanExportClient\\ddmanExportClient.jar"
         String WORKINGPLACE="C:\\meinedaten\\sgprojekte\\"+"${Projekt}\\${VZyklus}\\${PKonfiguration}"
         def sout = new StringBuilder()
