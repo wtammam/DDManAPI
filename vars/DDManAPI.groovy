@@ -12,12 +12,12 @@ class DDManAPI {
     private String DDPar = "DDMAN6"
     private String DDManPrjVzPk
     private String DDManJob
-    private String OldNewAPI
+    private String DDManAPI
 
-    DDManAPI(String DDMan_PrjVzPk, String DDMan_Job, String OldNew_API) {
+    DDManAPI(String DDMan_PrjVzPk, String DDMan_Job, String DDMan_API) {
         this.DDManPrjVzPk = DDMan_PrjVzPk
         this.DDManJob = DDMan_Job
-        this.OldNewAPI = OldNew_API
+        this.DDManAPI = DDMan_API
 
         //return "${DDManPrjVzPk}"
         //return "Hallo"
@@ -42,9 +42,9 @@ class DDManAPI {
             this.DDPar = DD_Par
         }
     }
-    def SetDDManAPI(SET_API) {
+    def SetDDManAPI(DDMan_API) {
         if(SET_API!='') {
-            this.OldNewAPI = SET_API
+            this.DDManAPI = DDMan_API
         }
 
     }
@@ -70,6 +70,7 @@ def GetData() {
     //def sum = new StringBuilder("")
     def DDManCommand
     def proc
+    String OldNewAPI
     String DDManOldAPI=DDManPath+"\\ddman6.jar"
     String DDManNewAPI=DDManPath+"\\ddmanExportClient\\ddmanExportClient.jar"
     String WORKINGPLACE="C:\\meinedaten\\sgprojekte\\"+"${Prj}\\${VZ}\\${PK}"
@@ -103,11 +104,21 @@ def GetData() {
     }
     //return ("${Prj}, ${VZ}, ${PK}")
     //return DDManPrjVzPk
-    if (Prj!=''&& VZ!=''&& PK!=''&& DDManJob!=''){
+    if (Prj!=''&& VZ!=''&& PK!=''&& DDManJob!='' && OldNewAPI!=""){
         //execute( 'bat', 'echo ok')
         //def x= "cmd /c ${JavaPath} ${JavaArchive} ${JavaMemory} ${DDManPath} ${DDManModus[1]} ${DDManJob} ${Prj} ${VZ} ${PK} ${DDPar}".execute().text
 
         //try {
+
+        if(DDManAPI=="NEW") {
+            OldNewAPI="NEW"
+        }
+        else if(DDManAPI=="OLD"){
+            OldNewAPI="NEW"
+        }
+        else{
+            OldNewAPI="NEW"
+        }
             switch(OldNewAPI){
                 case "OLD":
                     if(DDManJob=="Schnittstellenanalyse"){
