@@ -184,7 +184,7 @@ def GetData() {
         sout.append(DDManCommand)
         sout.append("\n")
         proc.waitForProcessOutput(sout, serr)
-        return {"$sout, $serr"}
+        return String[] {"$sout, $serr"}
     }
 
     private String [] NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
@@ -278,7 +278,7 @@ def GetData() {
             sout.append("\n")
             proc.waitForProcessOutput(sout, serr)
         }
-        return {"$sout, $serr"}
+        return String[] {"$sout, $serr"}
     }
 
 }
