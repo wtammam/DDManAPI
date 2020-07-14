@@ -18,7 +18,6 @@ class DDManAPI {
         this.DDManPrjVzPk = DDMan_PrjVzPk
         this.DDManJob = DDMan_Job
         this.DDManAPI = DDMan_API
-
         //return "${DDManPrjVzPk}"
         //return "Hallo"
     }
