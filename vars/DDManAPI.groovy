@@ -68,6 +68,7 @@ def GetData() {
     StringBuilder[] OutError = new StringBuilder[2];
     def sout = new StringBuilder()
     def serr = new StringBuilder()
+    boolean Errorfound
     //def sum = new StringBuilder("")
     //def DDManCommand
     //def proc
@@ -153,7 +154,8 @@ def GetData() {
             //return ("$DDManCommand, $sout, $serr")
         sout=OutError[0]
         serr=OutError[1]
-            return ("$sout, $serr")
+            //return ("$sout, $serr")
+        return ("$Errorfound")
        // } catch(Exception e) {
         //return("Exception: ${e}")
    // }
