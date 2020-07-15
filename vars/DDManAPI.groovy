@@ -285,7 +285,7 @@ def GetData() {
             nout.append("\n")
             proc.waitForProcessOutput(nout, nerr)
         }
-        return [nout, nerr]
+        //return [nout, nerr]
     }
 
     boolean ConsoleOutputCheck(String ConsoleOutput, String [] Patterns ) {
