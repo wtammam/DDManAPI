@@ -65,7 +65,7 @@ def GetData() {
     VZ = DDManPrjVzPk.split(' ')[1]
     PK_Pre = DDManPrjVzPk.split(' ')[2]
     PK = PK_Pre.replaceAll("_EngBuild", "")
-    StringBuilder[] OutError = new StringBuilder[2];
+    StringBuilder[] OutAndError = new StringBuilder[2];
     def sout = new StringBuilder()
     def serr = new StringBuilder()
     boolean Errorfound
@@ -110,19 +110,19 @@ def GetData() {
         //try {
         switch(DDManAPI){
             case "OLD":
-                OutError = OldDDManAPI(Prj, VZ, PK,DDManJobOld)
+                OutAndError = OldDDManAPI(Prj, VZ, PK,DDManJobOld)
                 break;
             case "NEW":
-                OutError = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
+                OutAndError = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
                 break;
             case "AUTO":
                 SetDDManAPI("NEW")
-                OutError = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
+                OutAndError = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
                 String [] ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:","no connection to","SCHWERWIEGEND:"]
                 //def ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:","no connection to","SCHWERWIEGEND:"] as String[]
                 Errorfound= ConsoleOutputCheck("${OutError[0]}", ErrorList as String[])
                 if(Errorfound == true){
-                    OutError += OldDDManAPI(Prj, VZ, PK,DDManJobOld)
+                    OutAndError = OldDDManAPI(Prj, VZ, PK,DDManJobOld)
                     //return ("$OutError")
                 }
                break
@@ -155,10 +155,10 @@ def GetData() {
             //Process process = proc.start()
             //return ("${outputStream.toString()}")
             //return ("$DDManCommand, $sout, $serr")
-        sout=OutError[0]
-        serr=OutError[1]
+        sout=OutAndError[0]
+        serr=OutAndError[1]
         //return ("$sout, $serr")
-        return ("$OutError")
+        return ("$OutAndError")
         //return ("$Errorfound")
        // } catch(Exception e) {
         //return("Exception: ${e}")
@@ -210,7 +210,7 @@ def GetData() {
                 DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[0]} ${DDManJob_New[i]} PRJ=${Projekt} PS=${VZyklus} PK=${PKonfiguration} DB=${DDPar}"
                 //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
                 proc = DDManCommand.execute()
-                nout.append("\n************************** Export ${DDManJob_New[0]} ${Projekt} ${VZyklus} ${PKonfiguration} **************************\n")
+                nout.append("\n************************** Export ${DDManJob_New[i]} ${Projekt} ${VZyklus} ${PKonfiguration} **************************\n")
                 nout.append(DDManCommand)
                 nout.append("\n")
                 proc.waitForProcessOutput(nout, nerr)
