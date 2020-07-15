@@ -43,7 +43,7 @@ class DDManAPI {
     }
 
     def SetDDManAPI(DDMan_API) {
-        if(SET_API!='') {
+        if(DDMan_API!='') {
             this.DDManAPI = DDMan_API
         }
 
