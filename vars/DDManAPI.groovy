@@ -157,8 +157,8 @@ def GetData() {
             //return ("$DDManCommand, $sout, $serr")
         sout=OutAndError[0]
         serr=OutAndError[1]
-        //return ("$sout, $serr")
-        return ("$OutAndError")
+        return ("$sout, $serr")
+        //return ("$OutAndError")
         //return ("$Errorfound")
        // } catch(Exception e) {
         //return("Exception: ${e}")
