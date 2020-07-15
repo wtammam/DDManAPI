@@ -114,7 +114,7 @@ def GetData() {
                 break;
             case "NEW":
                 OutError = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
-                Errorfound= ConsoleOutputCheck("vdfdvf dsfdfsd no connection to fghfgh","NO_CONNECTION_TO_SERVER")
+                Errorfound= ConsoleOutputCheck("vdfdvf dsfdfsd no connection to fghfgh","no connection to")
                         //OutError[0].toString(),["NO_CONNECTION_TO_SERVER","ERROR:", "no connection to", "SCHWERWIEGEND:"])
                 if(Errorfound){
                 }
