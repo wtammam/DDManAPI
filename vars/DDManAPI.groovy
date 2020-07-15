@@ -121,7 +121,7 @@ def GetData() {
                 String [] ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:","no connection to","SCHWERWIEGEND:"]
                 //def ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:","no connection to","SCHWERWIEGEND:"] as String[]
                 Errorfound= ConsoleOutputCheck("${OutError[0]}", ErrorList as String[])
-                if(Errorfound == true){
+                if(Errorfound == false){
                     OutError = OldDDManAPI(Prj, VZ, PK,DDManJobOld)
                     return ("$OutError")
                 }
@@ -158,7 +158,7 @@ def GetData() {
         sout=OutError[0]
         serr=OutError[1]
         //return ("$sout, $serr")
-       // return ("$sout")
+        return ("$OutError")
         //return ("$Errorfound")
        // } catch(Exception e) {
         //return("Exception: ${e}")
