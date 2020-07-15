@@ -117,7 +117,7 @@ def GetData() {
             case "AUTO":
                 SetDDManAPI("NEW")
                 OutError = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
-                boolean Errorfound= ConsoleOutputCheck(OutError[0],["ERROR:", "no connection to", "SCHWERWIEGEND:"])
+                boolean Errorfound= ConsoleOutputCheck(OutError[0],["NO_CONNECTION_TO_SERVER",ERROR:", "no connection to", "SCHWERWIEGEND:"])
                 if(Errorfound){
                     OutError = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
                 }
