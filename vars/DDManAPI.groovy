@@ -119,7 +119,7 @@ def GetData() {
                 OutError = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
                 boolean Errorfound= ConsoleOutputCheck(OutError[1],["NO_CONNECTION_TO_SERVER","ERROR:", "no connection to", "SCHWERWIEGEND:"])
                 if(Errorfound){
-                    OutError = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
+                    OutError = OldDDManAPI(Prj, VZ, PK,DDManJobOld)
                 }
                break
             default:
