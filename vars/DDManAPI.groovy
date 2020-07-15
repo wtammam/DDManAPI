@@ -122,7 +122,8 @@ def GetData() {
                 //def ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:","no connection to","SCHWERWIEGEND:"] as String[]
                 Errorfound= ConsoleOutputCheck("${OutError[0]}", ErrorList as String[])
                 if(Errorfound == true){
-                    OutError = OldDDManAPI(Prj, VZ, PK,DDManJobOld)
+                    return "okooooooooooooooooooo"
+                    //OutError = OldDDManAPI(Prj, VZ, PK,DDManJobOld)
                 }
                break
             default:
@@ -156,7 +157,7 @@ def GetData() {
             //return ("$DDManCommand, $sout, $serr")
         sout=OutError[0]
         serr=OutError[1]
-        return ("$sout, $serr")
+       // return ("$sout, $serr")
        // return ("$sout")
         //return ("$Errorfound")
        // } catch(Exception e) {
