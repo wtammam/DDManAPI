@@ -114,9 +114,9 @@ def GetData() {
                 break;
             case "NEW":
                 OutError = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
-                String [] ErrorList= new String[] {"NO_CONNECTION_TO_SERVER","ERROR:","no connection to","SCHWERWIEGEND:"}
+                String [] ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:","no connection to","SCHWERWIEGEND:"]
                 //def ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:","no connection to","SCHWERWIEGEND:"] as String[]
-                Errorfound= ConsoleOutputCheck("${OutError[0]}","$ErrorList")
+                Errorfound= ConsoleOutputCheck("${OutError[0]}",ErrorList as String[])
                         //OutError[0].toString(),["NO_CONNECTION_TO_SERVER","ERROR:", "no connection to", "SCHWERWIEGEND:"])
                 if(Errorfound){
                 }
