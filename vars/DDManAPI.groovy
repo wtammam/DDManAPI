@@ -41,6 +41,7 @@ class DDManAPI {
             this.DDPar = DD_Par
         }
     }
+
     def SetDDManAPI(DDMan_API) {
         if(SET_API!='') {
             this.DDManAPI = DDMan_API
@@ -113,12 +114,14 @@ def GetData() {
             case "NEW":
                 OutError = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
                 break;
-           /* case "AUTO":
+            case "AUTO":
                 SetDDManAPI("NEW")
-                def temp = new DDManAPI("${Prj} ${VZ} ${PK}","Schnittstellenanalyse","NEW")
-                temp.GetData()
-                sout.append("\n************************** Export ${OldNewAPI} ${Prj} ${VZ} ${PK} **************************\n")
-                break*/
+                OutError = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
+                boolean Errorfound= ConsoleOutputCheck(OutError[0],["no connection to", "SCHWERWIEGEND:"])
+                if(Errorfound){
+                    OutError = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
+                }
+               break
             default:
                 break;
         }
@@ -281,6 +284,18 @@ def GetData() {
             proc.waitForProcessOutput(nout, nerr)
         }
         return [nout, nerr]
+    }
+
+    boolean ConsoleOutputCheck(String ConsoleOutput, String [] Patterns ) {
+
+        //Patterns.find { pattern -> ConsoleOutput.find { error -> error.contains(pattern) } }
+        //Patterns.find { ConsoleOutput.find { error -> error.contains(it) } }
+        //Patterns.any { ConsoleOutput.find { error -> error.contains(it) } }
+        //assert fruits.findAll{str.toLowerCase().contains(it.toLowerCase())}.any{true}
+        //assert fruits*.toLowerCase().findAll{str.toLowerCase().contains(it)}.any{true}
+        //Patterns.findAll{ConsoleOutput.toLowerCase().contains(it.toLowerCase())}.any{true}
+        boolean found = Patterns.any{ConsoleOutput.toLowerCase().contains(it.toLowerCase())}
+        return found
     }
 
 }
