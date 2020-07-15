@@ -155,7 +155,7 @@ def GetData() {
         sout=OutError[0]
         serr=OutError[1]
             //return ("$sout, $serr")
-        return ("$Errorfound")
+        return ("OKKKKKKKKKKKKKKKKKK")
        // } catch(Exception e) {
         //return("Exception: ${e}")
    // }
@@ -285,7 +285,7 @@ def GetData() {
             nout.append("\n")
             proc.waitForProcessOutput(nout, nerr)
         }
-        //return [nout, nerr]
+        return [nout, nerr]
     }
 
     boolean ConsoleOutputCheck(String ConsoleOutput, String [] Patterns ) {
