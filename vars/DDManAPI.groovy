@@ -129,7 +129,8 @@ def GetData() {
                     boolean xyz = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])
                     if(xyz == true){
                         status="Error"
-                    }
+                    }else
+                        status="Error"
                 }
                break
             default:
