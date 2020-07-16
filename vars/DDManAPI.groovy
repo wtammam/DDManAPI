@@ -122,7 +122,7 @@ def GetData() {
                 OutAndError = OldDDManAPI(Prj, VZ, PK,DDManJobOld)
                 ErrorList= ["connection","SCHWERWIEGEND:"]
                 //def ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:","no connection to","SCHWERWIEGEND:"] as String[]
-                Errorfound = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])
+                Errorfound = ConsoleOutputCheck("${OutAndError}", ErrorList as String[])
                 /*if( Errorfound == true){
                     OutAndError = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
                     ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:"]
