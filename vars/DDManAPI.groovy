@@ -129,7 +129,7 @@ def GetData() {
                     if (Errorfound == true) {
                         OutAndError[1].append("\n")
                         OutAndError[1].append("-->Error with New API has occurred")*/
-                        OutAndError += OldDDManAPI(Prj, VZ, PK, DDManJobOld)
+                        OutAndError = OldDDManAPI(Prj, VZ, PK, DDManJobOld)
                         ErrorList = ["connection", "SCHWERWIEGEND:"]
                 Errorfound = ConsoleOutputCheck("${OutAndError}", ErrorList as String[])
                        /* if (xyz == true) {
@@ -173,7 +173,7 @@ def GetData() {
         sout=OutAndError[0]
         serr=OutAndError[1]
         //return ("$sout, $serr")
-        return ("$serr, $Errorfound, $status")
+        return ("$sout, $Errorfound, $status")
         //return ("$Errorfound")
        // } catch(Exception e) {
         //return("Exception: ${e}")
