@@ -130,7 +130,7 @@ def GetData() {
                         OutAndError[1].append("\n")
                         OutAndError[1].append("-->Error with New API has occurred")*/
                         OutAndError = OldDDManAPI(Prj, VZ, PK, DDManJobOld)
-                        ErrorList = ["connection", "SCHWERWIEGEND:"]
+                        ErrorList = ["ccc", "SCHWERWIEGEND:"]
                 Errorfound = ConsoleOutputCheck("${OutAndError}", ErrorList as String[])
                        /* if (xyz == true) {
                             status = "Error"
