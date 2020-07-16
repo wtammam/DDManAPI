@@ -118,7 +118,7 @@ def GetData() {
                 break
             case "AUTO":
                 //SetDDManAPI("NEW")
-                OutAndError += OldDDManAPI(Prj, VZ, PK,DDManJobOld)
+                OutAndError = OldDDManAPI(Prj, VZ, PK,DDManJobOld)
                 ErrorList= ["connection","SCHWERWIEGEND:"]
                 //def ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:","no connection to","SCHWERWIEGEND:"] as String[]
                 Errorfound = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])
