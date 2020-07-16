@@ -135,13 +135,14 @@ def GetData() {
                         xyz = ConsoleOutputCheck("${OutAndError}", ErrorList as String[])
                         if (xyz == true) {
                             status = "Error"
-                            //throw new Exception ("some error message");
+                          throw new Exception ("some error message");
                         } else
                             status = "no Error"
                     }
-                }catch(InterruptedException ex){
+                }catch(InterruptedException e){
                     status = "schwerer Error"
-                    return ("$ex")
+                    System.exit(0)
+                    return ("$e")
                 }
                break
             default:
