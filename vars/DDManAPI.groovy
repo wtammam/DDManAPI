@@ -69,6 +69,7 @@ def GetData() {
     def sout = new StringBuilder()
     def serr = new StringBuilder()
     boolean Errorfound = false
+    boolean xyz
     String [] ErrorList
     String status="nothing"
     //def sum = new StringBuilder("")
@@ -119,18 +120,22 @@ def GetData() {
                 break
             case "AUTO":
                 //SetDDManAPI("NEW")
-                OutAndError = OldDDManAPI(Prj, VZ, PK,DDManJobOld)
-                ErrorList= ["connection","SCHWERWIEGEND:"]
-                //def ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:","no connection to","SCHWERWIEGEND:"] as String[]
-                Errorfound = ConsoleOutputCheck("${OutAndError}", ErrorList as String[])
-                if( Errorfound == true){
-                    OutAndError += NewDDManAPI(Prj, VZ, PK,DDManJobNew)
-                    ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:"]
-                    boolean xyz = ConsoleOutputCheck("${OutAndError}", ErrorList as String[])
-                    if(xyz == true){
-                        status="Error"
-                    }else
-                        status="no Error"
+                try {
+                    OutAndError = OldDDManAPI(Prj, VZ, PK, DDManJobOld)
+                    ErrorList = ["connection", "SCHWERWIEGEND:"]
+                    //def ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:","no connection to","SCHWERWIEGEND:"] as String[]
+                    Errorfound = ConsoleOutputCheck("${OutAndError}", ErrorList as String[])
+                    if (Errorfound == true) {
+                        OutAndError += NewDDManAPI(Prj, VZ, PK, DDManJobNew)
+                        ErrorList = ["NO_CONNECTION_TO_SERVER", "ERROR:"]
+                        xyz = ConsoleOutputCheck("${OutAndError}", ErrorList as String[])
+                        if (xyz == true) {
+                            status = "Error"
+                        } else
+                            status = "no Error"
+                    }
+                }catch(IOException){
+                    status = "schwerer Error"
                 }
                break
             default:
