@@ -112,10 +112,10 @@ def GetData() {
         switch(DDManAPI){
             case "OLD":
                 OutAndError = OldDDManAPI(Prj, VZ, PK,DDManJobOld)
-                break;
+                break
             case "NEW":
                 OutAndError = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
-                break;
+                break
             case "AUTO":
                 //SetDDManAPI("NEW")
                 OutAndError = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
@@ -132,7 +132,7 @@ def GetData() {
                 }
                break
             default:
-                break;
+                break
         }
 
             //proc.waitFor(1200, TimeUnit.SECONDS)
@@ -163,7 +163,7 @@ def GetData() {
         sout=OutAndError[0]
         serr=OutAndError[1]
         //return ("$sout, $serr")
-        return ("$OutAndError")
+        return ("$Errorfound")
         //return ("$Errorfound")
        // } catch(Exception e) {
         //return("Exception: ${e}")
