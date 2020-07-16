@@ -119,17 +119,16 @@ def GetData() {
             case "AUTO":
                 //SetDDManAPI("NEW")
                 OutAndError = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
-                ErrorList= ["ERROR:"]
+                ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:"]
                 //def ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:","no connection to","SCHWERWIEGEND:"] as String[]
                 Errorfound = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])
-                /*if( Errorfound == true){
+                if( Errorfound == true){
                     OutAndError += OldDDManAPI(Prj, VZ, PK,DDManJobOld)
-                    ErrorList= ["no connection to","SCHWERWIEGEND:"]
+                    ErrorList= ["connection","SCHWERWIEGEND:"]
                     Errorfound = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])
                     if(Errorfound == true){
-                        break
                     }
-                }*/
+                }
                break
             default:
                 break
@@ -163,7 +162,7 @@ def GetData() {
         sout=OutAndError[0]
         serr=OutAndError[1]
         //return ("$sout, $serr")
-        return ("$sout, $Errorfound")
+        return ("$serr, $Errorfound")
         //return ("$Errorfound")
        // } catch(Exception e) {
         //return("Exception: ${e}")
