@@ -68,7 +68,8 @@ def GetData() {
     StringBuilder[] OutAndError = new StringBuilder[2];
     def sout = new StringBuilder()
     def serr = new StringBuilder()
-    boolean Errorfound
+    boolean Errorfound = false
+    String [] ErrorList
     //def sum = new StringBuilder("")
     //def DDManCommand
     //def proc
@@ -116,14 +117,18 @@ def GetData() {
                 OutAndError = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
                 break;
             case "AUTO":
-                SetDDManAPI("NEW")
+                //SetDDManAPI("NEW")
                 OutAndError = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
-                String [] ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:","no connection to","SCHWERWIEGEND:"]
+                ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:"]
                 //def ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:","no connection to","SCHWERWIEGEND:"] as String[]
-                Errorfound= ConsoleOutputCheck("${OutAndError[1]}", ErrorList as String[])
-                if(Errorfound == true){
+                Errorfound = ConsoleOutputCheck("${OutAndError[1]}", ErrorList as String[])
+                if( Errorfound == true){
                     OutAndError += OldDDManAPI(Prj, VZ, PK,DDManJobOld)
-                    //return ("$OutError")
+                    ErrorList= ["no connection to","SCHWERWIEGEND:"]
+                    Errorfound = ConsoleOutputCheck("${OutAndError[1]}", ErrorList as String[])
+                    if(Errorfound == true){
+                        break
+                    }
                 }
                break
             default:
