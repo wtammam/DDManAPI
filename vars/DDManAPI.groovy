@@ -163,7 +163,7 @@ def GetData() {
         sout=OutAndError[0]
         serr=OutAndError[1]
         //return ("$sout, $serr")
-        return ("$OutAndError, $Errorfound")
+        return ("$sout, $Errorfound")
         //return ("$Errorfound")
        // } catch(Exception e) {
         //return("Exception: ${e}")
