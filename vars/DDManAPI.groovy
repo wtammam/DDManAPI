@@ -120,15 +120,15 @@ def GetData() {
                 break
             case "AUTO":
                 //SetDDManAPI("NEW")
-               /* try {
+               /* try {*/
                     OutAndError = OldDDManAPI(Prj, VZ, PK, DDManJobOld)
                     ErrorList = ["connection", "SCHWERWIEGEND:"]
                     //def ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:","no connection to","SCHWERWIEGEND:"] as String[]
                     Errorfound = ConsoleOutputCheck("${OutAndError}", ErrorList as String[])
-                    if (Errorfound == true) {*/
+                  /*  if (Errorfound == true) {
                         OutAndError = NewDDManAPI(Prj, VZ, PK, DDManJobNew)
                         ErrorList = ["NO_CONNECTION_TO_SERVER", "ERROR:"]
-                Errorfound = ConsoleOutputCheck("${OutAndError}", ErrorList as String[])
+                xyz = ConsoleOutputCheck("${OutAndError}", ErrorList as String[])*/
                         /*if (xyz == true) {
                             status = "Error"
                         } else
