@@ -132,10 +132,10 @@ def GetData() {
                         OutAndError[1].append("-->Error with New API has occurred")
                         OutAndError += OldDDManAPI(Prj, VZ, PK, DDManJobOld)
                         ErrorList = ["connection", "SCHWERWIEGEND:"]
-                        xyz = ConsoleOutputCheck("${OutAndError}", ErrorList as String[])
+                        xyz = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])
                         if (xyz == true) {
                             status = "Error"
-                            System.exit(1)
+                            System.exit(0)
                           //throw new Exception ("some error message");
                         } else
                             status = "no Error"
