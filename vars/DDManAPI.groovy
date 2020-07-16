@@ -130,7 +130,7 @@ def GetData() {
                     if(xyz == true){
                         status="Error"
                     }else
-                        status="Error"
+                        status="no Error"
                 }
                break
             default:
