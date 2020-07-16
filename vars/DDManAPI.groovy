@@ -135,6 +135,7 @@ def GetData() {
                         xyz = ConsoleOutputCheck("${OutAndError}", ErrorList as String[])
                         if (xyz == true) {
                             status = "Error"
+                            System.exit(1)
                           //throw new Exception ("some error message");
                         } else
                             status = "no Error"
