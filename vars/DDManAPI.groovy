@@ -70,6 +70,7 @@ def GetData() {
     def serr = new StringBuilder()
     boolean Errorfound = false
     String [] ErrorList
+    String status="nothing"
     //def sum = new StringBuilder("")
     //def DDManCommand
     //def proc
@@ -125,9 +126,10 @@ def GetData() {
                 if( Errorfound == true){
                     OutAndError = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
                     ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:"]
-                    Errorfound = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])
-                    /*if(Errorfound == true){
-                    }*/
+                    boolean xyz = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])
+                    if(xyz == true){
+                        status="Error"
+                    }
                 }
                break
             default:
@@ -162,7 +164,7 @@ def GetData() {
         sout=OutAndError[0]
         serr=OutAndError[1]
         //return ("$sout, $serr")
-        return ("$OutAndError, $Errorfound")
+        return ("$OutAndError, $Errorfound, $status")
         //return ("$Errorfound")
        // } catch(Exception e) {
         //return("Exception: ${e}")
