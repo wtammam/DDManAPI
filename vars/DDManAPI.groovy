@@ -141,7 +141,7 @@ def GetData() {
                     }
                 }catch(Exception e){
                     status = "schwerer Error"
-                    return ("$status")
+                    return ("$e")
                 }
                break
             default:
