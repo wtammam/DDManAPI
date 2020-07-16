@@ -139,9 +139,9 @@ def GetData() {
                         } else
                             status = "no Error"
                     }
-                }catch(Exception e){
+                }catch(InterruptedException ex){
                     status = "schwerer Error"
-                    return ("$e")
+                    return ("$ex")
                 }
                break
             default:
