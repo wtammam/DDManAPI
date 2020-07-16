@@ -125,7 +125,7 @@ def GetData() {
                 if( Errorfound == true){
                     OutAndError += OldDDManAPI(Prj, VZ, PK,DDManJobOld)
                     ErrorList= ["connection","SCHWERWIEGEND:"]
-                    Errorfound = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])
+                    Errorfound = ConsoleOutputCheck("${OutAndError}", ErrorList as String[])
                     if(Errorfound == true){
                     }
                 }
