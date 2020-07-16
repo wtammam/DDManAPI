@@ -138,7 +138,7 @@ def GetData() {
                         } else
                             status = "no Error"
                     }
-                }catch(IOException){
+                }catch(Exception e){
                     status = "schwerer Error"
                 }
                break
