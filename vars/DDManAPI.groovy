@@ -141,7 +141,7 @@ def GetData() {
                     }
                 }catch(InterruptedException e){
                     status = "schwerer Error"
-                    System.exit(0)
+                    System.exit(1)
                     return ("$e")
                 }
                break
