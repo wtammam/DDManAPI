@@ -126,7 +126,7 @@ def GetData() {
                 if( Errorfound == true){
                     OutAndError += NewDDManAPI(Prj, VZ, PK,DDManJobNew)
                     ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:"]
-                    boolean xyz = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])
+                    boolean xyz = ConsoleOutputCheck("${OutAndError}", ErrorList as String[])
                     if(xyz == true){
                         status="Error"
                     }else
