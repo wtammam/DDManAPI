@@ -216,7 +216,7 @@ def GetData() {
         oout.append("\n")
         proc.waitForProcessOutput(oout, oerr)
         String [] ErrorList = ["connection", "SCHWERWIEGEND:"]
-        boolean xyz = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])
+        boolean xyz = ConsoleOutputCheck("${oout}", ErrorList as String[])
         if (xyz == true) {
             proc.waitForOrKill(2)
         }
