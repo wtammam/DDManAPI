@@ -218,7 +218,7 @@ def GetData() {
         oerr.append("\n####################################################\n")
         proc = DDManCommand.execute()
         proc.consumeProcessOutput(oout, oerr)
-        proc.waitForProcessOutput()
+        //proc.waitForProcessOutput()
         //proc.waitForProcessOutput(oout, oerr)
         //def xoout = proc.consumeProcessOutputStream(oout)
         //def xoerr = proc.consumeProcessErrorStream(oerr)
@@ -228,7 +228,7 @@ def GetData() {
         if (xyz == true) {
             oout.append("\n--->$xyz\n")
             //System.exit(proc.exitValue())
-            proc.waitForOrKill(2*1000)
+            proc.waitForOrKill(1000)
             return [oout, oerr]
         }
         proc.waitForProcessOutput()
