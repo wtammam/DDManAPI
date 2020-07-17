@@ -229,7 +229,7 @@ def GetData() {
             return [oout, ]
         }*/
         proc.destroy()
-        return [oout, oerr]
+        return [oout, ]
     }
 
     private StringBuilder [] NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
@@ -324,7 +324,7 @@ def GetData() {
             proc.waitForProcessOutput(nout, nerr)
         }
         proc.destroy()
-        return [nout, ]
+        return [nout, nerr]
     }
 
     boolean ConsoleOutputCheck(String ConsoleOutput, String[] Patterns ) {
