@@ -66,7 +66,7 @@ def GetData() {
     VZ = DDManPrjVzPk.split(' ')[1]
     PK_Pre = DDManPrjVzPk.split(' ')[2]
     PK = PK_Pre.replaceAll("_EngBuild", "")
-    StringBuffer[] OutAndError = new StringBuilder[2];
+    StringBuilder[] OutAndError = new StringBuilder[2];
     def sout = new StringBuilder()
     def serr = new StringBuilder()
     boolean Errorfound = false
@@ -197,8 +197,8 @@ def GetData() {
     private StringBuilder [] OldDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String DDManJob_Old){
         String DDManOldAPI=DDManPath+"\\ddman6.jar"
         String WORKINGPLACE="C:\\meinedaten\\sgprojekte\\"+"${Projekt}\\${VZyklus}\\${PKonfiguration}"
-        def oout = new StringBuffer()
-        def oerr = new StringBuffer()
+        def oout = new StringBuilder()
+        def oerr = new StringBuilder()
         def DDManCommand
         def proc
         boolean xyz
@@ -217,19 +217,21 @@ def GetData() {
         oout.append("\n")
         oerr.append("\n####################################################\n")
         proc = DDManCommand.execute()
-        //proc.consumeProcessOutput(oout, oerr)
+        proc.consumeProcessOutput(oout, oerr)
         //proc.waitForProcessOutput()
         //proc.waitForProcessOutput(oout, oerr)
-        def xoout = proc.consumeProcessOutputStream(oout)
-        def xoerr = proc.consumeProcessErrorStream(oerr)
+        //def xoout = proc.consumeProcessOutputStream(oout)
+        //def xoerr = proc.consumeProcessErrorStream(oerr)
         ErrorList = ["connection", "SCHWERWIEGEND:"]
-        xyz = ConsoleOutputCheck("${xoerr}", ErrorList as String[])
+        xyz = ConsoleOutputCheck("${oerr}", ErrorList as String[])
 
         if (xyz == true) {
             oout.append("\n--->$xyz\n")
             //System.exit(proc.exitValue())
             proc.waitForOrKill(2*1000)
+            return [oout, oerr]
         }
+        proc.waitForProcessOutput()
         proc.destroy()
         return [oout, oerr]
     }
