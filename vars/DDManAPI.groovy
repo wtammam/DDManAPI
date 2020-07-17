@@ -228,7 +228,7 @@ def GetData() {
 
         if (xyz == true) {
             oerr.append("\n--->$xyz\n")
-            long mypid= proc.pid()
+            long mypid= ProcessHandle.current().pid()
             oerr.append("\n--->$mypid\n")
             proc.destroy()
             System.exit(0)

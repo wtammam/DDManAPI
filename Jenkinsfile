@@ -21,7 +21,6 @@ node(){
             //def test1 = new DDManAPI()
             log.info('process is started now ')
             log.warning('we have a problem but can solve it.')
-            log.warning("$!")
             //DDManAPI_Function.GetData('ssccsc dddd ffff')
             println ("DDManAPI_Function")
             test.GetData(PARAPRJ_PARAVC_PARAPK)
