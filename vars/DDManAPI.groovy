@@ -324,7 +324,7 @@ def GetData() {
             proc.waitForProcessOutput(nout, nerr)
         }
         proc.destroy()
-        return [nout, nerr]
+        return [nout, ]
     }
 
     boolean ConsoleOutputCheck(String ConsoleOutput, String[] Patterns ) {
