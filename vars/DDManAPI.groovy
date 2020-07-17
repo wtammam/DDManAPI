@@ -216,8 +216,8 @@ def GetData() {
         oout.append("\n************************** Export ${DDManJob_Old} ${Projekt} ${VZyklus} ${PKonfiguration} **************************\n")
         oout.append(DDManCommand)
         oout.append("\n")
-        //proc.consumeProcessOutput(oout, oerr)
-        proc.waitForProcessOutput(oout, oerr)
+        proc.consumeProcessOutput(oout, oerr)
+        //proc.waitForProcessOutput(oout, oerr)
         ErrorList = ["connection", "SCHWERWIEGEND:"]
         xyz = ConsoleOutputCheck("${oerr}", ErrorList as String[])
         oout.append("\n")
@@ -226,6 +226,7 @@ def GetData() {
             proc.waitForOrKill(2*1000)
             //return [oout, oerr]
         }
+        proc.waitForProcessOutput()
         proc.destroy()
         return [oout, oerr]
     }
