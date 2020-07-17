@@ -220,7 +220,7 @@ def GetData() {
         //proc.consumeProcessOutput(oout, oerr)
         //proc.waitForProcessOutput()
         //proc.waitForProcessOutput(oout, oerr)
-        def xoout = roc.consumeProcessOutputStream(oout)
+        def xoout = proc.consumeProcessOutputStream(oout)
         def xoerr = proc.consumeProcessErrorStream(oerr)
         ErrorList = ["connection", "SCHWERWIEGEND:"]
         xyz = ConsoleOutputCheck("${xoerr}", ErrorList as String[])
