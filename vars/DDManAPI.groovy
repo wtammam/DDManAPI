@@ -218,14 +218,16 @@ def GetData() {
         //proc.waitForProcessOutput(oout, oerr)
         String [] ErrorList = ["connection", "SCHWERWIEGEND:"]
         boolean xyz = ConsoleOutputCheck("${oout}", ErrorList as String[])
+        oout.append("\n")
+        oout.append("$xyz")
         if (xyz == true) {
             proc.destroy()
-            return [oout, "ERORRRRRR"]
+            return [oout, oerr]
             proc.waitForOrKill(2*1000)
         }
         proc.waitForProcessOutput()
         proc.destroy()
-        return [oout, "ERORRRRRR5555555"]
+        return [oout, oerr]
     }
 
     private StringBuilder [] NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
