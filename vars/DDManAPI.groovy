@@ -201,6 +201,8 @@ def GetData() {
         def oerr = new StringBuilder()
         def DDManCommand
         def proc
+        boolean xyz
+        String [] ErrorList
         if(DDManJob=="Schnittstellenanalyse"){
             DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJob_Old} -PRJ ${Projekt} -SGP ${VZyklus} -PRG ${PKonfiguration} -DAT C:\\meinedaten\\Schnittstellenanalyse.txt -DB ${DDPar}"
         }
@@ -216,8 +218,8 @@ def GetData() {
         oout.append("\n")
         proc.consumeProcessOutput(oout, oerr)
         proc.waitForProcessOutput()
-        String [] ErrorList = ["connection", "SCHWERWIEGEND:"]
-        boolean xyz = ConsoleOutputCheck("${oout}", ErrorList as String[])
+        ErrorList = ["connection", "SCHWERWIEGEND:"]
+        xyz = ConsoleOutputCheck("${oout}", ErrorList as String[])
         oout.append("\n")
         oout.append("$xyz")
         if (xyz == true) {
@@ -225,7 +227,7 @@ def GetData() {
             return [oout, oerr]
             proc.waitForOrKill(2*1000)
         }
-        proc.waitForProcessOutput()
+        //proc.waitForProcessOutput()
         proc.destroy()
         return [oout, oerr]
     }
