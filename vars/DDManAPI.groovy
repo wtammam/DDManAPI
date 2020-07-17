@@ -217,7 +217,7 @@ def GetData() {
         oout.append(DDManCommand)
         oout.append("\n")
         proc.consumeProcessOutput(oout, oerr)
-        //proc.waitForProcessOutput()
+        proc.waitForProcessOutput()
         ErrorList = ["connection", "SCHWERWIEGEND:"]
         xyz = ConsoleOutputCheck("${oerr}", ErrorList as String[])
         oout.append("\n")
@@ -225,7 +225,7 @@ def GetData() {
         if (xyz == true) {
             proc.waitForOrKill(2*1000)
             proc.destroy()
-            return [oout, oerr]
+            //return [oout, oerr]
         }
         //proc.waitForProcessOutput()
         proc.destroy()
