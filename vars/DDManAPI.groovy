@@ -225,7 +225,7 @@ def GetData() {
         }
         proc.waitForProcessOutput()
         proc.destroy()
-        return [oout, oerr]
+        return [oout, "ERORRRRRR5555555"]
     }
 
     private StringBuilder [] NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
