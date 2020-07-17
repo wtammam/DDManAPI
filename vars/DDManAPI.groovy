@@ -228,10 +228,12 @@ def GetData() {
 
         if (xyz == true) {
             oerr.append("\n--->$xyz\n")
+            long mypid= proc.pid()
+            oerr.append("\n--->$mypid\n")
             proc.destroy()
-            //System.exit(proc.exitValue())
-            proc.waitForOrKill(1)
-            return [oout, oerr]
+            System.exit(0)
+           //System.exit(proc.exitValue())
+            //proc.waitForOrKill(1)
         }
         //proc.waitForProcessOutput()
         proc.destroy()
