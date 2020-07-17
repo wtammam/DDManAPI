@@ -220,7 +220,7 @@ def GetData() {
         boolean xyz = ConsoleOutputCheck("${oout}", ErrorList as String[])
         if (xyz == true) {
             proc.destroy()
-            return [oout, oerr]
+            return [oout, "ERORRRRRR"]
             proc.waitForOrKill(2*1000)
         }
         proc.destroy()
