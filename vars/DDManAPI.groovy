@@ -229,7 +229,7 @@ def GetData() {
             return [oout, ]
         }*/
         proc.destroy()
-        return [oout, ]
+        return [oout, 0]
     }
 
     private StringBuilder [] NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
