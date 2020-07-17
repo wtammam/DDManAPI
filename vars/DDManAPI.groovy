@@ -219,7 +219,7 @@ def GetData() {
         proc.consumeProcessOutput(oout, oerr)
         proc.waitForProcessOutput()
         ErrorList = ["connection", "SCHWERWIEGEND:"]
-        xyz = ConsoleOutputCheck("${oout}", ErrorList as String[])
+        xyz = ConsoleOutputCheck("${oerr}", ErrorList as String[])
         oout.append("\n")
         oout.append("$xyz")
         if (xyz == true) {
