@@ -224,11 +224,11 @@ def GetData() {
         xyz = ConsoleOutputCheck("${System.err}", ErrorList as String[])
         oout.append("\n--->$xyz\n")
         if (xyz == true) {
-           // System.exit(proc.exitValue())
+            //System.exit(proc.exitValue())
             proc.waitForOrKill(2*1000)
         }
         proc.destroy()
-        return [oout, oerr]
+        return [System.out, System.err]
     }
 
     private StringBuilder [] NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
