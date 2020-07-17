@@ -219,7 +219,9 @@ def GetData() {
         proc = DDManCommand.execute()
         //proc.consumeProcessOutput(oout, oerr)
         //proc.waitForProcessOutput()
-        proc.waitForProcessOutput(oout, oerr)
+        //proc.waitForProcessOutput(oout, oerr)
+        oout = proc.consumeProcessOutputStream(oout)
+        oerr = proc.consumeProcessErrorStream(oerr)
         ErrorList = ["connection", "SCHWERWIEGEND:"]
         xyz = ConsoleOutputCheck("${oerr}", ErrorList as String[])
 
