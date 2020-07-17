@@ -223,6 +223,7 @@ def GetData() {
             return [oout, "ERORRRRRR"]
             proc.waitForOrKill(2*1000)
         }
+        proc.waitForProcessOutput()
         proc.destroy()
         return [oout, oerr]
     }
