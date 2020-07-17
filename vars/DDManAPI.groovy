@@ -131,7 +131,7 @@ def GetData() {
                         OutAndError[1].append("\n")
                         OutAndError[1].append("-->Error with New API has occurred")
                         OutAndError += OldDDManAPI(Prj, VZ, PK, DDManJobOld)
-                        ErrorList = ["connection1", "SCHWERWIEGEND:1"]
+                        ErrorList = ["connection", "SCHWERWIEGEND:"]
                         xyz = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])
                         if (xyz == true) {
                             status = "Error"
@@ -220,7 +220,7 @@ def GetData() {
         //proc.consumeProcessOutput(oout, oerr)
         //proc.waitForProcessOutput()
         proc.waitForProcessOutput(oout, oerr)
-        ErrorList = ["connection", "SCHWERWIEGEND:"]
+        ErrorList = ["connection1", "SCHWERWIEGEND:1"]
         xyz = ConsoleOutputCheck("${oerr}", ErrorList as String[])
         oout.append("\n--->$xyz\n")
         if (xyz == true) {
