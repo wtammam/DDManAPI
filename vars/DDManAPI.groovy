@@ -228,6 +228,7 @@ def GetData() {
 
         if (xyz == true) {
             oerr.append("\n--->$xyz\n")
+            proc.shutdown()
             proc.destroy()
             System.exit(0)
            //System.exit(proc.exitValue())
