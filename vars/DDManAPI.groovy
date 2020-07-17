@@ -66,9 +66,9 @@ def GetData() {
     VZ = DDManPrjVzPk.split(' ')[1]
     PK_Pre = DDManPrjVzPk.split(' ')[2]
     PK = PK_Pre.replaceAll("_EngBuild", "")
-    StringBuilder[] OutAndError = new StringBuilder[2];
-    def sout = new StringBuilder()
-    def serr = new StringBuilder()
+    StringBuffer[] OutAndError = new StringBuilder[2];
+    def sout = new StringBuffer()
+    def serr = new StringBuffer()
     boolean Errorfound = false
     boolean xyz
     String [] ErrorList
