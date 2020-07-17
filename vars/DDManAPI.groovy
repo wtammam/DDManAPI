@@ -218,7 +218,7 @@ def GetData() {
         oout.append("\n")
         //proc.consumeProcessOutput(oout, oerr)
         proc.waitForProcessOutput(oout, oerr)
-        ErrorList = ["fffffff", "ffffdfdf:"]
+        ErrorList = ["connection", "SCHWERWIEGEND:"]
         xyz = ConsoleOutputCheck("${oerr}", ErrorList as String[])
         oout.append("\n")
         oout.append("$xyz")
