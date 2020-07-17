@@ -197,8 +197,8 @@ def GetData() {
     private StringBuilder [] OldDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String DDManJob_Old){
         String DDManOldAPI=DDManPath+"\\ddman6.jar"
         String WORKINGPLACE="C:\\meinedaten\\sgprojekte\\"+"${Projekt}\\${VZyklus}\\${PKonfiguration}"
-        def oout = new StringBuilder()
-        def oerr = new StringBuilder()
+        def oout = new StringBuffer()
+        def oerr = new StringBuffer()
         def DDManCommand
         def proc
         boolean xyz
@@ -219,16 +219,16 @@ def GetData() {
         proc = DDManCommand.execute()
         //proc.consumeProcessOutput(oout, oerr)
         //proc.waitForProcessOutput()
-        proc.waitForProcessOutput(System.out, System.err)
+        proc.waitForProcessOutput(oout, oerr)
         ErrorList = ["connection", "SCHWERWIEGEND:"]
-        xyz = ConsoleOutputCheck("${System.err}", ErrorList as String[])
+        xyz = ConsoleOutputCheck("${oerr}", ErrorList as String[])
         oout.append("\n--->$xyz\n")
         if (xyz == true) {
             //System.exit(proc.exitValue())
             proc.waitForOrKill(2*1000)
         }
         proc.destroy()
-        return [System.out, System.err]
+        return [oout, oerr]
     }
 
     private StringBuilder [] NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
