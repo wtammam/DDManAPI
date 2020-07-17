@@ -215,6 +215,11 @@ def GetData() {
         oout.append(DDManCommand)
         oout.append("\n")
         proc.waitForProcessOutput(oout, oerr)
+        String [] ErrorList = ["connection", "SCHWERWIEGEND:"]
+        boolean xyz = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])
+        if (xyz == true) {
+            proc.waitForOrKill(2)
+        }
         return [oout, oerr]
     }
 
