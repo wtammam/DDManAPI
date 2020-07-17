@@ -215,7 +215,7 @@ def GetData() {
         oout.append("\n************************** Export ${DDManJob_Old} ${Projekt} ${VZyklus} ${PKonfiguration} **************************\n")
         oout.append(DDManCommand)
         oout.append("\n")
-        oerr.append("####################################################")
+        oerr.append("\n####################################################\n")
         proc = DDManCommand.execute()
         //proc.consumeProcessOutput(oout, oerr)
         //proc.waitForProcessOutput()
