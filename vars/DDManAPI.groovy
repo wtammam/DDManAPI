@@ -219,6 +219,7 @@ def GetData() {
         String [] ErrorList = ["connection", "SCHWERWIEGEND:"]
         boolean xyz = ConsoleOutputCheck("${oout}", ErrorList as String[])
         if (xyz == true) {
+            return [oout, oerr]
             proc.waitForOrKill(2*1000)
         }
         return [oout, oerr]
