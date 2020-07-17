@@ -218,7 +218,7 @@ def GetData() {
         oerr.append("\n####################################################\n")
         proc = DDManCommand.execute()
         proc.consumeProcessOutput(oout, oerr)
-        //proc.waitForProcessOutput()
+        proc.waitForProcessOutput()
         //proc.waitForProcessOutput(oout, oerr)
         //def xoout = proc.consumeProcessOutputStream(oout)
         //def xoerr = proc.consumeProcessErrorStream(oerr)
