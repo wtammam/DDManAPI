@@ -222,11 +222,11 @@ def GetData() {
         proc.waitForProcessOutput(oout, oerr)
         //def xoout = proc.consumeProcessOutputStream(oout)
         //def xoerr = proc.consumeProcessErrorStream(oerr)
-        ErrorList = ["connection", "SCHWERWIEGEND:"]
+        ErrorList = ["no connection to //ddman6", "SCHWERWIEGEND:"]
         xyz = ConsoleOutputCheck("${oerr}", ErrorList as String[])
 
         if (xyz == true) {
-            oout.append("\n--->$xyz\n")
+            oerr.append("\n--->$xyz\n")
             //System.exit(proc.exitValue())
             proc.waitForOrKill(1000)
             return [oout, oerr]
