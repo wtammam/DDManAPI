@@ -217,10 +217,10 @@ def GetData() {
         oout.append("\n")
         oerr.append("\n####################################################\n")
         proc = DDManCommand.execute()
-        //proc.consumeProcessOutput(oout, oerr)
+        proc.consumeProcessOutput(oout, oerr)
         //proc.waitForProcessOutput()
-        proc.waitForProcessOutput(oout, oerr)
-        proc.waitForOrKill(100)
+        //proc.waitForProcessOutput(oout, oerr)
+        //proc.waitForOrKill(100)
         //def xoout = proc.consumeProcessOutputStream(oout)
         //def xoerr = proc.consumeProcessErrorStream(oerr)
         ErrorList = ["no connection to //ddman6", "SCHWERWIEGEND:"]
@@ -228,8 +228,7 @@ def GetData() {
 
         if (xyz == true) {
             oerr.append("\n--->$xyz\n")
-            long mypid= ProcessHandle.current().pid()
-            oerr.append("\n--->$mypid\n")
+            proc.waitForOrKill(100000)
             proc.destroy()
             System.exit(0)
            //System.exit(proc.exitValue())
