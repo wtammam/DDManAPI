@@ -219,9 +219,11 @@ def GetData() {
         String [] ErrorList = ["connection", "SCHWERWIEGEND:"]
         boolean xyz = ConsoleOutputCheck("${oout}", ErrorList as String[])
         if (xyz == true) {
+            proc.destroy()
             return [oout, oerr]
             proc.waitForOrKill(2*1000)
         }
+        proc.destroy()
         return [oout, oerr]
     }
 
@@ -316,6 +318,7 @@ def GetData() {
             nout.append("\n")
             proc.waitForProcessOutput(nout, nerr)
         }
+        proc.destroy()
         return [nout, nerr]
     }
 
