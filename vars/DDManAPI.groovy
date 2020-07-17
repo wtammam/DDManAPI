@@ -66,9 +66,9 @@ def GetData() {
     VZ = DDManPrjVzPk.split(' ')[1]
     PK_Pre = DDManPrjVzPk.split(' ')[2]
     PK = PK_Pre.replaceAll("_EngBuild", "")
-    StringBuffer[] OutAndError = new StringBuilder[2];
-    def sout = new StringBuffer()
-    def serr = new StringBuffer()
+    StringBuilder[] OutAndError = new StringBuilder[2];
+    def sout = new StringBuilder()
+    def serr = new StringBuilder()
     boolean Errorfound = false
     boolean xyz
     String [] ErrorList
@@ -222,8 +222,9 @@ def GetData() {
         proc.waitForProcessOutput(oout, oerr)
         ErrorList = ["connection", "SCHWERWIEGEND:"]
         xyz = ConsoleOutputCheck("${oerr}", ErrorList as String[])
-        oout.append("\n--->$xyz\n")
+
         if (xyz == true) {
+            oout.append("\n--->$xyz\n")
             //System.exit(proc.exitValue())
             proc.waitForOrKill(2*1000)
         }
