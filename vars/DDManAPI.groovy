@@ -220,15 +220,13 @@ def GetData() {
         //proc.consumeProcessOutput(oout, oerr)
         //proc.waitForProcessOutput()
         proc.waitForProcessOutput(oout, oerr)
-        /*ErrorList = ["connection", "SCHWERWIEGEND:"]
+        ErrorList = ["connection", "SCHWERWIEGEND:"]
         xyz = ConsoleOutputCheck("${oerr}", ErrorList as String[])
-        oout.append("\n")
-        oout.append("$xyz")
+        oout.append("\n--->$xyz\n")
         if (xyz == true) {
             System.exit(proc.exitValue())
-            //proc.waitForOrKill(2*1000)
-            return [oout, ]
-        }*/
+            proc.waitForOrKill(2*1000)
+        }
         proc.destroy()
         return [oout, oerr]
     }
