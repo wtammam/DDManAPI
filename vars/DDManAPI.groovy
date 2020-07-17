@@ -215,6 +215,7 @@ def GetData() {
         oout.append("\n************************** Export ${DDManJob_Old} ${Projekt} ${VZyklus} ${PKonfiguration} **************************\n")
         oout.append(DDManCommand)
         oout.append("\n")
+        oerr.append("####################################################")
         proc = DDManCommand.execute()
         //proc.consumeProcessOutput(oout, oerr)
         //proc.waitForProcessOutput()
@@ -229,7 +230,7 @@ def GetData() {
             return [oout, ]
         }*/
         proc.destroy()
-        return [oout, '']
+        return [oout, oerr]
     }
 
     private StringBuilder [] NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
