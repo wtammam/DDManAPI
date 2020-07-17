@@ -215,7 +215,7 @@ def GetData() {
         oout.append(DDManCommand)
         oout.append("\n")
         proc.consumeProcessOutput(oout, oerr)
-        //proc.waitForProcessOutput(oout, oerr)
+        proc.waitForProcessOutput()
         String [] ErrorList = ["connection", "SCHWERWIEGEND:"]
         boolean xyz = ConsoleOutputCheck("${oout}", ErrorList as String[])
         oout.append("\n")
