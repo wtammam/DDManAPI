@@ -226,7 +226,7 @@ def GetData() {
         if (xyz == true) {
             System.exit(proc.exitValue())
             //proc.waitForOrKill(2*1000)
-            return [oout, "###################################################"]
+            return [oout, oerr]
         }
         proc.destroy()
         return [oout, oerr]
