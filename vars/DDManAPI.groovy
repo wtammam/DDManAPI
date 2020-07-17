@@ -220,7 +220,7 @@ def GetData() {
         proc.consumeProcessOutput(oout, oerr)
         //proc.waitForProcessOutput()
         //proc.waitForProcessOutput(oout, oerr)
-        proc.waitFor()
+        //proc.waitForOrKill(100)
         //def xoout = proc.consumeProcessOutputStream(oout)
         //def xoerr = proc.consumeProcessErrorStream(oerr)
         ErrorList = ["no connection to //ddman6", "SCHWERWIEGEND:"]
@@ -228,7 +228,6 @@ def GetData() {
 
         if (xyz == true) {
             oerr.append("\n--->$xyz\n")
-            proc.waitForOrKill(100000)
             proc.destroy()
             System.exit(0)
            //System.exit(proc.exitValue())
