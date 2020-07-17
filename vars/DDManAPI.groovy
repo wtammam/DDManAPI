@@ -212,10 +212,10 @@ def GetData() {
             DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[0]} ${DDManJob_Old} PRJ=${Projekt} PS=${VZyklus} PK=${PKonfiguration} DB=${DDPar}"
             //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
         }
-        proc = DDManCommand.execute()
         oout.append("\n************************** Export ${DDManJob_Old} ${Projekt} ${VZyklus} ${PKonfiguration} **************************\n")
         oout.append(DDManCommand)
         oout.append("\n")
+        proc = DDManCommand.execute()
         //proc.consumeProcessOutput(oout, oerr)
         //proc.waitForProcessOutput()
         proc.waitForProcessOutput(oout, oerr)
@@ -243,9 +243,9 @@ def GetData() {
             for (int i = 0; i < DDManJob_New.length ; i++) {
                 DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[0]} ${DDManJob_New[i]} PRJ=${Projekt} PS=${VZyklus} PK=${PKonfiguration} DB=${DDPar}"
                 //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
-                proc = DDManCommand.execute()
                 nout.append("\n************************** Export ${DDManJob_New[i]} ${Projekt} ${VZyklus} ${PKonfiguration} **************************\n")
                 nout.append(DDManCommand)
+                proc = DDManCommand.execute()
                 nout.append("\n")
                 proc.waitForProcessOutput(nout, nerr)
             }
@@ -260,10 +260,10 @@ def GetData() {
                         DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJob_New[i]} -PRJ ${Projekt} -SGP ${VZyklus} -PRG ${PKonfiguration} -DIR ${WORKINGPLACE}\\description -DB ${DDPar}"
                     }
                     if(i != 5 && i != 6) {
-                        proc = DDManCommand.execute()
                         nout.append("\n************************** Export ${DDManJob_New[i]} ${Projekt} ${VZyklus} ${PKonfiguration} **************************\n")
                         nout.append(DDManCommand)
                         nout.append("\n")
+                        proc = DDManCommand.execute()
                         proc.waitForProcessOutput(nout, nerr)
                     }
                 } else {
@@ -273,10 +273,10 @@ def GetData() {
                         DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJob_New[i]} -PRJ ${Projekt} -SGP ${VZyklus} -PRG ${PKonfiguration} -DIR ${WORKINGPLACE}\\description -DB ${DDPar}"
                     }
                     if(i != 3 && i != 4) {
-                        proc = DDManCommand.execute()
                         nout.append("\n************************** Export ${DDManJob_New[i]} ${Projekt} ${VZyklus} ${PKonfiguration} **************************\n")
                         nout.append(DDManCommand)
                         nout.append("\n")
+                        proc = DDManCommand.execute()
                         proc.waitForProcessOutput(nout, nerr)
 
                     }
@@ -288,19 +288,19 @@ def GetData() {
                 if (Projekt != "PT3_Otto_M274") {
                     DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[0]} ${DDManJob_New[i]} PRJ=${Projekt} PS=${VZyklus} PK=${PKonfiguration} DB=${DDPar}"
                     if(i != 2){
-                        proc = DDManCommand.execute()
                         nout.append("\n************************** Export ${DDManJob_New[i]} ${Projekt} ${VZyklus} ${PKonfiguration} **************************\n")
                         nout.append(DDManCommand)
                         nout.append("\n")
+                        proc = DDManCommand.execute()
                         proc.waitForProcessOutput(nout, nerr)
                     }
                 } else {
                     DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJob_New[i]} -DIR ${WORKINGPLACE}\\description -DB ${DDPar}"
                     if(i == 2) {
-                        proc = DDManCommand.execute()
                         nout.append("\n************************** Export ${DDManJob_New[i]} ${Projekt} ${VZyklus} ${PKonfiguration} **************************\n")
                         nout.append(DDManCommand)
                         nout.append("\n")
+                        proc = DDManCommand.execute()
                         proc.waitForProcessOutput(nout, nerr)
                     }
                 }
@@ -309,18 +309,18 @@ def GetData() {
         }
         else if(DDManJob=="Schnittstellenanalyse") {
             DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJob_New[0]} -PRJ ${Projekt} -SGP ${VZyklus} -PRG ${PKonfiguration} -DAT ${WORKINGPLACE}\\Schnittstellenanalyse.txt -DB ${DDPar}"
-            proc = DDManCommand.execute()
             nout.append("\n************************** Export ${DDManJob_New[0]} ${Projekt} ${VZyklus} ${PKonfiguration} **************************\n")
             nout.append(DDManCommand)
             nout.append("\n")
+            proc = DDManCommand.execute()
             proc.waitForProcessOutput(nout, nerr)
         }
         else if(DDManJob=="KGSXML") {
             DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[1]} ${DDManJob_New[0]} -PRJ ${Projekt} -SGP ${VZyklus} -PRG ${PKonfiguration} -DAT ${WORKINGPLACE}\\description\\agk.xml -DB ${DDPar}"
-            proc = DDManCommand.execute()
             nout.append("\n************************** Export ${DDManJob_New[0]} ${Projekt} ${VZyklus} ${PKonfiguration} **************************\n")
             nout.append(DDManCommand)
             nout.append("\n")
+            proc = DDManCommand.execute()
             proc.waitForProcessOutput(nout, nerr)
         }
         proc.destroy()
