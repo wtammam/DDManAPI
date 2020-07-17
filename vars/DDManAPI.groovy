@@ -219,9 +219,9 @@ def GetData() {
         proc = DDManCommand.execute()
         //proc.consumeProcessOutput(oout, oerr)
         //proc.waitForProcessOutput()
-        proc.waitForProcessOutput(oout, oerr)
+        proc.waitForProcessOutput(System.out, System.err)
         ErrorList = ["connection", "SCHWERWIEGEND:"]
-        xyz = ConsoleOutputCheck("${oerr}", ErrorList as String[])
+        xyz = ConsoleOutputCheck("${System.err}", ErrorList as String[])
         oout.append("\n--->$xyz\n")
         if (xyz == true) {
            // System.exit(proc.exitValue())
