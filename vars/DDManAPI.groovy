@@ -227,6 +227,7 @@ def GetData() {
 
         if (xyz == true) {
             oerr.append("\n--->$xyz\n")
+            proc.destroy()
             //System.exit(proc.exitValue())
             proc.waitForOrKill(1000)
             return [oout, oerr]
