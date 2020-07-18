@@ -251,8 +251,6 @@ def GetData() {
         }
         }
         }
-        oout.append(xoout.toString())
-        oerr.append(xoerr.toString())
         //proc.waitForProcessOutput()
         proc.destroy()
         return [oout, oerr]
