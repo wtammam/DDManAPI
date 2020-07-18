@@ -237,7 +237,7 @@ def GetData() {
         //xoout = proc.consumeProcessOutputStream(oout)
         //xoerr = proc.consumeProcessErrorStream(oerr)
 
-        proc.in.eachLine {line, count ->
+        proc.in.newReader().eachLine {line ->
         xyz = ConsoleOutputCheck("${line}", ErrorList as String[])
 
         if (xyz == true) {
