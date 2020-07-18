@@ -194,21 +194,20 @@ def GetData() {
 
 }
 
-    private StringBuilder [] OldDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String DDManJob_Old){
-        String DDManOldAPI=DDManPath+"\\ddman6.jar"
-        String WORKINGPLACE="C:\\meinedaten\\sgprojekte\\"+"${Projekt}\\${VZyklus}\\${PKonfiguration}"
+    private StringBuilder [] OldDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String DDManJob_Old) {
+        String DDManOldAPI = DDManPath + "\\ddman6.jar"
+        String WORKINGPLACE = "C:\\meinedaten\\sgprojekte\\" + "${Projekt}\\${VZyklus}\\${PKonfiguration}"
         def oout = new StringBuilder()
         def oerr = new StringBuilder()
-        def x =new InputStream()
+
         def DDManCommand
         def proc
 
         boolean xyz
-        String [] ErrorList
-        if(DDManJob=="Schnittstellenanalyse"){
+        String[] ErrorList
+        if (DDManJob == "Schnittstellenanalyse") {
             DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJob_Old} -PRJ ${Projekt} -SGP ${VZyklus} -PRG ${PKonfiguration} -DAT C:\\meinedaten\\Schnittstellenanalyse.txt -DB ${DDPar}"
-        }
-        else if(DDManJob=="KGSXML"){
+        } else if (DDManJob == "KGSXML") {
             DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJob_Old} -PRJ ${Projekt} -SGP ${VZyklus} -PRG ${PKonfiguration} -DAT ${WORKINGPLACE}\\description\\agk.xml -DB ${DDPar}"
         } else {
             DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[0]} ${DDManJob_Old} PRJ=${Projekt} PS=${VZyklus} PK=${PKonfiguration} DB=${DDPar}"
@@ -223,13 +222,20 @@ def GetData() {
         //proc.consumeProcessOutput(oout, oerr)
         //proc.waitForProcessOutput()
         //proc.waitForProcessOutput(oout, oerr)
-        x= proc.getErr()
-        proc.waitForOrKill(20000)
-        oerr.append("${x.toString()}")
+        //def x = new FileInputStream(proc.getErr())
+        //proc.waitForOrKill(20000)
+        //oerr.append("${x.toString()}")
 
-        oout.append("${proc.getText()}")
-        //def xoout = proc.consumeProcessOutputStream(oout)
-        //def xoerr = proc.consumeProcessErrorStream(oerr)
+        //oout.append("${proc.getText()}")
+        //def xoout
+
+
+        //def xoerr
+        while (1) {
+            sleep(3000)
+        //xoout = proc.consumeProcessOutputStream(oout)
+        //xoerr = proc.consumeProcessErrorStream(oerr)
+        proc.consumeProcessOutput(oout, oerr)
         ErrorList = ["no connection to //ddman6", "SCHWERWIEGEND:"]
         xyz = ConsoleOutputCheck("${oerr}", ErrorList as String[])
 
@@ -240,6 +246,8 @@ def GetData() {
             //System.exit(0)
            //System.exit(proc.exitValue())
             //proc.waitForOrKill(1)
+            break
+        }
         }
         //proc.waitForProcessOutput()
         proc.destroy()
