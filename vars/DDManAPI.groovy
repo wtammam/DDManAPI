@@ -224,8 +224,8 @@ def GetData() {
         //proc.waitForProcessOutput(oout, oerr)
 
         proc.waitForOrKill(2000)
-        oerr = IOUtils.toString(proc.getErr(), StandardCharsets.UTF_8)
-        oout = IOUtils.toString(proc.getOut(), StandardCharsets.UTF_8)
+        oerr =  proc.getErr().toString()
+        oout = proc.getOut().toString()
         //def xoout = proc.consumeProcessOutputStream(oout)
         //def xoerr = proc.consumeProcessErrorStream(oerr)
         ErrorList = ["no connection to //ddman6", "SCHWERWIEGEND:"]
