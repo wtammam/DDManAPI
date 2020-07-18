@@ -201,6 +201,7 @@ def GetData() {
         def oerr = new StringBuilder()
         def DDManCommand
         def proc
+
         boolean xyz
         String [] ErrorList
         if(DDManJob=="Schnittstellenanalyse"){
@@ -217,9 +218,11 @@ def GetData() {
         oout.append("\n")
         oerr.append("\n####################################################\n")
         proc = DDManCommand.execute()
+        obsolver(proc,100)
         //proc.consumeProcessOutput(oout, oerr)
         //proc.waitForProcessOutput()
         proc.waitForProcessOutput(oout, oerr)
+
         //proc.waitForOrKill(100)
         //def xoout = proc.consumeProcessOutputStream(oout)
         //def xoerr = proc.consumeProcessErrorStream(oerr)
@@ -345,8 +348,14 @@ def GetData() {
         boolean found = Patterns.any{ConsoleOutput.toLowerCase().contains(it.toLowerCase())}
         return found
     }
+    private def obsolver(def process, int timeout ){
+        //def proc1
+        String killCommand = "${process.waitForOrKill(1000*timeout)}"
+        killCommand.execute()
 
+    }
 }
+
 //println ("${DDManjob}, ${Mod}")
 //if (${Prj}!=''&& ${VZ}!=''&& ${PK}!=''&& DDManjob!=''){
 // x= bat javapath javapar1 Javapar2 ddmanpath ddmanpar DDManjob -PRJ Prj -SGP VZ -PRG PK -DB ddpar
