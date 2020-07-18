@@ -218,6 +218,7 @@ def GetData() {
         oout.append("\n")
         oerr.append("\n####################################################\n")
         proc = DDManCommand.execute()
+        proc.consumeProcessOutput(oout, oerr)
         //obsolver(proc,100)
         //proc.consumeProcessOutput(oout, oerr)
         //proc.waitForProcessOutput()
@@ -228,16 +229,15 @@ def GetData() {
 
         //oout.append("${proc.getText()}")
         //def xoout
-
-
+        ErrorList = ["no connection to //ddman6", "SCHWERWIEGEND:"]
         //def xoerr
-        while (1) {
-            sleep(3000)
+        while (xyz == false) {
+         //   sleep(3000)
         //xoout = proc.consumeProcessOutputStream(oout)
         //xoerr = proc.consumeProcessErrorStream(oerr)
-        proc.consumeProcessOutput(oout, oerr)
-        ErrorList = ["no connection to //ddman6", "SCHWERWIEGEND:"]
-        xyz = ConsoleOutputCheck("${oerr}", ErrorList as String[])
+
+        oerr.eachLine {line, count ->
+        xyz = ConsoleOutputCheck("${line}", ErrorList as String[])
 
         if (xyz == true) {
             oerr.append("\n--->$xyz\n")
@@ -246,7 +246,8 @@ def GetData() {
             //System.exit(0)
            //System.exit(proc.exitValue())
             //proc.waitForOrKill(1)
-            break
+            //break
+        }
         }
         }
         //proc.waitForProcessOutput()
