@@ -217,7 +217,7 @@ def GetData() {
         oout.append("\n")
         oerr.append("\n####################################################\n")
         proc = DDManCommand.execute()
-        //proc.consumeProcessOutput(xoout, xoerr)
+        proc.consumeProcessOutput(oout, oerr)
         //oout=proc.text()
         sleep(200)
         //obsolver(proc,100)
