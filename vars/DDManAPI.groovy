@@ -220,6 +220,7 @@ def GetData() {
         oerr.append("\n####################################################\n")
         proc = DDManCommand.execute()
         proc.consumeProcessOutput(xoout, xoerr)
+        sleep(200)
         //obsolver(proc,100)
         //proc.consumeProcessOutput(oout, oerr)
         //proc.waitForProcessOutput()
