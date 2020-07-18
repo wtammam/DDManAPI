@@ -223,7 +223,7 @@ def GetData() {
         //proc.waitForProcessOutput()
         //proc.waitForProcessOutput(oout, oerr)
 
-        proc.waitForOrKill(10000)
+        proc.waitForOrKill(20000)
         oerr.append("${proc.getErr().toString()}")
         oout.append("${proc.getText()}")
         //def xoout = proc.consumeProcessOutputStream(oout)
