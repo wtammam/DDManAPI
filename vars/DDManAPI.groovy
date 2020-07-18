@@ -197,9 +197,10 @@ def GetData() {
     private StringBuffer [] OldDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String DDManJob_Old) {
         String DDManOldAPI = DDManPath + "\\ddman6.jar"
         String WORKINGPLACE = "C:\\meinedaten\\sgprojekte\\" + "${Projekt}\\${VZyklus}\\${PKonfiguration}"
-        def oout = new StringBuffer()
-        def oerr = new StringBuffer()
-
+        //def oout = new StringBuffer()
+        //def oerr = new StringBuffer()
+        def oout = new ByteArrayOutputStream()
+        def oerr = new ByteArrayOutputStream()
         def DDManCommand
         def proc
 
