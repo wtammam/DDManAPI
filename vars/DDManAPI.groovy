@@ -221,9 +221,11 @@ def GetData() {
         obsolver(proc,100)
         //proc.consumeProcessOutput(oout, oerr)
         //proc.waitForProcessOutput()
-        proc.waitForProcessOutput(oout, oerr)
+        //proc.waitForProcessOutput(oout, oerr)
 
-        //proc.waitForOrKill(100)
+        proc.waitForOrKill(2000)
+        oerr =  proc.getErr()
+        oout = proc.getOut()
         //def xoout = proc.consumeProcessOutputStream(oout)
         //def xoerr = proc.consumeProcessErrorStream(oerr)
         ErrorList = ["no connection to //ddman6", "SCHWERWIEGEND:"]
@@ -348,10 +350,11 @@ def GetData() {
         boolean found = Patterns.any{ConsoleOutput.toLowerCase().contains(it.toLowerCase())}
         return found
     }
-    private def obsolver(def process, int timeout ){
-        //def proc1
+    private String obsolver(def process, int timeout ){
+        String out
         String killCommand = "${process.waitForOrKill(1000*timeout)}"
-        killCommand.execute()
+        out= killCommand.execute().text
+        return out
 
     }
 }
