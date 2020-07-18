@@ -255,7 +255,7 @@ def GetData() {
         oerr.append(xoerr.toString())
         //proc.waitForProcessOutput()
         proc.destroy()
-        return [oout.toString(), oerr.toString()]
+        return [oout, oerr]
     }
 
     private StringBuffer [] NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
