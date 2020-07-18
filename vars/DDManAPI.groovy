@@ -201,7 +201,7 @@ def GetData() {
         def oerr = new StringBuilder()
 
         def DDManCommand
-        def proc
+        Process proc
 
         boolean xyz
         String[] ErrorList
