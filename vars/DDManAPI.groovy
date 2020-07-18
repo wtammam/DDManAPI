@@ -66,9 +66,9 @@ def GetData() {
     VZ = DDManPrjVzPk.split(' ')[1]
     PK_Pre = DDManPrjVzPk.split(' ')[2]
     PK = PK_Pre.replaceAll("_EngBuild", "")
-    StringBuilder[] OutAndError = new StringBuilder[2];
-    def sout = new StringBuilder()
-    def serr = new StringBuilder()
+    StringBuffer[] OutAndError = new StringBuffer[2];
+    def sout = new StringBuffer()
+    def serr = new StringBuffer()
     boolean Errorfound = false
     boolean xyz
     String [] ErrorList
@@ -194,14 +194,14 @@ def GetData() {
 
 }
 
-    private StringBuilder [] OldDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String DDManJob_Old) {
+    private StringBuffer [] OldDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String DDManJob_Old) {
         String DDManOldAPI = DDManPath + "\\ddman6.jar"
         String WORKINGPLACE = "C:\\meinedaten\\sgprojekte\\" + "${Projekt}\\${VZyklus}\\${PKonfiguration}"
-        def oout = new StringBuilder()
-        def oerr = new StringBuilder()
+        def oout = new StringBuffer()
+        def oerr = new StringBuffer()
 
         def DDManCommand
-        Process proc
+        def proc
 
         boolean xyz
         String[] ErrorList
@@ -255,11 +255,11 @@ def GetData() {
         return [oout, oerr]
     }
 
-    private StringBuilder [] NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
+    private StringBuffer [] NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
         String DDManNewAPI=DDManPath+"\\ddmanExportClient\\ddmanExportClient.jar"
         String WORKINGPLACE="C:\\meinedaten\\sgprojekte\\"+"${Projekt}\\${VZyklus}\\${PKonfiguration}"
-        def nout = new StringBuilder()
-        def nerr = new StringBuilder()
+        def nout = new StringBuffer()
+        def nerr = new StringBuffer()
         def DDManCommand
         def proc
         if(DDManJob=="Integration" || DDManJob=="FDEF") {
