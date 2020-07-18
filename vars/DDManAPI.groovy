@@ -241,7 +241,7 @@ def GetData() {
         xyz = ConsoleOutputCheck("${line}", ErrorList as String[])
 
         if (xyz == true) {
-            oerr.append("\n--->$xyz\n")
+            //oerr.append("\n--->$xyz\n")
             //proc.shutdown()
             proc.destroy()
             //System.exit(0)
@@ -253,7 +253,7 @@ def GetData() {
         }
         //proc.waitForProcessOutput()
         proc.destroy()
-        return [oout, oerr]
+        return [oout.toString(), oerr.toString()]
     }
 
     private StringBuffer [] NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
