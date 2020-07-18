@@ -217,8 +217,6 @@ def GetData() {
         oout.append("\n")
         oerr.append("\n####################################################\n")
         proc = DDManCommand.execute()
-        proc.waitForProcessOutput()
-        oerr.append("\n####################################################\n")
         //proc.consumeProcessOutput(xoout, xoerr)
         //oout=proc.text()
         sleep(200)
@@ -234,7 +232,7 @@ def GetData() {
         //def xoout
         ErrorList = ["no connection to //ddman6", "SCHWERWIEGEND:"]
         //def xoerr
-        while (xyz == false) {
+        //while (xyz == false) {
          //   sleep(3000)
         //xoout = proc.consumeProcessOutputStream(oout)
         //xoerr = proc.consumeProcessErrorStream(oerr)
@@ -253,7 +251,7 @@ def GetData() {
             //break
         }
         }
-        }
+    //    }
         //proc.waitForProcessOutput()
         proc.destroy()
         return [oout, oerr]
