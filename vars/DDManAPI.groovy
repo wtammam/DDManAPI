@@ -199,8 +199,6 @@ def GetData() {
         String WORKINGPLACE = "C:\\meinedaten\\sgprojekte\\" + "${Projekt}\\${VZyklus}\\${PKonfiguration}"
         def oout = new StringBuffer()
         def oerr = new StringBuffer()
-        def xoout = new ByteArrayOutputStream()
-        def xoerr = new ByteArrayOutputStream()
         def DDManCommand
         def proc
 
@@ -219,7 +217,8 @@ def GetData() {
         oout.append("\n")
         oerr.append("\n####################################################\n")
         proc = DDManCommand.execute()
-        proc.consumeProcessOutput(xoout, xoerr)
+        //proc.consumeProcessOutput(xoout, xoerr)
+        //oout=proc.text()
         sleep(200)
         //obsolver(proc,100)
         //proc.consumeProcessOutput(oout, oerr)
@@ -238,7 +237,7 @@ def GetData() {
         //xoout = proc.consumeProcessOutputStream(oout)
         //xoerr = proc.consumeProcessErrorStream(oerr)
 
-        oerr.toString().eachLine {line, count ->
+        proc.in.eachLine {line, count ->
         xyz = ConsoleOutputCheck("${line}", ErrorList as String[])
 
         if (xyz == true) {
