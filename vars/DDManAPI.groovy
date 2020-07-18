@@ -199,6 +199,7 @@ def GetData() {
         String WORKINGPLACE="C:\\meinedaten\\sgprojekte\\"+"${Projekt}\\${VZyklus}\\${PKonfiguration}"
         def oout = new StringBuilder()
         def oerr = new StringBuilder()
+        def x =new InputStream()
         def DDManCommand
         def proc
 
@@ -222,9 +223,10 @@ def GetData() {
         //proc.consumeProcessOutput(oout, oerr)
         //proc.waitForProcessOutput()
         //proc.waitForProcessOutput(oout, oerr)
-
+        x= proc.getErr()
         proc.waitForOrKill(20000)
-        oerr.append("${proc.getErr().toString()}")
+        oerr.append("${x.toString()}")
+
         oout.append("${proc.getText()}")
         //def xoout = proc.consumeProcessOutputStream(oout)
         //def xoerr = proc.consumeProcessErrorStream(oerr)
