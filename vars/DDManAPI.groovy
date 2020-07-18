@@ -241,8 +241,9 @@ def GetData() {
         xyz = ConsoleOutputCheck("${line}", ErrorList as String[])
 
         if (xyz == true) {
-            //oerr.append("\n--->$xyz\n")
+            oerr.append("\n--->$xyz\n")
             //proc.shutdown()
+            return [oout, oerr]
             proc.destroy()
             //System.exit(0)
            //System.exit(proc.exitValue())
