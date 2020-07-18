@@ -197,10 +197,10 @@ def GetData() {
     private StringBuffer [] OldDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String DDManJob_Old) {
         String DDManOldAPI = DDManPath + "\\ddman6.jar"
         String WORKINGPLACE = "C:\\meinedaten\\sgprojekte\\" + "${Projekt}\\${VZyklus}\\${PKonfiguration}"
-        //def oout = new StringBuffer()
-        //def oerr = new StringBuffer()
-        def oout = new ByteArrayOutputStream()
-        def oerr = new ByteArrayOutputStream()
+        def oout = new StringBuffer()
+        def oerr = new StringBuffer()
+        def xoout = new ByteArrayOutputStream()
+        def xoerr = new ByteArrayOutputStream()
         def DDManCommand
         def proc
 
@@ -214,12 +214,12 @@ def GetData() {
             DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[0]} ${DDManJob_Old} PRJ=${Projekt} PS=${VZyklus} PK=${PKonfiguration} DB=${DDPar}"
             //def DDManCommand= "java -jar -Xmx1G C:\\Users\\wtammam\\AppData\\Local\\DDMan6\\release\\ddman6.jar -EXEC INTEGRATION-TEST-B PRJ=M260_M264 PS=19B_Star23_VC10 PK=L07FRG20 >c:\\temp\\test.txt 2>&1"
         }
-       /* oout.append("\n************************** Export ${DDManJob_Old} ${Projekt} ${VZyklus} ${PKonfiguration} **************************\n")
+        oout.append("\n************************** Export ${DDManJob_Old} ${Projekt} ${VZyklus} ${PKonfiguration} **************************\n")
         oout.append(DDManCommand)
         oout.append("\n")
-        oerr.append("\n####################################################\n")*/
+        oerr.append("\n####################################################\n")
         proc = DDManCommand.execute()
-        proc.consumeProcessOutput(oout, oerr)
+        proc.consumeProcessOutput(xoout, xoerr)
         //obsolver(proc,100)
         //proc.consumeProcessOutput(oout, oerr)
         //proc.waitForProcessOutput()
@@ -251,6 +251,8 @@ def GetData() {
         }
         }
         }
+        oout.append(xoout.toString())
+        oerr.append(xoerr.toString())
         //proc.waitForProcessOutput()
         proc.destroy()
         return [oout.toString(), oerr.toString()]
