@@ -232,7 +232,7 @@ def GetData() {
         //def xoout
         ErrorList = ["connection", "SCHWERWIEGEND:"]
         //def xoerr
-        //while (1) {
+        while (xyz == false) {
          //   sleep(3000)
         //xoout = proc.consumeProcessOutputStream(oout)
         //xoerr = proc.consumeProcessErrorStream(oerr)
@@ -251,7 +251,7 @@ def GetData() {
             break
         }
         }
-       // }
+        }
         //proc.waitForProcessOutput()
         proc.destroy()
         return [oout, oerr]
