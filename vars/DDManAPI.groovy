@@ -239,7 +239,7 @@ def GetData() {
         oerr.append("\n------------->$xyz\n")
         proc.in.newReader().eachLine {line ->
         xyz = ConsoleOutputCheck(line, ErrorList as String[])
-            oerr.append("\n------------->$line\n")
+            oerr.append("\n-********************$line\n")
         if (xyz == true) {
             oerr.append("\n--->$xyz\n")
             //proc.shutdown()
