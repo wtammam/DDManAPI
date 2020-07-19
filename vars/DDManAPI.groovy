@@ -202,7 +202,7 @@ def GetData() {
         def DDManCommand
         def proc
 
-        boolean xyz
+        boolean xyz=false
         String[] ErrorList
         if (DDManJob == "Schnittstellenanalyse") {
             DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJob_Old} -PRJ ${Projekt} -SGP ${VZyklus} -PRG ${PKonfiguration} -DAT C:\\meinedaten\\Schnittstellenanalyse.txt -DB ${DDPar}"
@@ -232,7 +232,7 @@ def GetData() {
         //def xoout
         ErrorList = ["connection", "SCHWERWIEGEND:"]
         //def xoerr
-        //while (xyz == false) {
+        while (xyz == false) {
          //   sleep(3000)
         //xoout = proc.consumeProcessOutputStream(oout)
         //xoerr = proc.consumeProcessErrorStream(oerr)
@@ -251,7 +251,7 @@ def GetData() {
             //break
         }
         }
-    //    }
+        }
         //proc.waitForProcessOutput()
         proc.destroy()
         return [oout, oerr]
