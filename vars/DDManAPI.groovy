@@ -126,24 +126,16 @@ def GetData() {
                     Errorfound = ConsoleOutputCheck("${OutAndError}", ErrorList as String[])*/
 
                     if (OutAndError[2].toString() == "NewAPIError") {
-                        OutAndError[1].append("\n")
-                        OutAndError[1].append("-->Error with New API has occurred\n")
-                        OutAndError[2].append ("--->Error with New DDMan-API")
                         OutAndError += OldDDManAPI(Prj, VZ, PK, DDManJobOld)
                         /*ErrorList = ["connection", "SCHWERWIEGEND:"]
                         xyz = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])*/
                         if (OutAndError[2].toString() == "OldAPIError") {
-                            OutAndError[1].append("\n")
-                            OutAndError[1].append("-->Error with Old API has occurred\n")
-                            OutAndError[2].append ("--->Error with Old DDMan-API")
                             //System.exit(0)
                           //throw new Exception ("some error message");
                         } else
-                            OutAndError[2].append("\n")
-                            OutAndError[2].append("-->Checkout with Old API is done successfully\n")
+                            OutAndError[2].append("\n-->Checkout with Old API is done successfully\n")
                     } else{
-                        OutAndError[2].append("\n")
-                        OutAndError[2].append("-->Checkout with New API is done successfully\n")
+                        OutAndError[2].append("\n-->Checkout with New API is done successfully\n")
                     }
                 }catch(InterruptedException e){
                     status = "schwerer Error"
@@ -243,22 +235,22 @@ def GetData() {
         //xoerr = proc.consumeProcessErrorStream(oerr)
         //oerr.append("\n------------->$xyz\n")
         //proc.in.newReader().eachLine {line ->
-        oerr.each {it ->
-            oerrorfound = ConsoleOutputCheck(it.toString(), ErrorList as String[])
-            //oerr.append("\n-********************${it.toString()}\n")
-        if (oerrorfound == true ) {
-            oerr.append("\n--->Error Found $oerrorfound\n")
-            ofound.append("OldAPIError")
-            //proc.shutdown()
-            proc.destroy()
-            return [oout, oerr, ofound]
-            //System.exit(0)
-           //System.exit(proc.exitValue())
-            //proc.waitForOrKill(1)
-
+            oerr.each {it ->
+                oerrorfound = ConsoleOutputCheck(it.toString(), ErrorList as String[])
+                //oerr.append("\n-********************${it.toString()}\n")
+                if (oerrorfound == true ) {
+                    oerr.append("\n--->Error Found $nerrorfound\n")
+                    oerr.append("\n-->Error with New DDMan-API has occurred\n")
+                    ofound.append("OldAPIError")
+                    //proc.shutdown()
+                    proc.destroy()
+                    return [oout, oerr, ofound]
+                    //System.exit(0)
+                   //System.exit(proc.exitValue())
+                    //proc.waitForOrKill(1)
+                }
+            }
         }
-        }
-       }
         //proc.waitForProcessOutput()
         proc.destroy()
         return [oout, oerr, ofound]
@@ -364,10 +356,10 @@ def GetData() {
                 nerrorfound  = ConsoleOutputCheck(it.toString(), ErrorList as String[])
                 if (nerrorfound == true ) {
                     nerr.append("\n--->Error Found $nerrorfound\n")
+                    nerr.append("\n-->Error with New DDMan-API has occurred\n")
                     nfound.append("NewAPIError")
                     proc.destroy()
                     return [nout, nerr, nfound]
-
                 }
             }
         }
