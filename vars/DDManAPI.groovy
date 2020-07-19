@@ -133,7 +133,7 @@ def GetData() {
                         /*ErrorList = ["connection", "SCHWERWIEGEND:"]
                         xyz = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])*/
                         if (OutAndErrorPuffer[2].toString() == "OldAPIError") {
-                            OutAndError= OutAndError.removeAt(2) + OutAndErrorPuffer.removeAt(2)
+                            OutAndError= OutAndError + OutAndErrorPuffer.
                             sfound.append("\n---->Error with Old DDMan-API")
                             //System.exit(0)
                           //throw new Exception ("some error message");
@@ -184,7 +184,7 @@ def GetData() {
         //sfound=OutAndError[2]
         //return ("$sout, $serr")
        // return ("$OutAndError, $sfound")
-        return ("$OutAndError, $sfound")
+        return ("${OutAndError.join(", ")}")
         //return ("$Errorfound")
        // } catch(Exception e) {
         //return("Exception: ${e}")
