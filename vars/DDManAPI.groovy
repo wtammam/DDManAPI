@@ -114,7 +114,6 @@ def GetData() {
         switch(DDManAPI){
             case "OLD":
                 OutAndError = OldDDManAPI(Prj, VZ, PK,DDManJobOld)
-
                 break
             case "NEW":
                 OutAndError = NewDDManAPI(Prj, VZ, PK,DDManJobNew)
@@ -133,7 +132,7 @@ def GetData() {
                         /*ErrorList = ["connection", "SCHWERWIEGEND:"]
                         xyz = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])*/
                         if (OutAndErrorPuffer[2].toString() == "OldAPIError") {
-                            OutAndError= OutAndError + OutAndErrorPuffer.
+                            OutAndError= OutAndError + OutAndErrorPuffer
                             sfound.append("\n---->Error with Old DDMan-API")
                             //System.exit(0)
                           //throw new Exception ("some error message");
@@ -183,9 +182,8 @@ def GetData() {
         serr=OutAndError[1]
         //sfound=OutAndError[2]
         //return ("$sout, $serr")
-
        // return ("$OutAndError, $sfound")
-        return (OutAndError.toString())
+        return ("$OutAndError, $sfound")
         //return ("$Errorfound")
        // } catch(Exception e) {
         //return("Exception: ${e}")
