@@ -184,7 +184,7 @@ def GetData() {
         //sfound=OutAndError[2]
         //return ("$sout, $serr")
        // return ("$OutAndError, $sfound")
-        return (OutAndError.toString().join(", "))
+        return (OutAndError.toString().join(''))
         //return ("$Errorfound")
        // } catch(Exception e) {
         //return("Exception: ${e}")
