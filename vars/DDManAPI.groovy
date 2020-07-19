@@ -180,7 +180,7 @@ def GetData() {
             //return ("$DDManCommand, $sout, $serr")
         sout=OutAndError[0]
         serr=OutAndError[1]
-        sfound=OutAndError[2]
+        //sfound=OutAndError[2]
         //return ("$sout, $serr")
        // return ("$OutAndError, $sfound")
         return ("$OutAndError, $sfound")
