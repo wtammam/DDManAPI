@@ -244,8 +244,8 @@ def GetData() {
                     oerr.append("--->Error with Old DDMan-API has occurred\n")
                     ofound.append("OldAPIError")
                     //proc.shutdown()
-                    proc.destroy()
-                    return [oout, oerr, ofound]
+                    //proc.destroy()
+                    //return [oout, oerr, ofound]
                     //System.exit(0)
                    //System.exit(proc.exitValue())
                     //proc.waitForOrKill(1)
@@ -359,8 +359,8 @@ def GetData() {
                     nerr.append("-->Error Found $nerrorfound\n")
                     nerr.append("--->Error with New DDMan-API has occurred\n")
                     nfound.append("NewAPIError")
-                    proc.destroy()
-                    return [nout, nerr, nfound]
+                   // proc.destroy()
+                    //return [nout, nerr, nfound]
                 }
             }
         }
