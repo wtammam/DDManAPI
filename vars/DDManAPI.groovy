@@ -128,18 +128,20 @@ def GetData() {
 
                     if (OutAndError[2].toString() == "NewAPIError") {
                         OutAndErrorPuffer = OldDDManAPI(Prj, VZ, PK, DDManJobOld)
+                        sfound.append("\n---->Error with New DDMan-API\n")
                         /*ErrorList = ["connection", "SCHWERWIEGEND:"]
                         xyz = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])*/
                         if (OutAndErrorPuffer[2].toString() == "OldAPIError") {
                             OutAndError= OutAndError + OutAndErrorPuffer
+                            sfound.append("\n\n---->Error with New DDMan-API\n and Old DDMan-API")
                             //System.exit(0)
                           //throw new Exception ("some error message");
                         } else {
-                            OutAndErrorPuffer[2].append("\n-->Checkout with Old API is done successfully\n")
+                            sfound.append("\n---->Checkout with Old API is done successfully\n")
                             OutAndError= OutAndError + OutAndErrorPuffer
                         }
                     } else{
-                        OutAndError[2].append("\n-->Checkout with New API is done successfully\n")
+                        sfound.append("\n---->Checkout with New API is done successfully\n")
                     }
                 }catch(InterruptedException e){
                     status = "schwerer Error"
@@ -181,7 +183,7 @@ def GetData() {
         sfound=OutAndError[2]
         //return ("$sout, $serr")
        // return ("$OutAndError, $sfound")
-        return ("$OutAndError")
+        return ("$OutAndError, $sfound")
         //return ("$Errorfound")
        // } catch(Exception e) {
         //return("Exception: ${e}")
