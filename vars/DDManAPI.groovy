@@ -66,14 +66,11 @@ def GetData() {
     VZ = DDManPrjVzPk.split(' ')[1]
     PK_Pre = DDManPrjVzPk.split(' ')[2]
     PK = PK_Pre.replaceAll("_EngBuild", "")
-    StringBuffer[] OutAndError = new StringBuffer[2];
-    def sout = new StringBuffer()
-    def serr = new StringBuffer()
-    def sfound = new StringBuffer()
-    boolean Errorfound = false
-    boolean xyz
-    String [] ErrorList
-    String status="nothing"
+    StringBuilder[] OutAndError = new StringBuilder[2];
+    def sout = new StringBuilder()
+    def serr = new StringBuilder()
+    def sfound = new StringBuilder()
+
     //def sum = new StringBuilder("")
     //def DDManCommand
     //def proc
@@ -130,16 +127,23 @@ def GetData() {
 
                     if (OutAndError[2].toString() == "NewAPIError") {
                         OutAndError[1].append("\n")
-                        OutAndError[1].append("-->Error with New API has occurred")
+                        OutAndError[1].append("-->Error with New API has occurred\n")
+                        OutAndError[2].append ("--->Error with New DDMan-API")
                         OutAndError += OldDDManAPI(Prj, VZ, PK, DDManJobOld)
                         /*ErrorList = ["connection", "SCHWERWIEGEND:"]
                         xyz = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])*/
-                        if (OutAndError[2] == "OldAPIError") {
-                            status = "Error"
+                        if (OutAndError[2].toString() == "OldAPIError") {
+                            OutAndError[1].append("\n")
+                            OutAndError[1].append("-->Error with Old API has occurred\n")
+                            OutAndError[2].append ("--->Error with Old DDMan-API")
                             //System.exit(0)
                           //throw new Exception ("some error message");
                         } else
-                            status = "no Error"
+                            OutAndError[2].append("\n")
+                            OutAndError[2].append("-->Checkout with Old API is done successfully\n")
+                    } else{
+                        OutAndError[2].append("\n")
+                        OutAndError[2].append("-->Checkout with Old API is done successfully\n")
                     }
                 }catch(InterruptedException e){
                     status = "schwerer Error"
@@ -161,7 +165,7 @@ def GetData() {
             // def sout = new StringBuilder()
             //def serr = new StringBuilder()
             //def DDManexecute= DDManCommand.execute()
-            //def outputStream = new StringBuffer();
+            //def outputStream = new     v();
             //DDManexecute.waitForProcessOutput(outputStream, System.out)
 
             //DDManexecute.waitFor()
@@ -180,7 +184,7 @@ def GetData() {
         serr=OutAndError[1]
         sfound=OutAndError[2]
         //return ("$sout, $serr")
-        return ("$OutAndError, $sfound, $status")
+        return ("$OutAndError, $sfound")
         //return ("$Errorfound")
        // } catch(Exception e) {
         //return("Exception: ${e}")
@@ -196,12 +200,12 @@ def GetData() {
 
 }
 
-    private StringBuffer [] OldDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String DDManJob_Old) {
+    private StringBuilder [] OldDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String DDManJob_Old) {
         String DDManOldAPI = DDManPath + "\\ddman6.jar"
         String WORKINGPLACE = "C:\\meinedaten\\sgprojekte\\" + "${Projekt}\\${VZyklus}\\${PKonfiguration}"
-        def oout = new StringBuffer()
-        def oerr = new StringBuffer()
-        def ofound = new StringBuffer()
+        def oout = new StringBuilder()
+        def oerr = new StringBuilder()
+        def ofound = new StringBuilder()
         def DDManCommand
         def proc
         boolean oerrorfound=false
@@ -260,12 +264,12 @@ def GetData() {
         return [oout, oerr, ofound]
     }
 
-    private StringBuffer [] NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
+    private StringBuilder [] NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
         String DDManNewAPI=DDManPath+"\\ddmanExportClient\\ddmanExportClient.jar"
         String WORKINGPLACE="C:\\meinedaten\\sgprojekte\\"+"${Projekt}\\${VZyklus}\\${PKonfiguration}"
-        def nout = new StringBuffer()
-        def nerr = new StringBuffer()
-        def nfound = new StringBuffer()
+        def nout = new StringBuilder()
+        def nerr = new StringBuilder()
+        def nfound = new StringBuilder()
         def DDManCommand
         def proc
         boolean nerrorfound=false
