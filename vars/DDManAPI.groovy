@@ -230,7 +230,7 @@ def GetData() {
 
         //oout.append("${proc.getText()}")
         //def xoout
-        ErrorList = ["no connection to //ddman6", "SCHWERWIEGEND:"]
+        ErrorList = ["connection", "SCHWERWIEGEND:"]
         //def xoerr
         //while (xyz == false) {
          //   sleep(3000)
