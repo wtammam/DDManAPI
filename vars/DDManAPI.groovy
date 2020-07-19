@@ -239,8 +239,8 @@ def GetData() {
                 oerrorfound = ConsoleOutputCheck(it.toString(), ErrorList as String[])
                 //oerr.append("\n-********************${it.toString()}\n")
                 if (oerrorfound == true ) {
-                    oerr.append("--->Error Found $oerrorfound\n")
-                    oerr.append("-->Error with New DDMan-API has occurred\n")
+                    oerr.append("-->Error Found $oerrorfound\n")
+                    oerr.append("--->Error with Old DDMan-API has occurred\n")
                     ofound.append("OldAPIError")
                     //proc.shutdown()
                     proc.destroy()
@@ -355,8 +355,8 @@ def GetData() {
             nerr.each {it ->
                 nerrorfound  = ConsoleOutputCheck(it.toString(), ErrorList as String[])
                 if (nerrorfound == true ) {
-                    nerr.append("--->Error Found $nerrorfound\n")
-                    nerr.append("-->Error with New DDMan-API has occurred\n")
+                    nerr.append("-->Error Found $nerrorfound\n")
+                    nerr.append("--->Error with New DDMan-API has occurred\n")
                     nfound.append("NewAPIError")
                     proc.destroy()
                     return [nout, nerr, nfound]
