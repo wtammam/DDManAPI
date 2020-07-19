@@ -241,7 +241,7 @@ def GetData() {
             oerr.each {it ->
         xyz = ConsoleOutputCheck(it.toString(), ErrorList as String[])
             oerr.append("\n-********************${it.toString()}\n")
-        if (xyz == true && !proc.isAlive()) {
+        if (xyz == true) {
             oerr.append("\n--->$xyz\n")
             //proc.shutdown()
             proc.destroy()
