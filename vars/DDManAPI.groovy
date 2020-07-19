@@ -183,9 +183,9 @@ def GetData() {
         serr=OutAndError[1]
         //sfound=OutAndError[2]
         //return ("$sout, $serr")
-        String x=OutAndError.toString()
+
        // return ("$OutAndError, $sfound")
-        return (x.join(", "))
+        return [OutAndError.toString().replace(", ",""), "$sfound"]
         //return ("$Errorfound")
        // } catch(Exception e) {
         //return("Exception: ${e}")
