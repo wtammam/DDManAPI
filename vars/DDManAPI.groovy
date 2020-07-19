@@ -258,7 +258,7 @@ def GetData() {
        }
         //proc.waitForProcessOutput()
         proc.destroy()
-        return [oout, oerr,found]
+        return [oout, oerr,ofound]
     }
 
     private StringBuffer [] NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
