@@ -239,7 +239,7 @@ def GetData() {
                 oerrorfound = ConsoleOutputCheck(it.toString(), ErrorList as String[])
                 //oerr.append("\n-********************${it.toString()}\n")
                 if (oerrorfound == true ) {
-                    oerr.append("\n--->Error Found $nerrorfound\n")
+                    oerr.append("\n--->Error Found $oerrorfound\n")
                     oerr.append("\n-->Error with New DDMan-API has occurred\n")
                     ofound.append("OldAPIError")
                     //proc.shutdown()
