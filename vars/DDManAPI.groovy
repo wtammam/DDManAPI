@@ -69,6 +69,7 @@ def GetData() {
     StringBuffer[] OutAndError = new StringBuffer[2];
     def sout = new StringBuffer()
     def serr = new StringBuffer()
+    def sfound = new StringBuffer()
     boolean Errorfound = false
     boolean xyz
     String [] ErrorList
@@ -177,8 +178,9 @@ def GetData() {
             //return ("$DDManCommand, $sout, $serr")
         sout=OutAndError[0]
         serr=OutAndError[1]
+        sfound=OutAndError[2]
         //return ("$sout, $serr")
-        return ("$OutAndError, $Errorfound, $status")
+        return ("$OutAndError, $sfound, $status")
         //return ("$Errorfound")
        // } catch(Exception e) {
         //return("Exception: ${e}")
@@ -199,6 +201,7 @@ def GetData() {
         String WORKINGPLACE = "C:\\meinedaten\\sgprojekte\\" + "${Projekt}\\${VZyklus}\\${PKonfiguration}"
         def oout = new StringBuffer()
         def oerr = new StringBuffer()
+        def ofound = new StringBuffer()
         def DDManCommand
         def proc
 
@@ -243,6 +246,7 @@ def GetData() {
             //oerr.append("\n-********************${it.toString()}\n")
         if (xyz == true ) {
             oerr.append("\n--->$xyz\n")
+            ofound.append("$xyz")
             //proc.shutdown()
             proc.destroy()
             //System.exit(0)
@@ -254,7 +258,7 @@ def GetData() {
        }
         //proc.waitForProcessOutput()
         proc.destroy()
-        return [oout, oerr]
+        return [oout, oerr,found]
     }
 
     private StringBuffer [] NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
