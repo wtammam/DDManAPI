@@ -244,12 +244,11 @@ def GetData() {
         if (xyz == true) {
             oerr.append("\n--->$xyz\n")
             //proc.shutdown()
-            return [oout, oerr]
             proc.destroy()
             //System.exit(0)
            //System.exit(proc.exitValue())
             //proc.waitForOrKill(1)
-            //break
+            break
         }
         }
         }
