@@ -232,7 +232,7 @@ def GetData() {
         //def xoout
         ErrorList = ["connection", "SCHWERWIEGEND:"]
         //def xoerr
-        while (xyz == false) {
+        while (1) {
          //   sleep(3000)
         //xoout = proc.consumeProcessOutputStream(oout)
         //xoerr = proc.consumeProcessErrorStream(oerr)
@@ -241,7 +241,7 @@ def GetData() {
             oerr.eachLine {line ->
         xyz = ConsoleOutputCheck(line, ErrorList as String[])
             oerr.append("\n-********************$line\n")
-        if (xyz == true) {
+        if (xyz == true && !proc.isAlive()) {
             oerr.append("\n--->$xyz\n")
             //proc.shutdown()
             proc.destroy()
