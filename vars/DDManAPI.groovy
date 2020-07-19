@@ -238,7 +238,7 @@ def GetData() {
         //xoerr = proc.consumeProcessErrorStream(oerr)
         oerr.append("\n------------->$xyz\n")
         proc.in.eachLine {line ->
-        xyz = ConsoleOutputCheck("${line}", ErrorList as String[])
+        xyz = ConsoleOutputCheck(line.toString, ErrorList as String[])
             oerr.append("\n------------->$xyz\n")
         if (xyz == true) {
             oerr.append("\n--->$xyz\n")
