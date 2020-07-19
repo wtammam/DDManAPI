@@ -124,26 +124,26 @@ def GetData() {
                 //SetDDManAPI("NEW")
                 try {
                     OutAndError = NewDDManAPI(Prj, VZ, PK, DDManJobNew)
-                    ErrorList = ["NO_CONNECTION_TO_SERVER", "ERROR:"]
+                    /*ErrorList = ["NO_CONNECTION_TO_SERVER", "ERROR:"]
                     //def ErrorList= ["NO_CONNECTION_TO_SERVER","ERROR:","no connection to","SCHWERWIEGEND:"] as String[]
-                    Errorfound = ConsoleOutputCheck("${OutAndError}", ErrorList as String[])
+                    Errorfound = ConsoleOutputCheck("${OutAndError}", ErrorList as String[])*/
 
-                    if (Errorfound == true) {
+                    if (OutAndError[2].toString() == "NewAPIError") {
                         OutAndError[1].append("\n")
                         OutAndError[1].append("-->Error with New API has occurred")
                         OutAndError += OldDDManAPI(Prj, VZ, PK, DDManJobOld)
-                        ErrorList = ["connection", "SCHWERWIEGEND:"]
-                        xyz = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])
-                        if (xyz == true) {
+                        /*ErrorList = ["connection", "SCHWERWIEGEND:"]
+                        xyz = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])*/
+                        if (OutAndError[2] == "OldAPIError") {
                             status = "Error"
-                            System.exit(0)
+                            //System.exit(0)
                           //throw new Exception ("some error message");
                         } else
                             status = "no Error"
                     }
                 }catch(InterruptedException e){
                     status = "schwerer Error"
-                    System.exit(0)
+                    //System.exit(0)
                     //return ("$e")
                 }
                break
@@ -204,9 +204,9 @@ def GetData() {
         def ofound = new StringBuffer()
         def DDManCommand
         def proc
+        boolean oerrorfound=false
+        String[] ErrorList = ["connection", "SCHWERWIEGEND:"]
 
-        boolean xyz=false
-        String[] ErrorList
         if (DDManJob == "Schnittstellenanalyse") {
             DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJob_Old} -PRJ ${Projekt} -SGP ${VZyklus} -PRG ${PKonfiguration} -DAT C:\\meinedaten\\Schnittstellenanalyse.txt -DB ${DDPar}"
         } else if (DDManJob == "KGSXML") {
@@ -218,7 +218,6 @@ def GetData() {
         oout.append("\n************************** Export ${DDManJob_Old} ${Projekt} ${VZyklus} ${PKonfiguration} **************************\n")
         oout.append(DDManCommand)
         oout.append("\n")
-        oerr.append("\n####################################################\n")
         proc = DDManCommand.execute()
         proc.consumeProcessOutput(oout, oerr)
         //oout=proc.text()
@@ -233,22 +232,22 @@ def GetData() {
 
         //oout.append("${proc.getText()}")
         //def xoout
-        ErrorList = ["connection", "SCHWERWIEGEND:"]
         //def xoerr
-        while (xyz == false ) {
+        while (oerrorfound == false ) {
          //   sleep(3000)
         //xoout = proc.consumeProcessOutputStream(oout)
         //xoerr = proc.consumeProcessErrorStream(oerr)
         //oerr.append("\n------------->$xyz\n")
         //proc.in.newReader().eachLine {line ->
-            oerr.each {it ->
-        xyz = ConsoleOutputCheck(it.toString(), ErrorList as String[])
+        oerr.each {it ->
+            oerrorfound = ConsoleOutputCheck(it.toString(), ErrorList as String[])
             //oerr.append("\n-********************${it.toString()}\n")
-        if (xyz == true ) {
-            oerr.append("\n--->$xyz\n")
-            ofound.append("$xyz")
+        if (oerrorfound == true ) {
+            oerr.append("\n--->Error Found $oerrorfound\n")
+            ofound.append("OldAPIError")
             //proc.shutdown()
             proc.destroy()
+            return [oout, oerr, ofound]
             //System.exit(0)
            //System.exit(proc.exitValue())
             //proc.waitForOrKill(1)
@@ -258,7 +257,7 @@ def GetData() {
        }
         //proc.waitForProcessOutput()
         proc.destroy()
-        return [oout, oerr,ofound]
+        return [oout, oerr, ofound]
     }
 
     private StringBuffer [] NewDDManAPI(String Projekt, String VZyklus, String PKonfiguration, String [] DDManJob_New){
@@ -266,8 +265,11 @@ def GetData() {
         String WORKINGPLACE="C:\\meinedaten\\sgprojekte\\"+"${Projekt}\\${VZyklus}\\${PKonfiguration}"
         def nout = new StringBuffer()
         def nerr = new StringBuffer()
+        def nfound = new StringBuffer()
         def DDManCommand
         def proc
+        boolean nerrorfound=false
+        String[] ErrorList = ["NO_CONNECTION_TO_SERVER", "ERROR:"]
         if(DDManJob=="Integration" || DDManJob=="FDEF") {
             for (int i = 0; i < DDManJob_New.length ; i++) {
                 DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[0]} ${DDManJob_New[i]} PRJ=${Projekt} PS=${VZyklus} PK=${PKonfiguration} DB=${DDPar}"
@@ -352,8 +354,22 @@ def GetData() {
             proc = DDManCommand.execute()
             proc.waitForProcessOutput(nout, nerr)
         }
+
+        while (nerrorfound == false ) {
+            nerr.each {it ->
+                nerrorfound  = ConsoleOutputCheck(it.toString(), ErrorList as String[])
+                if (nerrorfound == true ) {
+                    nerr.append("\n--->Error Found $nerrorfound\n")
+                    nfound.append("NewAPIError")
+                    proc.destroy()
+                    return [nout, nerr, nfound]
+
+                }
+            }
+        }
+
         proc.destroy()
-        return [nout, nerr]
+        return [nout, nerr, nfound]
     }
 
     boolean ConsoleOutputCheck(String ConsoleOutput, String[] Patterns ) {
@@ -367,13 +383,7 @@ def GetData() {
         boolean found = Patterns.any{ConsoleOutput.toLowerCase().contains(it.toLowerCase())}
         return found
     }
-    private String obsolver(def process, int timeout ){
-        String out
-        String killCommand = "${process.waitForOrKill(1000*timeout)}"
-        out= killCommand.execute().text
-        return out
 
-    }
 }
 
 //println ("${DDManjob}, ${Mod}")
