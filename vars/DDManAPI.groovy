@@ -132,8 +132,9 @@ def GetData() {
                         if (OutAndError[2].toString() == "OldAPIError") {
                             //System.exit(0)
                           //throw new Exception ("some error message");
-                        } else
+                        } else {
                             OutAndError[2].append("\n-->Checkout with Old API is done successfully\n")
+                        }
                     } else{
                         OutAndError[2].append("\n-->Checkout with New API is done successfully\n")
                     }
