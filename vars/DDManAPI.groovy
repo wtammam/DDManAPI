@@ -67,6 +67,7 @@ def GetData() {
     PK_Pre = DDManPrjVzPk.split(' ')[2]
     PK = PK_Pre.replaceAll("_EngBuild", "")
     StringBuilder[] OutAndError = new StringBuilder[2];
+    StringBuilder[] OutAndErrorPuffer = new StringBuilder[2];
     def sout = new StringBuilder()
     def serr = new StringBuilder()
     def sfound = new StringBuilder()
@@ -126,14 +127,15 @@ def GetData() {
                     Errorfound = ConsoleOutputCheck("${OutAndError}", ErrorList as String[])*/
 
                     if (OutAndError[2].toString() == "NewAPIError") {
-                        OutAndError += OldDDManAPI(Prj, VZ, PK, DDManJobOld)
+                        OutAndErrorPuffer = OldDDManAPI(Prj, VZ, PK, DDManJobOld)
                         /*ErrorList = ["connection", "SCHWERWIEGEND:"]
                         xyz = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])*/
-                        if (OutAndError[2].toString() == "OldAPIError") {
+                        if (OutAndErrorPuffer[2].toString() == "OldAPIError") {
+                            OutAndError.append(OutAndErrorPuffer)
                             //System.exit(0)
                           //throw new Exception ("some error message");
                         } else {
-                            OutAndError[2].append("\n-->Checkout with Old API is done successfully\n")
+                            OutAndErrorPuffer[2].append("\n-->Checkout with Old API is done successfully\n")
                         }
                     } else{
                         OutAndError[2].append("\n-->Checkout with New API is done successfully\n")
