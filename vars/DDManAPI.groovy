@@ -131,11 +131,12 @@ def GetData() {
                         /*ErrorList = ["connection", "SCHWERWIEGEND:"]
                         xyz = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])*/
                         if (OutAndErrorPuffer[2].toString() == "OldAPIError") {
-                            OutAndError.append(OutAndErrorPuffer)
+                            OutAndError= OutAndError + OutAndErrorPuffer
                             //System.exit(0)
                           //throw new Exception ("some error message");
                         } else {
                             OutAndErrorPuffer[2].append("\n-->Checkout with Old API is done successfully\n")
+                            OutAndError= OutAndError + OutAndErrorPuffer
                         }
                     } else{
                         OutAndError[2].append("\n-->Checkout with New API is done successfully\n")
