@@ -236,12 +236,12 @@ def GetData() {
          //   sleep(3000)
         //xoout = proc.consumeProcessOutputStream(oout)
         //xoerr = proc.consumeProcessErrorStream(oerr)
-        oerr.append("\n------------->$xyz\n")
+        //oerr.append("\n------------->$xyz\n")
         //proc.in.newReader().eachLine {line ->
             oerr.each {it ->
         xyz = ConsoleOutputCheck(it.toString(), ErrorList as String[])
             oerr.append("\n-********************${it.toString()}\n")
-        if (xyz == true && !proc.isAlive()) {
+        if (xyz == true ) {
             oerr.append("\n--->$xyz\n")
             //proc.shutdown()
             proc.destroy()
