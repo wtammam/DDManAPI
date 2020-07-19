@@ -219,7 +219,7 @@ def GetData() {
         proc = DDManCommand.execute()
         proc.consumeProcessOutput(oout, oerr)
         //oout=proc.text()
-        sleep(200)
+        //sleep(200)
         //obsolver(proc,100)
         //proc.consumeProcessOutput(oout, oerr)
         //proc.waitForProcessOutput()
@@ -237,7 +237,7 @@ def GetData() {
         //xoout = proc.consumeProcessOutputStream(oout)
         //xoerr = proc.consumeProcessErrorStream(oerr)
         oerr.append("\n------------->$xyz\n")
-        proc.in.newReader().eachLine {line ->
+        proc.in.eachLine {line ->
         xyz = ConsoleOutputCheck("${line}", ErrorList as String[])
             oerr.append("\n------------->$xyz\n")
         if (xyz == true) {
