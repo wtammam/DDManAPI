@@ -240,7 +240,7 @@ def GetData() {
         //proc.in.newReader().eachLine {line ->
             oerr.each {it ->
         xyz = ConsoleOutputCheck(it.toString(), ErrorList as String[])
-            oerr.append("\n-********************${it.toString()}\n")
+            //oerr.append("\n-********************${it.toString()}\n")
         if (xyz == true ) {
             oerr.append("\n--->$xyz\n")
             //proc.shutdown()
