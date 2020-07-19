@@ -143,7 +143,7 @@ def GetData() {
                             OutAndError[2].append("-->Checkout with Old API is done successfully\n")
                     } else{
                         OutAndError[2].append("\n")
-                        OutAndError[2].append("-->Checkout with Old API is done successfully\n")
+                        OutAndError[2].append("-->Checkout with New API is done successfully\n")
                     }
                 }catch(InterruptedException e){
                     status = "schwerer Error"
