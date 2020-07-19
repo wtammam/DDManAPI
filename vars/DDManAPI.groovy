@@ -137,8 +137,8 @@ def GetData() {
                             //System.exit(0)
                           //throw new Exception ("some error message");
                         } else {
-                            sfound.append("\n---->Checkout with Old API is done successfully\n")
                             OutAndError= OutAndError + OutAndErrorPuffer
+                            sfound.append("\n---->Checkout with Old API is done successfully\n")
                         }
                     } else{
                         sfound.append("\n---->Checkout with New API is done successfully\n")
