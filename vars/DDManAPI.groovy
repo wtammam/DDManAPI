@@ -128,7 +128,7 @@ def GetData() {
 
                     if (OutAndError[2].toString() == "NewAPIError") {
                         OutAndErrorPuffer = OldDDManAPI(Prj, VZ, PK, DDManJobOld)
-                        sfound.append("\n---->Error with New DDMan-API")
+                        sfound.append("\n\n---->Error with New DDMan-API")
                         /*ErrorList = ["connection", "SCHWERWIEGEND:"]
                         xyz = ConsoleOutputCheck("${OutAndError[0]}", ErrorList as String[])*/
                         if (OutAndErrorPuffer[2].toString() == "OldAPIError") {
