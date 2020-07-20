@@ -209,7 +209,7 @@ def GetData() {
         def proc
         boolean oerrorfound=false
         boolean odonefound=false
-        String[] ErrorList = ["connection", "SCHWERWIEGEND:"]
+        String[] ErrorList = ["no connection no", "SCHWERWIEGEND:"]
         String[] DoneList = ["DIFF---------------->"]
 
         if (DDManJob == "Schnittstellenanalyse") {
@@ -264,8 +264,8 @@ def GetData() {
                 odonefound = ConsoleOutputCheck(it.toString(), DoneList as String[])
                 //oerr.append("\n-********************${it.toString()}\n")
                 if (odonefound == true ) {
-                    oerr.append("-->Done Found $odonefound\n")
-                    oerr.append("--->Get with Old DDMan-API has done\n")
+                    oout.append("-->Done Found $odonefound\n")
+                    oout.append("--->Get with Old DDMan-API has done\n")
                     ofound.append("OldAPIDone")
                     //proc.shutdown()
                     //proc.destroy()
@@ -290,8 +290,10 @@ def GetData() {
         def nfound = new StringBuilder()
         def DDManCommand
         def proc
-        boolean nerrorfound=false
+        boolean nerrorfound = false
+        boolean ndonefound = false
         String[] ErrorList = ["NO_CONNECTION_TO_SERVER", "ERROR:"]
+        String[] DoneList = ["unziped to"]
         if(DDManJob=="Integration" || DDManJob=="FDEF") {
             for (int i = 0; i < DDManJob_New.length ; i++) {
                 DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManNewAPI} ${DDManModus[0]} ${DDManJob_New[i]} PRJ=${Projekt} PS=${VZyklus} PK=${PKonfiguration} DB=${DDPar}"
@@ -377,16 +379,24 @@ def GetData() {
             proc.waitForProcessOutput(nout, nerr)
         }
 
-        while (nerrorfound == false ) {
+        while (nerrorfound == false && ndonefound == false) {
             nerr.each {it ->
                 nerrorfound  = ConsoleOutputCheck(it.toString(), ErrorList as String[])
                 if (nerrorfound == true ) {
                     nerr.append("-->Error Found $nerrorfound\n")
                     nerr.append("--->Error with New DDMan-API has occurred\n")
                     nfound.append("NewAPIError")
-                   // proc.destroy()
-                    //return [nout, nerr, nfound]
                 }
+            }
+            nout.each {it ->
+                ndonefound = ConsoleOutputCheck(it.toString(), DoneList as String[])
+                //oerr.append("\n-********************${it.toString()}\n")
+                if (ndonefound == true ) {
+                    nout.append("-->Done Found $odonefound\n")
+                    nout.append("--->Get with New DDMan-API has done\n")
+                    nfound.append("NewAPIDone")
+                }
+
             }
         }
 
