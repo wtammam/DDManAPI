@@ -246,6 +246,7 @@ def GetData() {
         //proc.in.newReader().eachLine {line ->
             oerr.each {it ->
                 oerrorfound = ConsoleOutputCheck(it.toString(), ErrorList as String[])
+                odonefound = ConsoleOutputCheck(it.toString(), DoneList as String[])
                 //oerr.append("\n-********************${it.toString()}\n")
                 if (oerrorfound == true ) {
                     oerr.append("-->Error Found $oerrorfound\n")
@@ -258,9 +259,14 @@ def GetData() {
                    //System.exit(proc.exitValue())
                     //proc.waitForOrKill(1)
                 }
+                if (odonefound == true ) {
+                    oerr.append("-->Done Found $odonefound\n")
+                    oerr.append("--->Get with Old DDMan-API has done\n")
+                    ofound.append("OldAPIDone")
+                }
 
             }
-            oerr.each {it ->
+           /* oerr.each {it ->
                 odonefound = ConsoleOutputCheck(it.toString(), DoneList as String[])
                 //oerr.append("\n-********************${it.toString()}\n")
                 if (odonefound == true ) {
@@ -275,7 +281,7 @@ def GetData() {
                     //proc.waitForOrKill(1)
                 }
 
-            }
+            }*/
         }
         //proc.waitForProcessOutput()
         proc.destroy()
