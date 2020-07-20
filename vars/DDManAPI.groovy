@@ -208,7 +208,7 @@ def GetData() {
         def DDManCommand
         def proc
         boolean oerrorfound=false
-        boolean odonefound=false
+        boolean odonefound = false
         String[] ErrorList = ["no connection no", "SCHWERWIEGEND:"]
         String[] DoneList = ["DIFF---------------->"]
 
@@ -392,7 +392,7 @@ def GetData() {
                 ndonefound = ConsoleOutputCheck(it.toString(), DoneList as String[])
                 //oerr.append("\n-********************${it.toString()}\n")
                 if (ndonefound == true ) {
-                    nout.append("-->Done Found $odonefound\n")
+                    nout.append("-->Done Found $ndonefound\n")
                     nout.append("--->Get with New DDMan-API has done\n")
                     nfound.append("NewAPIDone")
                 }
