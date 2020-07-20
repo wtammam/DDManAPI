@@ -210,7 +210,7 @@ def GetData() {
         boolean oerrorfound=false
         boolean odonefound=false
         String[] ErrorList = ["connection", "SCHWERWIEGEND:"]
-        String[] DoneList = ["DIFF---------------->"]
+        String[] DoneList = ["DIFF"]
 
         if (DDManJob == "Schnittstellenanalyse") {
             DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJob_Old} -PRJ ${Projekt} -SGP ${VZyklus} -PRG ${PKonfiguration} -DAT C:\\meinedaten\\Schnittstellenanalyse.txt -DB ${DDPar}"
