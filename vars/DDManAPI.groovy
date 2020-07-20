@@ -263,7 +263,7 @@ def GetData() {
             oerr.each {it ->
                 odonefound = ConsoleOutputCheck(it.toString(), DoneList as String[])
                 //oerr.append("\n-********************${it.toString()}\n")
-                if (oerrorfound == true ) {
+                if (odonefound == true ) {
                     oerr.append("-->Done Found $odonefound\n")
                     oerr.append("--->Get with Old DDMan-API has done\n")
                     ofound.append("OldAPIDone")
