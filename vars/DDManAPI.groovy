@@ -238,7 +238,7 @@ def GetData() {
         //oout.append("${proc.getText()}")
         //def xoout
         //def xoerr
-        while (oerrorfound == false ||  odonefound == false ) {
+        while (oerrorfound == false &&  odonefound == false ) {
          //   sleep(3000)
         //xoout = proc.consumeProcessOutputStream(oout)
         //xoerr = proc.consumeProcessErrorStream(oerr)
