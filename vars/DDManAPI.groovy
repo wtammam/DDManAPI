@@ -209,7 +209,7 @@ def GetData() {
         def proc
         boolean oerrorfound=false
         boolean odonefound = false
-        String[] ErrorList = ["no connection no", "SCHWERWIEGEND:"]
+        String[] ErrorList = ["no connection to", "SCHWERWIEGEND:"]
         String[] DoneList = ["DIFF---------------->"]
 
         if (DDManJob == "Schnittstellenanalyse") {
