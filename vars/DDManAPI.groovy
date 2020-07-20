@@ -208,7 +208,9 @@ def GetData() {
         def DDManCommand
         def proc
         boolean oerrorfound=false
+        boolean odonefound=false
         String[] ErrorList = ["connection", "SCHWERWIEGEND:"]
+        String[] DoneList = ["DIFF---------------->"]
 
         if (DDManJob == "Schnittstellenanalyse") {
             DDManCommand = "\"${JavaPath}\" ${JavaArchive} ${JavaMemory} ${DDManOldAPI} ${DDManModus[1]} ${DDManJob_Old} -PRJ ${Projekt} -SGP ${VZyklus} -PRG ${PKonfiguration} -DAT C:\\meinedaten\\Schnittstellenanalyse.txt -DB ${DDPar}"
@@ -236,7 +238,7 @@ def GetData() {
         //oout.append("${proc.getText()}")
         //def xoout
         //def xoerr
-        while (oerrorfound == false ) {
+        while (oerrorfound == false ||  odonefound == false ) {
          //   sleep(3000)
         //xoout = proc.consumeProcessOutputStream(oout)
         //xoerr = proc.consumeProcessErrorStream(oerr)
@@ -255,10 +257,24 @@ def GetData() {
                     //System.exit(0)
                    //System.exit(proc.exitValue())
                     //proc.waitForOrKill(1)
-                }else
-                {
-                    oerrorfound = true
                 }
+
+            }
+            oerr.each {it ->
+                odonefound = ConsoleOutputCheck(it.toString(), DoneList as String[])
+                //oerr.append("\n-********************${it.toString()}\n")
+                if (oerrorfound == true ) {
+                    oerr.append("-->Done Found $odonefound\n")
+                    oerr.append("--->Get with Old DDMan-API has done\n")
+                    ofound.append("OldAPIDone")
+                    //proc.shutdown()
+                    //proc.destroy()
+                    //return [oout, oerr, ofound]
+                    //System.exit(0)
+                    //System.exit(proc.exitValue())
+                    //proc.waitForOrKill(1)
+                }
+
             }
         }
         //proc.waitForProcessOutput()
