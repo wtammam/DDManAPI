@@ -52,8 +52,8 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
 					git --git-dir=.\\.git --work-tree=.\\. checkout ${Branchname} -f 
 					rd .git /S /Q
 				"""])
-   /*     }
-    }
+        }
+   /*}
     catch(IOException){
         result =1
         abbruch =-1
