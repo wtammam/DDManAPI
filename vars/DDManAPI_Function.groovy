@@ -39,10 +39,10 @@ def GetData(String DDManPrjVzPk = 'Hallo ich bin') {
 
 }
 def git_own_f(String WorkSpace1,String Branchname,String Repository){
-    def cmd = new StringBuilder("git init\n")
-    cmd.append("git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1\n")
+    def cmd = "git init && git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1 && git --git-dir=.\\\\.git --work-tree=.\\\\. checkout ${Branchname} -f && rd .git /S /Q"
+    /*cmd.append("git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1\n")
     cmd.append("git --git-dir=.\\.git --work-tree=.\\. checkout ${Branchname} -f\n")
-    cmd.append("rd .git /S /Q")
+    cmd.append("rd .git /S /Q")*/
    /* def output=""
     def result=0
     def abbruch=0*/
