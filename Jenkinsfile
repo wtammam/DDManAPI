@@ -23,6 +23,7 @@ node(){
         def result=""
         println ("start")
         println slaveJob1e1[0].toString()
+        println slaveJob1e1[0].toString()
         println ("start")
         //batCommand.streamContainsErrors2(stream, preresult, searchedStrings) -> return [result,errorString,abbruch]
         /*def slaveJob1e=test.streamContainsErrors2(slaveJob1e1[0].toString(),slaveJob1e1[1],["fatal","error"])
