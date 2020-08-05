@@ -44,9 +44,9 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
     cmd.append("git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1\n")
     cmd.append("git --git-dir=.\\.git --work-tree=.\\. checkout ${Branchname} -f\n")
     cmd.append("rd .git /S /Q\n")
-   /* def output=""
+    def output=""
     def result=0
-    def abbruch=0*/
+    def abbruch=0
 
     try{
         dir(WorkSpace1){
