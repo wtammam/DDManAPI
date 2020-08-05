@@ -39,7 +39,10 @@ def GetData(String DDManPrjVzPk = 'Hallo ich bin') {
 
 }
 def git_own_f(String WorkSpace1,String Branchname,String Repository){
-    def cmd = new StringBuilder()
+
+    def cmd = "git init && git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1 && git --git-dir=.\\\\.git --work-tree=.\\\\. checkout ${Branchname} -f && rd .git /S /Q"
+    ["/bin/sh", "-c", cmd].execute()
+    /*def cmd = new StringBuilder()
     cmd.append("git init\n")
     cmd.append("git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1\n")
     cmd.append("git --git-dir=.\\.git --work-tree=.\\. checkout ${Branchname} -f\n")
@@ -66,7 +69,7 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
 
 	//println output
 	//println result
-   return [output, result, abbruch]
+   return [output, result, abbruch]*/
 }
 
 def streamContainsErrors2(def stream, def preresult, searchedStrings){
