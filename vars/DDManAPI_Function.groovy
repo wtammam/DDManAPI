@@ -43,8 +43,8 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
     def outError = new StringBuilder()
     def proc
     def cmd = "git init".execute()
-    proc=cmd.execute()
-    proc.waitForProcessOutput(outStream, outError)
+    //proc=cmd.execute()
+    cmd.waitForProcessOutput(outStream, outError)
     println(outStream)
     println(outError)
     /*def cmd = new StringBuilder()
