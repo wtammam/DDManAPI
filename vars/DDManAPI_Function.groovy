@@ -39,34 +39,24 @@ def GetData(String DDManPrjVzPk = 'Hallo ich bin') {
 
 }
 def git_own_f(String WorkSpace1,String Branchname,String Repository){
-    def cmd =["git", "init", "git", "fetch",  "${Repository}", "+refs/heads/${Branchname}:refs/remotes/${Branchname}", "1"]
-
-
- println "$cmd"
-    // cmd.add("C:\\Program Files\\Git\\bin\\git.exe init")
-    /*cmd.add("C:\\Program Files\\Git\\bin\\git.exe fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1")
-    cmd.add("C:\\Program Files\\Git\\bin\\git.exe --git-dir=.\\.git --work-tree=.\\. checkout ${Branchname} -f")
-    cmd.add("rd .git /S /Q")*/
+    def cmd = new StringBuilder()
+    cmd.append("git init\n")
+    cmd.append("C:\\Program Files\\Git\\bin\\git.exe fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1\n")
+    cmd.append("C:\\Program Files\\Git\\bin\\git.exe --git-dir=.\\.git --work-tree=.\\. checkout ${Branchname} -f\n")
+    cmd.append("rd .git /S /Q\n")
    /* def output=""
     def result=0
     def abbruch=0*/
-    def ssout = new StringBuilder()
-    def sserr = new StringBuilder()
-    proc = cmd.execute()
-//printStream(proc.in)
-    proc.waitForProcessOutput(ssout, sserr)
-    println(ssout)
-    println(sserr)
 
-    /*try{
+    try{
         dir(WorkSpace1){
-            output=bat ([label:"git checkout/s ${Repository}/s ${Branchname}/s --depth 1", returnStdout:true, script:
-                    """
+            output=bat (label:"git checkout/s ${Repository}/s ${Branchname}/s --depth 1", returnStdout:true, script:"${cmd.toString()}")
+                   /* """
 					git init
 					git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1 
 					git --git-dir=.\\.git --work-tree=.\\. checkout ${Branchname} -f 
 					rd .git /S /Q
-				"""]).trim()
+				"""]).trim()*/
         }
     }
     catch(IOException){
@@ -76,7 +66,7 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
 
 	//println output
 	//println result
-   return [output, result, abbruch]*/
+   return [output, result, abbruch]
 }
 
 def streamContainsErrors2(def stream, def preresult, searchedStrings){
