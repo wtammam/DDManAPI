@@ -48,6 +48,7 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
         //proc=["cmd /c",cmd].execute()
         cmd.waitForProcessOutput(outStream, outError)
     }
+    println WorkSpace1
     println"Out"
     println(outStream.toString())
     println"Out"
