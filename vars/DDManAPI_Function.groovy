@@ -45,8 +45,8 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
     def cmd = "git init".execute() && "git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1".execute() && "git --git-dir=.\\\\.git --work-tree=.\\\\. checkout ${Branchname} -f".execute()
     //proc=cmd.execute()
     cmd.waitForProcessOutput(outStream, outError)
-    println(outStream)
-    println(outError)
+    println(outStream.toString())
+    println(outError.toString())
     /*def cmd = new StringBuilder()
     cmd.append("git init\n")
     cmd.append("git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1\n")
@@ -75,6 +75,7 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
 	//println output
 	//println result
    return [output, result, abbruch]*/
+    return [outStream.toString(), outError.toString(), 0]*/
 }
 
 def streamContainsErrors2(def stream, def preresult, searchedStrings){
