@@ -6,7 +6,7 @@ node(){
         def test = new DDManAPI_Function()
         def test1 = new DDManAPI(PARAPRJ_PARAVC_PARAPK,Aktion,DDMan_API)
     String WorkSpace1="C:\\meineDaten"
-    String Branchname="M177_PT4_20A040D_L03FRG"
+    String Branchname="xxxxxx"
     String Repository="https://git.daimler.com/rd-pef/BOSCH_M139_M177.git"
    // }
     //def test1 = load 'DDManAPI\\vars\\DDManAPI.groovy'
