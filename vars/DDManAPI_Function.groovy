@@ -49,9 +49,9 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
 
     try{
         dir(WorkSpace1){
-            output=bat ([label:"git checkout/s ${Repository}/s ${Branchname}/s --depth 1", returnStdout:true, script:"${cmd.toString()}"
+            output=bat (label:"git checkout/s ${Repository}/s ${Branchname}/s --depth 1", returnStdout:true, script:"${cmd.toString()}"
 
-            ])
+            )
         }
     }
     catch(IOException){
