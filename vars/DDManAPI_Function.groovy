@@ -40,14 +40,21 @@ def GetData(String DDManPrjVzPk = 'Hallo ich bin') {
 }
 def git_own_f(String WorkSpace1,String Branchname,String Repository){
     def cmd = new StringBuilder("git init\n")
-    cmd.append("git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1 ")
+    cmd.append("git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1\n")
     cmd.append("git --git-dir=.\\.git --work-tree=.\\. checkout ${Branchname} -f\n")
     cmd.append("rd .git /S /Q")
-    def output=""
+   /* def output=""
     def result=0
-    def abbruch=0
+    def abbruch=0*/
+    def ssout = new StringBuilder()
+    def sserr = new StringBuilder()
+    proc = cmd.execute()
+//printStream(proc.in)
+    proc.waitForProcessOutput(ssout, sserr)
+    println(ssout)
+    println(sserr)
 
-    try{
+    /*try{
         dir(WorkSpace1){
             output=bat ([label:"git checkout/s ${Repository}/s ${Branchname}/s --depth 1", returnStdout:true, script:
                     """
@@ -65,7 +72,7 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
 
 	//println output
 	//println result
-   return [output, result, abbruch]
+   return [output, result, abbruch]*/
 }
 
 def streamContainsErrors2(def stream, def preresult, searchedStrings){
