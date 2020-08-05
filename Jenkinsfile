@@ -5,6 +5,9 @@ node(){
     //script {
         def test = new DDManAPI_Function()
         def test1 = new DDManAPI(PARAPRJ_PARAVC_PARAPK,Aktion,DDMan_API)
+    String WorkSpace1="C:\meineDaten"
+    String Branchname="M177_PT4_20A040D_L03FRG"
+    String Repository="https://git.daimler.com/rd-pef/BOSCH_M139_M177.git"
    // }
     //def test1 = load 'DDManAPI\\vars\\DDManAPI.groovy'
  //   agent {
@@ -15,9 +18,17 @@ node(){
   //      DISABLE_AUTH = 'true'
   //      DB_ENGINE = 'sqlite'
   //  }
+    stage('Test') {
+        def slaveJob1e1=test.git_own_f(WorkSpace1,Branchname,Repository)
+        echo slaveJob1e1[0].toString()
+        //batCommand.streamContainsErrors2(stream, preresult, searchedStrings) -> return [result,errorString,abbruch]
+        slaveJob1e=test.streamContainsErrors2(slaveJob1e1[0].toString(),slaveJob1e1[1],["fatal","error"])
+        result=result+slaveJob1e[0]
+        bat ([label:"found ${slaveJob1e[1]}", returnStdout:false, script:"exit ${slaveJob1e[2]}"])
 
+    }
 
-        stage('Build') {
+       /* stage('Build') {
             //def test1 = new DDManAPI()
             log.info('process is started now ')
             log.warning('we have a problem but can solve it.')
@@ -33,6 +44,6 @@ node(){
             //println "${test1.GetDDManConfig()}"
                 //sh 'echo $DB_ENGINE'
 
-        }
+        }*/
 
 }
