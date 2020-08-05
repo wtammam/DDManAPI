@@ -75,7 +75,7 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
 	//println output
 	//println result
    return [output, result, abbruch]*/
-    return [outStream.toString(), outError.toString(), 0]*/
+    return [outStream.toString(), outError.toString(), 0]
 }
 
 def streamContainsErrors2(def stream, def preresult, searchedStrings){
