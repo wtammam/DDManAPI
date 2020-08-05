@@ -41,8 +41,8 @@ def GetData(String DDManPrjVzPk = 'Hallo ich bin') {
 def git_own_f(String WorkSpace1,String Branchname,String Repository){
     def cmd = new StringBuilder()
     cmd.append("git init\n")
-    cmd.append("C:\\Program Files\\Git\\bin\\git.exe fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1\n")
-    cmd.append("C:\\Program Files\\Git\\bin\\git.exe --git-dir=.\\.git --work-tree=.\\. checkout ${Branchname} -f\n")
+    cmd.append("git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1\n")
+    cmd.append("git --git-dir=.\\.git --work-tree=.\\. checkout ${Branchname} -f\n")
     cmd.append("rd .git /S /Q\n")
    /* def output=""
     def result=0
