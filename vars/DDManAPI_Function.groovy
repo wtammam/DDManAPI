@@ -39,7 +39,7 @@ def GetData(String DDManPrjVzPk = 'Hallo ich bin') {
 
 }
 def git_own_f(String WorkSpace1,String Branchname,String Repository){
-    def cmd =["git", "init", "git", "fetch",  "${Repository}", "+refs/heads/${Branchname}:refs/remotes/${Branchname}", "--depth", "1"]
+    def cmd =["git", "init", "git", "fetch",  "${Repository}", "+refs/heads/${Branchname}:refs/remotes/${Branchname}", "1"]
 
 
  println "$cmd"
