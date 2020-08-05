@@ -51,7 +51,7 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
 					git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1 
 					git --git-dir=.\\.git --work-tree=.\\. checkout ${Branchname} -f 
 					rd .git /S /Q
-				"""]).trim()
+				"""])
         }
     }
     catch(IOException){
