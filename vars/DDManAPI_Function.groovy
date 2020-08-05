@@ -43,21 +43,19 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
     def result=0
     def abbruch=0
 
-  //  try{
+    try{
         dir(WorkSpace1){
             output=bat ([label:"git checkout/s ${Repository}/s ${Branchname}/s --depth 1", returnStdout:true, script:
                     """
 					git init
-					git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1 
-					git --git-dir=.\\.git --work-tree=.\\. checkout ${Branchname} -f 
-					rd .git /S /Q
+
 				"""])
         }
-   /*}
+    }
     catch(IOException){
         result =1
         abbruch =-1
-    }*/
+    }
 
 	println output
 	println result
