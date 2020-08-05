@@ -21,9 +21,9 @@ node(){
     stage('Test') {
         def slaveJob1e1=test.git_own_f(WorkSpace1,Branchname,Repository)
         def result=""
-        println ("Start")
-        printLn "${slaveJob1e1[0].toString()}"
-        println ("Start")
+        println ("start")
+        //printLn "${slaveJob1e1[0].toString()}"
+        println ("start")
         //batCommand.streamContainsErrors2(stream, preresult, searchedStrings) -> return [result,errorString,abbruch]
         /*def slaveJob1e=test.streamContainsErrors2(slaveJob1e1[0].toString(),slaveJob1e1[1],["fatal","error"])
         result+=slaveJob1e[0]
