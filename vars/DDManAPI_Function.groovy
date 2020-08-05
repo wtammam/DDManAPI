@@ -42,7 +42,7 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
     def outStream = new StringBuilder()
     def outError = new StringBuilder()
     def proc
-    def cmd = "git init".execute() && "git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1".execute()
+    def cmd = "git init".execute() & "git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1".execute()
     //proc=cmd.execute()
     cmd.waitForProcessOutput(outStream, outError)
     println(outStream.toString())
