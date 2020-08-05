@@ -59,9 +59,9 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
         abbruch =-1
     }
 
-	println output
-	println result
-    //return [output, result, abbruch]
+	//println output
+	//println result
+   return [output, result, abbruch]
 }
 
 def streamContainsErrors2(def stream, def preresult, searchedStrings){
