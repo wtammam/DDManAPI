@@ -50,8 +50,10 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
     }
     println"Out"
     println(outStream.toString())
+    println"Out"
     println"Error"
     println(outError.toString())
+    println"Error"
     /*def cmd = new StringBuilder()
     cmd.append("git init\n")
     cmd.append("git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1\n")
