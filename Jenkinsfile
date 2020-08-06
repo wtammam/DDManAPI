@@ -1,9 +1,9 @@
-@Library(value="DDMan@master") _
-import DDManAPI
+@Library("DDMan@master") _
+//import DDManAPI
 
 node(){
     //script {
-        def test = new DDManAPI_Function()
+        //def test = new DDManAPI_Function()
         def test1 = new DDManAPI(PARAPRJ_PARAVC_PARAPK,Aktion,DDMan_API)
     String WorkSpace1="C:\\meineDaten"
     String Branchname="xxxxxx"
@@ -19,14 +19,14 @@ node(){
   //      DB_ENGINE = 'sqlite'
   //  }
     stage('Test') {
-        def slaveJob1e1=test.git_own_f(WorkSpace1,Branchname,Repository)
+        def slaveJob1e1=DDManAPI_Function.git_own_f(WorkSpace1,Branchname,Repository)
         def result=""
         println ("start")
         println slaveJob1e1[0].toString()
         println slaveJob1e1[1].toString()
         println ("start")
         //batCommand.streamContainsErrors2(stream, preresult, searchedStrings) -> return [result,errorString,abbruch]
-        def slaveJob1e=test.streamContainsErrors2(slaveJob1e1[0].toString(),slaveJob1e1[1],["fatal","error"])
+        def slaveJob1e=DDManAPI_Function.streamContainsErrors2(slaveJob1e1[0].toString(),slaveJob1e1[1],["fatal","error"])
         result+=slaveJob1e[0]
         bat ([label:"found ${slaveJob1e[1]}", returnStdout:false, script:"exit ${slaveJob1e[2]}"])
 
