@@ -47,7 +47,7 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
     cmdcommand= cmdcommand + " & git --git-dir=.\\\\.git --work-tree=.\\\\. checkout ${Branchname} -f"
     cmdcommand= cmdcommand + " & rd .git /S /Q"
 
-    process  = Runtime.getRuntime().exec("${cmdcommand}",null, new File("${WorkSpace1}"));
+    process  = cmdcommand.execute(null, new File("${WorkSpace1}"));
 
     process.waitForProcessOutput(outputstream, errorstream)
 
