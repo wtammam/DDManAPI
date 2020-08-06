@@ -39,21 +39,24 @@ def GetData(String DDManPrjVzPk = 'Hallo ich bin') {
 
 }
 def git_own_f(String WorkSpace1,String Branchname,String Repository){
-    def outStream = new StringBuilder()
-    def outError = new StringBuilder()
-    def proc
-    dir(WorkSpace1) {
-        def cmd = Runtime.getRuntime().exec("cmd /c git init & git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1 & git --git-dir=.\\\\.git --work-tree=.\\\\. checkout ${Branchname} -f & rd .git /S /Q",null, new File("${WorkSpace1}"));
+    def outputstream = new StringBuilder()
+    def errorstream = new StringBuilder()
+    def process
+    def cmdcommand ="cmd /c git init"
+    cmdcommand= cmdcommand + " & git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1"
+    cmdcommand= cmdcommand + " & git --git-dir=.\\\\.git --work-tree=.\\\\. checkout ${Branchname} -f"
+    cmdcommand= cmdcommand + " & rd .git /S /Q"
 
-        //proc=["cmd /c",cmd].execute()
-        cmd.waitForProcessOutput(outStream, outError)
-    }
+    process  = Runtime.getRuntime().exec("${cmdcommand}",null, new File("${WorkSpace1}"));
+
+    process.waitForProcessOutput(outputstream, errorstream)
+
     println WorkSpace1
     println"Out"
-    println(outStream.toString())
+    println(outputstream.toString())
     println"Out"
     println"Error"
-    println(outError.toString())
+    println(errorstream.toString())
     println"Error"
     /*def cmd = new StringBuilder()
     cmd.append("git init\n")
