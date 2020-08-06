@@ -45,7 +45,7 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
     def process
     def cmdcommand ="cmd /c git init"
     cmdcommand= cmdcommand + " & git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1"
-    cmdcommand= cmdcommand + " & git --git-dir=.\\\\.git --work-tree=.\\\\. checkout ${Branchname} -f"
+    cmdcommand= cmdcommand + " & git --git-dir=.\\.git --work-tree=.\\. checkout ${Branchname} -f"
     cmdcommand= cmdcommand + " & rd .git /S /Q"
     def output=""
     def result=0
@@ -66,6 +66,11 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
         result =1
         abbruch =-1
     }
+
+//	println output
+//	println result
+    return [output, result, abbruch]
+}
 
 //	println output
 //	println result
