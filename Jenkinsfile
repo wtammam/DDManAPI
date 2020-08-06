@@ -26,9 +26,9 @@ node(){
         println slaveJob1e1[1].toString()
         println ("start")
         //batCommand.streamContainsErrors2(stream, preresult, searchedStrings) -> return [result,errorString,abbruch]
-        /*def slaveJob1e=test.streamContainsErrors2(slaveJob1e1[0].toString(),slaveJob1e1[1],["fatal","error"])
+        def slaveJob1e=test.streamContainsErrors2(slaveJob1e1[0].toString(),slaveJob1e1[1],["fatal","error"])
         result+=slaveJob1e[0]
-        bat ([label:"found ${slaveJob1e[1]}", returnStdout:false, script:"exit ${slaveJob1e[2]}"])*/
+        bat ([label:"found ${slaveJob1e[1]}", returnStdout:false, script:"exit ${slaveJob1e[2]}"])
 
     }
 

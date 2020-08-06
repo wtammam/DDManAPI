@@ -38,6 +38,7 @@ def GetData(String DDManPrjVzPk = 'Hallo ich bin') {
 
 
 }
+//Function to git anzuwerfen und einen bestimmten Branch auszugeben.
 def git_own_f(String WorkSpace1,String Branchname,String Repository){
     def outputstream = new StringBuilder()
     def errorstream = new StringBuilder()
@@ -46,47 +47,80 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
     cmdcommand= cmdcommand + " & git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1"
     cmdcommand= cmdcommand + " & git --git-dir=.\\\\.git --work-tree=.\\\\. checkout ${Branchname} -f"
     cmdcommand= cmdcommand + " & rd .git /S /Q"
-
-    process  = cmdcommand.execute(null, new File("${WorkSpace1}"));
-
-    process.waitForProcessOutput(outputstream, errorstream)
-
-    println WorkSpace1
-    println"Out"
-    println(outputstream.toString()+errorstream.toString())
-    println"Out"
-    println"Error"
-    //println(errorstream.toString())
-    println"Error"
-    /*def cmd = new StringBuilder()
-    cmd.append("git init\n")
-    cmd.append("git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1\n")
-    cmd.append("git --git-dir=.\\.git --work-tree=.\\. checkout ${Branchname} -f\n")
-    cmd.append("rd .git /S /Q\n")
     def output=""
     def result=0
     def abbruch=0
 
     try{
-        dir(WorkSpace1){
-            output=bat (label:"git checkout/s ${Repository}/s ${Branchname}/s --depth 1", returnStdout:true, script:"${cmd.toString()}")
-                   /* """
-					git init
-					git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1 
-					git --git-dir=.\\.git --work-tree=.\\. checkout ${Branchname} -f 
-					rd .git /S /Q
-				"""]).trim()
-        }
+        process = cmdcommand.execute(null, new File("${WorkSpace1}"));
+        process.waitForProcessOutput(outputstream, errorstream)
+        output = outputstream.toString()+errorstream.toString()
     }
-    catch(IOException){
+    catch(e){
         result =1
         abbruch =-1
     }
 
-	//println output
-	//println result
-   return [output, result, abbruch]*/
-    return [outputstream.toString(), errorstream.toString(), 0]
+//	println output
+//	println result
+    return [output, result, abbruch]
+}
+
+//todo -> git_own tag and sparse should be put into git_own (+params)
+def git_own_f_tag(String WorkSpace1,String Tag,String Repository){
+    def outputstream = new StringBuilder()
+    def errorstream = new StringBuilder()
+    def process
+    def cmdcommand ="cmd /c git init"
+    cmdcommand= cmdcommand + " & git fetch --progress ${Repository} +refs/heads/${Tag}:refs/remotes/${Tag} --depth 1"
+    cmdcommand= cmdcommand + " & git --git-dir=.\\\\.git --work-tree=.\\\\. checkout ${Tag} -f"
+    cmdcommand= cmdcommand + " & git show -s > GITINFO.txt"
+    cmdcommand= cmdcommand + " & rd .git /S /Q"
+    def output=""
+    def result=0
+    def abbruch=0
+    try{
+        process = cmdcommand.execute(null, new File("${WorkSpace1}"));
+        process.waitForProcessOutput(outputstream, errorstream)
+        output = outputstream.toString()+errorstream.toString()
+    }
+    catch(e){
+        result =1
+        abbruch =-1
+    }
+
+//	println output
+//	println result
+    return [output, result, abbruch]
+}
+
+def git_own_f_sparse(String WorkSpace1,String Branchname,String Repository,String subfolders){
+    def outputstream = new StringBuilder()
+    def errorstream = new StringBuilder()
+    def process
+    def cmdcommand ="cmd /c git init"
+    cmdcommand= cmdcommand + " & git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1"
+    cmdcommand= cmdcommand + " & git --git-dir=.\\\\.git --work-tree=.\\\\. checkout ${Branchname} -f -- ${subfolders}"
+    cmdcommand= cmdcommand + " & git show -s > GITINFO.txt"
+    cmdcommand= cmdcommand + " & rd .git /S /Q"
+    def output=""
+    def result=0
+    def abbruch=0
+
+    try{
+        process = cmdcommand.execute(null, new File("${WorkSpace1}"));
+        process.waitForProcessOutput(outputstream, errorstream)
+        output = outputstream.toString()+errorstream.toString()
+
+    }
+    catch(e){
+        result =1
+        abbruch =-1
+    }
+
+//	println output
+//	println result
+    return [output, result, abbruch]
 }
 
 def streamContainsErrors2(def stream, def preresult, searchedStrings){
