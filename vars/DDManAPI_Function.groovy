@@ -54,9 +54,15 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
     try{
         process = cmdcommand.execute(null, new File("${WorkSpace1}"));
         process.waitForProcessOutput(outputstream, errorstream)
-        output = outputstream.toString()+errorstream.toString()
+        output.insert(0, cmdcommand + "\n")
+        output += outputstream.toString() + errorstream.toString()
+        output += "exit[${process.exitValue()}]"
+        if(process.exitValue()!=0){
+            result = 1
+            abbruch = -1
+        }
     }
-    catch(e){
+    catch(IOException){
         result =1
         abbruch =-1
     }
@@ -82,9 +88,15 @@ def git_own_f_tag(String WorkSpace1,String Tag,String Repository){
     try{
         process = cmdcommand.execute(null, new File("${WorkSpace1}"));
         process.waitForProcessOutput(outputstream, errorstream)
-        output = outputstream.toString()+errorstream.toString()
+        output.insert(0, cmdcommand + "\n")
+        output += outputstream.toString() + errorstream.toString()
+        output +="exit[${process.exitValue()}]"
+        if(process.exitValue()!=0){
+            result =1
+            abbruch = -1
+        }
     }
-    catch(e){
+    catch(IOException){
         result =1
         abbruch =-1
     }
@@ -110,10 +122,16 @@ def git_own_f_sparse(String WorkSpace1,String Branchname,String Repository,Strin
     try{
         process = cmdcommand.execute(null, new File("${WorkSpace1}"));
         process.waitForProcessOutput(outputstream, errorstream)
-        output = outputstream.toString()+errorstream.toString()
+        output.insert(0, cmdcommand + "\n")
+        output += outputstream.toString() + errorstream.toString()
+        output += "exit[${process.exitValue()}]"
+        if(process.exitValue()!=0){
+            result = 1
+            abbruch = -1
+        }
 
     }
-    catch(e){
+    catch(IOException){
         result =1
         abbruch =-1
     }
