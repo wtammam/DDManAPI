@@ -72,11 +72,6 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
     return [output, result, abbruch]
 }
 
-//	println output
-//	println result
-    return [output, result, abbruch]
-}
-
 //todo -> git_own tag and sparse should be put into git_own (+params)
 def git_own_f_tag(String WorkSpace1,String Tag,String Repository){
     def outputstream = new StringBuilder()
