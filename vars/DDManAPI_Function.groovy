@@ -53,10 +53,10 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
 
     println WorkSpace1
     println"Out"
-    println(outputstream.toString())
+    println(outputstream.toString()+errorstream.toString())
     println"Out"
     println"Error"
-    println(errorstream.toString())
+    //println(errorstream.toString())
     println"Error"
     /*def cmd = new StringBuilder()
     cmd.append("git init\n")
