@@ -5,7 +5,7 @@
 
 //}
 //PrjData PrjConfig = new PrjData()
-
+@NonCPS
 def GetData(String DDManPrjVzPk = 'Hallo ich bin') {
     String Prj
     String VZ
