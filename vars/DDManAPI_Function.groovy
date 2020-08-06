@@ -47,13 +47,18 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
     cmdcommand= cmdcommand + " & git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1"
     cmdcommand= cmdcommand + " & git --git-dir=.\\.git --work-tree=.\\. checkout ${Branchname} -f"
     cmdcommand= cmdcommand + " & rd .git /S /Q"
+    println cmdcommand
     def output=""
     def result=0
     def abbruch=0
 
     try{
+        bat "where cmd"
+        println cmdcommand
         process = cmdcommand.execute(null, new File("${WorkSpace1}"));
+        println "process-waitForProcessOutput(outputstream, errorstream)"
         process.waitForProcessOutput(outputstream, errorstream)
+        println "process-waitForProcessOutput(outputstream, errorstream)"
         output = cmdcommand + "\n"
         output += outputstream.toString() + errorstream.toString()
         output += "exit[${process.exitValue()}]"
@@ -65,6 +70,8 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
     catch(IOException){
         result =1
         abbruch =-1
+        println "result"+result
+        println "result"+abbruch
     }
 
 //	println output
