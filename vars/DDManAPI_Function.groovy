@@ -43,7 +43,7 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
     def outputstream = new StringBuilder()
     def errorstream = new StringBuilder()
     def process
-    def cmdcommand ="cmd /c git init"
+    def cmdcommand ="git init"
     cmdcommand= cmdcommand + " & git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1"
     cmdcommand= cmdcommand + " & git --git-dir=.\\\\.git --work-tree=.\\\\. checkout ${Branchname} -f"
     cmdcommand= cmdcommand + " & rd .git /S /Q"
@@ -77,7 +77,7 @@ def git_own_f_tag(String WorkSpace1,String Tag,String Repository){
     def outputstream = new StringBuilder()
     def errorstream = new StringBuilder()
     def process
-    def cmdcommand ="cmd /c git init"
+    def cmdcommand ="git init"
     cmdcommand= cmdcommand + " & git fetch --progress ${Repository} +refs/heads/${Tag}:refs/remotes/${Tag} --depth 1"
     cmdcommand= cmdcommand + " & git --git-dir=.\\\\.git --work-tree=.\\\\. checkout ${Tag} -f"
     cmdcommand= cmdcommand + " & git show -s > GITINFO.txt"
@@ -110,7 +110,7 @@ def git_own_f_sparse(String WorkSpace1,String Branchname,String Repository,Strin
     def outputstream = new StringBuilder()
     def errorstream = new StringBuilder()
     def process
-    def cmdcommand ="cmd /c git init"
+    def cmdcommand ="git init"
     cmdcommand= cmdcommand + " & git fetch --progress ${Repository} +refs/heads/${Branchname}:refs/remotes/${Branchname} --depth 1"
     cmdcommand= cmdcommand + " & git --git-dir=.\\\\.git --work-tree=.\\\\. checkout ${Branchname} -f -- ${subfolders}"
     cmdcommand= cmdcommand + " & git show -s > GITINFO.txt"
