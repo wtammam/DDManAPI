@@ -54,7 +54,7 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
 
     try{
         bat "where cmd"
-        println cmdcommand
+        println WorkSpace1
         process = cmdcommand.execute(null, new File("${WorkSpace1}"))
         println "process-waitForProcessOutput(outputstream, errorstream)"
         process.waitForProcessOutput(outputstream, errorstream)
