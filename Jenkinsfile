@@ -5,7 +5,7 @@ node(){
     //script {
         def test = new DDManAPI_Function()
         def test1 = new DDManAPI(PARAPRJ_PARAVC_PARAPK,Aktion,DDMan_API)
-    String WorkSpace1="C:\\meineDaten"
+    String WorkSpace1="C:\\test"
     String Branchname="xxxxxx"
     String Repository="https://git.daimler.com/rd-pef/BOSCH_M139_M177.git"
    // }
