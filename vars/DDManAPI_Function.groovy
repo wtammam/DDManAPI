@@ -55,18 +55,16 @@ def git_own_f(String WorkSpace1,String Branchname,String Repository){
     try{
         bat "where cmd"
         println cmdcommand
-        dir(WorkSpace1) {
-            process = cmdcommand.execute()
-            println "process-waitForProcessOutput(outputstream, errorstream)"
-            process.waitForProcessOutput(outputstream, errorstream)
-            println "process-waitForProcessOutput(outputstream, errorstream)"
-            output = cmdcommand + "\n"
-            output += outputstream.toString() + errorstream.toString()
-            output += "exit[${process.exitValue()}]"
-            if (process.exitValue() != 0) {
-                result = 1
-                abbruch = -1
-            }
+        process = cmdcommand.execute(null, new File("${WorkSpace1}"))
+        println "process-waitForProcessOutput(outputstream, errorstream)"
+        process.waitForProcessOutput(outputstream, errorstream)
+        println "process-waitForProcessOutput(outputstream, errorstream)"
+        output = cmdcommand + "\n"
+        output += outputstream.toString() + errorstream.toString()
+        output += "exit[${process.exitValue()}]"
+        if(process.exitValue()!=0){
+            result = 1
+            abbruch = -1
         }
     }
     catch(IOException){
