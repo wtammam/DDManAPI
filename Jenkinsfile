@@ -5,10 +5,10 @@ node(){
     //script {
         def test = new DDManAPI_Function()
         def test1 = new DDManAPI(PARAPRJ_PARAVC_PARAPK,Aktion,DDMan_API)
-    String WorkSpace1="C:\\test\\log\\"
+    /*String WorkSpace1="C:\\test\\log\\"
     String Branchname="xxxxxx"
     String Repository="https://git.daimler.com/rd-pef/BOSCH_M139_M177.git"
-   // }
+   // }*/
     //def test1 = load 'DDManAPI\\vars\\DDManAPI.groovy'
  //   agent {
 //        label "abdul-executor"
@@ -18,7 +18,7 @@ node(){
   //      DISABLE_AUTH = 'true'
   //      DB_ENGINE = 'sqlite'
   //  }
-    stage('Test') {
+    /*stage('Test') {
         def slaveJob1e1=test.git_own_f(WorkSpace1,Branchname,Repository)
         def result=""
         println ("start")
@@ -30,9 +30,9 @@ node(){
         result+=slaveJob1e[0]
         bat ([label:"found ${slaveJob1e[1]}", returnStdout:false, script:"exit ${slaveJob1e[2]}"])
 
-    }
+    }*/
 
-       /* stage('Build') {
+        stage('Build') {
             //def test1 = new DDManAPI()
             log.info('process is started now ')
             log.warning('we have a problem but can solve it.')
@@ -48,6 +48,7 @@ node(){
             //println "${test1.GetDDManConfig()}"
                 //sh 'echo $DB_ENGINE'
 
-        }*/
+        }
 
 }
+//dir("$PIPESPACEPRE2"){writeFile file:'dummy', text:''}
